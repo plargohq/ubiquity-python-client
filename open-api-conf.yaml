@@ -1,0 +1,20 @@
+---
+#library: okhttp-gson
+#groupId: 'com.blockdaemon'
+#artifactId: ubiquity-client
+#serializableModel: "true"
+#dateLibrary: java8
+hideGenerationTimestamp: true 
+#invokerPackage: com.blockdaemon.client.invoker
+#apiPackage: com.blockdaemon.client.api
+#modelPackage: com.blockdaemon.client.model
+#configOptions:
+#  dateLibrary: java8
+#additionalProperties:
+#  legacyDiscriminatorBehavior: false
+#  interfaceOnly: true
+#  skipDefaultInterface: false
+#  delegatePattern: true
+
+packageName: ubiquity_openapi_client
+projectName: ubiquity-api
