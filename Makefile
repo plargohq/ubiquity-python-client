@@ -11,9 +11,8 @@ all: clean generate
 generate:
 	@echo "Generating code..."
 	java -jar $(openapi_jar_path) generate -v -i spec/openapi.yaml -c open-api-conf.yaml -g python -o generated 
-	mv generated/ubiquity_openapi_client src
+	cp -r generated/ubiquity_client/* ubiquity_client
 	
 clean:
 	@echo "Cleaning up..."
 	rm -rf generated
-	rm -rf src/ubiquity_openapi_client

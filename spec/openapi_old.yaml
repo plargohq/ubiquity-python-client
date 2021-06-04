@@ -9,19 +9,6 @@ info:
 
     [Documentation](https://app.blockdaemon.com/docs/ubiquity)
 
-    ### Protocols
-    #### Mainnet
-    The following protocols are currently supported:
-    * bitcoin
-    * ethereum
-    * polkadot
-    * xrp
-    * algorand
-    * stellar
-
-    #### Testnet
-    Testnet support coming soon
-
     ##### Pagination
     Certain resources contain a lot of data, more than what's practical
     to return for a single request.
@@ -39,16 +26,16 @@ info:
     url: 'logo.png'
 
 servers:
-  - url: https://ubiquity.api.blockdaemon.com/v2
-    description: Production server
-  - url: https://stg.ubiquity.api.blockdaemon.com/v2
-    description: Staging server
+- url: https://ubiquity.api.blockdaemon.com/v2
+  description: Production server
+- url: https://stg.ubiquity.api.blockdaemon.com/v2
+  description: Staging server
 
 tags:
-  - name: Accounts
-  - name: Blocks
-  - name: Transactions
-  - name: Platforms
+- name: Accounts
+- name: Blocks
+- name: Transactions
+- name: Platforms
 
 paths:
   /{platform}/{network}:
@@ -56,13 +43,13 @@ paths:
       summary: Platform Info
       operationId: GetPlatform
       tags:
-        - Platforms
+      - Platforms
       description: >
         Provides information about supported endpoints
         and generic platform information.
       parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
+      - $ref: '#/components/parameters/platform'
+      - $ref: '#/components/parameters/network'
       responses:
         200:
           description: Platform overview
@@ -75,7 +62,7 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - bearerAuth: [ ]
+      - bearerAuth: []
 
   /{platform}/{network}/account/{address}:
     get:
@@ -84,11 +71,11 @@ paths:
       description: |
         Returns the account balances for all supported currencies.
       tags:
-        - Accounts
+      - Accounts
       parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/address'
+      - $ref: '#/components/parameters/platform'
+      - $ref: '#/components/parameters/network'
+      - $ref: '#/components/parameters/address'
       responses:
         200:
           description: Balances
@@ -107,7 +94,7 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - bearerAuth: [ ]
+      - bearerAuth: []
 
   /{platform}/{network}/account/{address}/txs:
     get:
@@ -119,14 +106,14 @@ paths:
         This call uses pagination.
       operationId: GetTxsByAddress
       tags:
-        - Accounts
+      - Accounts
       parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/address'
-        - $ref: '#/components/parameters/order'
-        - $ref: '#/components/parameters/continuation'
-        - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/platform'
+      - $ref: '#/components/parameters/network'
+      - $ref: '#/components/parameters/address'
+      - $ref: '#/components/parameters/order'
+      - $ref: '#/components/parameters/continuation'
+      - $ref: '#/components/parameters/limit'
       responses:
         200:
           description: Transactions
@@ -170,8 +157,8 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - bearerAuth: [ ]
-
+      - bearerAuth: []
+              
   /{platform}/{network}/txs:
     get:
       summary: All Transactions
@@ -179,21 +166,21 @@ paths:
         Each call returns a slice of the entire list. Use the returned continuation token to get the next part.
       operationId: GetTxs
       tags:
-        - Transactions
+      - Transactions
       parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/order'
-        - $ref: '#/components/parameters/continuation'
-        - $ref: '#/components/parameters/limit'
-        - name: assets
-          in: query
-          required: false
-          description: Comma-separated list of asset paths to filter.
-            If the list is empty, or all elements are empty, this filter has no effect.
-          schema:
-            type: string
-          example: "ethereum/native/eth:ethereum/currency2"
+      - $ref: '#/components/parameters/platform'
+      - $ref: '#/components/parameters/network'
+      - $ref: '#/components/parameters/order'
+      - $ref: '#/components/parameters/continuation'
+      - $ref: '#/components/parameters/limit'
+      - name: assets
+        in: query
+        required: false
+        description: Comma-separated list of asset paths to filter.
+          If the list is empty, or all elements are empty, this filter has no effect.
+        schema:
+          type: string
+        example: "ethereum/native/eth:ethereum/currency2"
 
       responses:
         200:
@@ -225,7 +212,7 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - bearerAuth: [ ]
+      - bearerAuth: []
 
   /{platform}/{network}/block/{key}:
     get:
@@ -233,11 +220,11 @@ paths:
       description: Get a block and all its transactions by the block number or hash
       operationId: GetBlock
       tags:
-        - Blocks
+      - Blocks
       parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/key'
+      - $ref: '#/components/parameters/platform'
+      - $ref: '#/components/parameters/network'
+      - $ref: '#/components/parameters/key'
       responses:
         200:
           description: Block
@@ -276,7 +263,7 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - bearerAuth: [ ]
+      - bearerAuth: []
 
   /{platform}/{network}/block_identifier/{key}:
     get:
@@ -284,11 +271,11 @@ paths:
       description: Get minimal block identifier by block number or hash
       operationId: GetBlockIdentifier
       tags:
-        - Blocks
+      - Blocks
       parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/key'
+      - $ref: '#/components/parameters/platform'
+      - $ref: '#/components/parameters/network'
+      - $ref: '#/components/parameters/key'
       responses:
         200:
           description: Block
@@ -327,24 +314,24 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - bearerAuth: [ ]
+      - bearerAuth: []
 
   /{platform}/{network}/tx/{id}:
     get:
       summary: Transaction By Hash
       operationId: GetTx
       tags:
-        - Transactions
+      - Transactions
       parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - name: id
-          in: path
-          required: true
-          description: Transaction ID/Hash
-          schema:
-            type: string
-          example: "0xF00Fa860473130C1df10707223E66Cb4B839B165"
+      - $ref: '#/components/parameters/platform'
+      - $ref: '#/components/parameters/network'
+      - name: id
+        in: path
+        required: true
+        description: Transaction ID/Hash
+        schema:
+          type: string
+        example: "0xF00Fa860473130C1df10707223E66Cb4B839B165"
       responses:
         200:
           description: Transaction
@@ -383,24 +370,23 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - bearerAuth: [ ]
+      - bearerAuth: []
 
   /{platform}/{network}/sync/block_number:
     get:
       summary: Get current block number
       operationId: CurrentBlockNumber
       tags:
-        - Sync
+      - Sync
       parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
+      - $ref: '#/components/parameters/platform'
+      - $ref: '#/components/parameters/network'
       responses:
         200:
           description: Current block number
           content:
             application/json:
               schema:
-                format: int64
                 type: integer
               example: 32656659
         401:
@@ -408,17 +394,17 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - bearerAuth: [ ]
+      - bearerAuth: []
 
   /{platform}/{network}/sync/block_id:
     get:
       summary: Get current block ID
       operationId: CurrentBlockID
       tags:
-        - Sync
+      - Sync
       parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
+      - $ref: '#/components/parameters/platform'
+      - $ref: '#/components/parameters/network'
       responses:
         200:
           description: Current block ID
@@ -432,7 +418,7 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
       security:
-        - bearerAuth: [ ]
+      - bearerAuth: []
 
 components:
   securitySchemes:
@@ -475,7 +461,6 @@ components:
       properties:
         number:
           type: integer
-          format: int64
           description: Block number
           example: 8000000
         id:
@@ -488,7 +473,6 @@ components:
           example: "0xfcf029ffd36a6714aae09dcc7acbdd8f2b96327f"
         date:
           type: integer
-          format: int64
           description: Unix timestamp
           example: 1571222657
         tx_ids:
@@ -512,7 +496,6 @@ components:
       properties:
         number:
           type: integer
-          format: int64
           description: Block number
           example: 8000000
         id:
@@ -530,7 +513,7 @@ components:
           type: integer
           description: Number of items in txs
           example: 1
-        items:
+        txs:
           type: array
           items:
             $ref: "#/components/schemas/tx"
@@ -567,15 +550,17 @@ components:
         type:
           type: string
           enum:
-            - transfer
-            - utxo_transfer
-            - multi_transfer
+          - transfer
+          - utxo_transfer
         detail:
-          $ref: "#/components/schemas/operationDetail"
-    operationDetail:
-      oneOf:
-        - $ref: "#/components/schemas/transfer"
-        - $ref: "#/components/schemas/utxo_transfer"
+          oneOf:
+          - $ref: "#/components/schemas/transfer"
+          - $ref: "#/components/schemas/utxo_transfer"
+          discriminator:
+            propertyName: type
+            mapping:
+              resultA: '#/components/schemas/transfer'
+              resultB: '#/components/schemas/utxo_transfer'
     tx:
       type: object
       properties:
@@ -603,24 +588,22 @@ components:
             example: "ethereum/native/eth"
         date:
           type: integer
-          format: int64
           description: Unix timestamp
           example: 1571222657
         height:
           type: integer
-          format: int64
           description: Number of block if mined, otherwise omitted.
           example: 198258
           nullable: true
         block_id:
           type: string
           description: ID of block if mined, otherwise omitted.
-          example: "0xaf2948aba2ed8cc7d5b7d4e4f4164a7c8819efc94d30aab3fce6904df68dbc07"
+          example: 0xaf2948aba2ed8cc7d5b7d4e4f4164a7c8819efc94d30aab3fce6904df68dbc07
           nullable: true
         status:
           type: string
           description: Result status of the transaction.
-          enum: [ completed, failed ]
+          enum: [completed, failed]
         operations:
           type: object
           description: Operations in this transaction (opaque keys).
@@ -692,11 +675,6 @@ components:
           $ref: "#/components/schemas/currency"
         value:
           $ref: "#/components/schemas/amount"
-      required:
-        - from
-        - to
-        - currency
-        - value
     utxo_transfer:
       type: object
       description: Transfer of currency in the UTXO model
@@ -713,11 +691,6 @@ components:
           $ref: "#/components/schemas/currency"
         unspent:
           $ref: "#/components/schemas/amount"
-      required:
-        - inputs
-        - outputs
-        - currency
-        - unspent
     coin:
       type: object
       properties:
@@ -766,15 +739,19 @@ components:
         type:
           type: string
           enum:
-            - native
-            - token
-            - smart_token
+          - native
+          - token
+          - smart_token
         detail:
-          $ref: "#/components/schemas/currencyDetail"
-    currencyDetail:
-      oneOf:
-        - $ref: "#/components/schemas/token"
-        - $ref: "#/components/schemas/smart_token"
+          nullable: true
+          oneOf:
+          - $ref: "#/components/schemas/token"
+          - $ref: "#/components/schemas/smart_token"
+          discriminator:
+            propertyName: type
+            mapping:
+              resultA: '#/components/schemas/token'
+              resultB: '#/components/schemas/smart_token'
     token:
       type: object
       properties:
@@ -790,10 +767,6 @@ components:
           type: string
           description: Address that created token
           example: "GDUKMGUGDZQK6YHYA5Z6AY2G4XDSZPSZ3SW5UN3ARVMO6QSRDWP5YLEX"
-      required:
-        - type
-        - id
-        - creator
     smart_token:
       type: object
       properties:
@@ -805,9 +778,6 @@ components:
           type: string
           description: Address of contract
           example: "0xF00Fa860473130C1df10707223E66Cb4B839B165"
-      required:
-        - type
-        - contract
     utxo:
       type: object
       description: An unspent transaction output
@@ -828,16 +798,12 @@ components:
           type: string
           description: Backend API Type
           example: BlockScout RPC
-        handle:
-          type: string
-          example: "bitcoin"
-        genesis_number:
-          type: integer
-          format: int64
+        coin:
+          $ref: "#/components/schemas/coin"
         endpoints:
           type: array
           items:
-            type: string
+            $ref: "#/components/schemas/platform_endpoint"
 
     platform_endpoint:
       type: object
@@ -903,12 +869,10 @@ components:
       schema:
         type: string
         enum:
-          - algorand
-          - bitcoin
-          - ethereum
-          - polkadot
-          - stellar
-          - xrp
+        - bitcoin
+        - ethereum
+        - stellar
+        - xrp
       example: ethereum
     network:
       name: network
@@ -918,7 +882,7 @@ components:
       schema:
         type: string
         enum:
-          - mainnet
+        - mainnet
       example: mainnet
     address:
       name: address
@@ -934,7 +898,7 @@ components:
       description: Pagination order
       schema:
         type: string
-        enum: [ "desc", "asc" ]
+        enum: ["desc", "asc"]
     continuation:
       name: continuation
       in: query
@@ -951,17 +915,17 @@ components:
         Max number of items to return in a response.
         Defaults to 25 and is capped at 100.
       schema:
-        type: integer
+        type: number
       example: 25
     key:
       name: key
       in: path
       required: true
       description: Block number or block hash/ID or Special identifier
-      schema:
+      schema:  
         type: string
         description: Block number or block hash/ID or Special identifier
-      examples:
+      examples: 
         Block number:
           value: 8000000
         "Block hash/ID":

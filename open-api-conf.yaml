@@ -16,5 +16,5 @@ hideGenerationTimestamp: true
 #  skipDefaultInterface: false
 #  delegatePattern: true
 
-packageName: ubiquity_openapi_client
+packageName: ubiquity_client
 projectName: ubiquity-api

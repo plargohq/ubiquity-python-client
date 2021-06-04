@@ -10,7 +10,6 @@
 
 
 from setuptools import setup, find_packages  # noqa: H301
-import os.path
 
 NAME = "ubiquity-api"
 VERSION = "1.0.0"
@@ -25,12 +24,6 @@ REQUIRES = [
   "urllib3 >= 1.25.3",
   "python-dateutil",
 ]
-#print("SETUP")
-#packages = find_packages(where="src") + find_packages(where="generated"),
-#print(packages)
-
-# Tentar colocar generated dentro do src e configurar assim
-# no __init__.py do src fazer "from generated import *"
 
 setup(
     name=NAME,
@@ -42,10 +35,7 @@ setup(
     keywords=["OpenAPI", "OpenAPI-Generator", "Ubiquity REST API"],
     python_requires=">=3.6",
     install_requires=REQUIRES,
-    package_dir={"": "src"},
-    #packages=find_packages(exclude=["test", "tests"]),
-    #packages=find_packages(where="src") + list(map(lambda path: os.path.join("generated", path), find_packages(where="generated"))),
-    packages=find_packages(where="src"),
+    packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     long_description="""\
     Ubiquity provides a RESTful and uniform way to access blockchain resources, with a rich and reusable model across multiple cryptocurrencies.  [Documentation](https://app.blockdaemon.com/docs/ubiquity)  ##### Pagination Certain resources contain a lot of data, more than what&#39;s practical to return for a single request. With the help of pagination, the data is split across multiple responses. Each response returns a subset of the items requested and a continuation token.  To get the next batch of items, copy the returned continuation token to the continuation query parameter and repeat the request with the new URL. In case no continuation token is returned, there is no more data available.   # noqa: E501
