@@ -42,8 +42,6 @@ class TestPlatformsApi(unittest.TestCase):
         } for platform in self.platforms]
 
 
-        httpretty.activate(verbose=True, allow_net_connect=False)
-
     def tearDown(self):
         pass
 
