@@ -589,6 +589,7 @@ components:
           example: 60
         addresses:
           type: array
+          nullable: true
           description: List of involved addresses (excluding contracts)
           uniqueItems: true
           items:
@@ -596,6 +597,7 @@ components:
             example: "0x123456070D674D44a7F9cb4Ab272bd88fAd004b5"
         assets:
           type: array
+          nullable: true
           description: List of moved assets by asset path
           uniqueItems: true
           items:
@@ -621,6 +623,14 @@ components:
           type: string
           description: Result status of the transaction.
           enum: [ completed, failed ]
+        tags:
+          type: array
+          nullable: true
+          description: List of tags for this transaction
+          uniqueItems: true
+          items:
+            type: string
+            example: "coinbase"
         operations:
           type: object
           description: Operations in this transaction (opaque keys).
