@@ -1,0 +1,2800 @@
+{
+  "number": 64128683,
+  "id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+  "parent_id": "4A1F42DD6540636C65C120F6809F5257B424A5EBACE69F729270CA2D20FD4AED",
+  "tx_ids": [
+    "00F99F51DB6C56C7B00D2C1643C52D28A52B38CF998158C56D068356D5C64D59",
+    "03D9B73583E80A7014B56BA5F7BF2B65D7FB69FF8E4705D2328B19CC82B7A41C",
+    "09564B4C15DCEDF89B4D68F57A9135B815A9DE7500ECABBD5F0F8645D7935C1C",
+    "0C50DE23DA090AD64C3CF059F1E176F6900DE18E093489FC387B29F1384C2877",
+    "12351D7C95DE921431732F0AA8A5E3FF72A19F1AE8920F69BF1247C4CB7FD945",
+    "124EFABAD8B0AA4361A588D767C10B3DC630E785C41E3D5E5D17BBCB077E7817",
+    "1371EE8CEA56D075FA07C2485702F85D6774B4B0FA72B0B14C27A1F2C267C553",
+    "14B5EF81260CFB60F3F671087CA75CA0EDAC5755E6B18F03A5B0BB0D6061BCCB",
+    "1B78253996E8742DC232906D31194A70CC86D051637E852819340DD03E36710F",
+    "1FB85E9CE505B91F00CC04A899E139FF568C695A01773F4B6FA8E1D6EF76B0D6",
+    "2544A594132E38FE876D6194BAC87DE2F8AD56C54C45CEB0A34BEE38C70C7C73",
+    "2A479DCBAB1321441AEC25D1AAC78DA0D0C6CA5937E307F51A19D7E12151C128",
+    "31D7BAABE695AE334381B42BE9E4C913615DCD10E582EF31CE7AA701392A0251",
+    "367B63344AC3D86D6310994B0D2E3B47B3B0D4B67D61EFC64F6734B5249C397F",
+    "376C46494473EEF214784F197E9D54409B8E6154D4EC74DBE4B93FC474CDCBBB",
+    "3ED59D755DCC454C0443ED664E401B509816D511DDA7A0F552A543A6F11D36F5",
+    "459688ED1A10BF0B60CCDC7AF3CB812BC8CD84435C1819052FCE694EBCF16971",
+    "4E7258F778C8DCBD3032D81A9584E91B4637C10318B8C19219251CBDA1086DA8",
+    "5045890C72B78F7ABE6223FDD87F361DC21194543B92B400197340B051BCBD9F",
+    "51AAE3A0EEA7AEDDEA4E4F8B7B5B7FF12B1AF420F7A833458D33342951897E7D",
+    "560C81DE7AA36A4850B9DFF1A6691015C16C2AA986CA2ED272CC46AAA9BE6854",
+    "578D1CCCF5D5AE7EDD6D8C46BC65FCE4EA1AC1D259099A9CEC94FFE24CF797D1",
+    "649C374C2C8FED40BFF255ABE8C5FCA555ECCAE408CD0DD0E9F3FED952B2C214",
+    "6F72586088FB49A3EA7A4FD74F3C4731F64086A80626BAF18C1912E16BFE48D7",
+    "7240B0A1BEC3A304A899FADFF2A3B051A0C7B3DC1DCA291E6DC9189725BBF87E",
+    "7C04E2C2D422E1955C150F5F91B52A1B957DE3EA62CB32975E86673445121483",
+    "85238B3981D56D348BAE31E8E0C1BE6528B6E5FE5B2CB5CBD03EF1D64B8C3398",
+    "893505F4D6B91C89A7B017C27FE83F85EB87043855EF038370C706B9B801DA36",
+    "8E75A12A0F96490A1EDCBF7FAE1386E86A480B888B93BA9C64AB060E1AB6D108",
+    "979BE8A84376D977B31D95A55244863A3329EF9283E41360E43A15D24BBB47B9",
+    "9AC59475264FBAB0530CECCBB7373B62F3C3FD92DDCD67E07B1422B59D063BE1",
+    "9BA786751DF0E8FB6A5781C794D63672073FA20F816DA017E9BF203D0940CB9A",
+    "A556DAF9CC9CE5643DEEE1A98FCF2DBEF100E624DF86287AF20A92308381744A",
+    "A7364541CD52001EEAE964749841B0F04A3EF984758B31BF8D0149A95CF8D7EB",
+    "ACB47869F44828876A0F4B1F6B2122D6D992F52B5AB7F8C7EAB3982295A558CC",
+    "AEBFC0DBFE222CF0548F5B0FEF8C802D4F72D4267BDF2B436FA6C989048E1CDB",
+    "B425CD405F261E89BE699D6CF3A1654D5F4B6483ACE1B34DFDC08ED848F255A0",
+    "B4DE7A643DA31B2D6D6DD0DBF1A7166C851610FABE8C6647D6D882956C2D5E36",
+    "B789A5D0A0D0FF504D8DA281D0BD55BFD76805FE7981F18814BA66D05B0C957D",
+    "B9BC0AAD543F04CD7DAF2641F674AB1D44D46FEE8A1D7E3655266877325F99B7",
+    "BAB64A9DF446DC48A6763A3BA4FB39FA24B524148CCE5B776C329099B816523A",
+    "C17C2411F0A5DABB6A824D728E3FB00248D9B7505FF2F34FCAE206F4D2BCC254",
+    "C1CADF48431026A7567C6B0B7B06B4466D99508990DB8E80FC239474B2601674",
+    "CE9CA637ECFA2BB1E8728E5C4B6B8EC530F6F48383500D1C2346394C04DE1097",
+    "DDB7940818EC76ABF83D12E1EC44D94244994BDD61C8CC0EFD0BA556BD7C0553",
+    "E0542C428FB6789233E10AF7885F5C7B7D83FFF1472B25E6A446B2B4D4266813",
+    "E178A31E4E6DC5E96D333E1338484BC2B817C0FF4DB575E15D1A3F4AF283F0C6",
+    "E4BCBA2AA500ADDCDBA73D3AE101E0B260A1C6D46499F0F3BF8B9D96ABDA3392",
+    "FCCB7575CE3BA3FE695FA062149DB960D060FBAF2BC592C9A678A2907F540FD9",
+    "FCFE401D48841D0800F076E5EFC9AA56B3E1CAD1717563E8387DA44B1CAC7B50",
+    "FF65CD178CB770B2394783837F05538D2039C7CDB823AD20791A61598845713B"
+  ],
+  "txs": [
+    {
+      "id": "00F99F51DB6C56C7B00D2C1643C52D28A52B38CF998158C56D068356D5C64D59",
+      "coin": 144,
+      "addresses": ["rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5218716653",
+              "delta": "-12",
+              "new": "5218716641",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "03D9B73583E80A7014B56BA5F7BF2B65D7FB69FF8E4705D2328B19CC82B7A41C",
+      "coin": 144,
+      "addresses": [
+        "rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh",
+        "rLSn6Z3T8uCxbcd1oxwfGQN1Fdn5CyGujK",
+        "transaction_fees"
+      ],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "41423398073",
+              "delta": "544418762",
+              "new": "41967816835",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        },
+        "rLSn6Z3T8uCxbcd1oxwfGQN1Fdn5CyGujK": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "555607071764",
+              "delta": "-544424762",
+              "new": "555062647002",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rLSn6Z3T8uCxbcd1oxwfGQN1Fdn5CyGujK",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "6000"
+          }
+        },
+        "native": {
+          "type": "transfer",
+          "detail": {
+            "from": "rLSn6Z3T8uCxbcd1oxwfGQN1Fdn5CyGujK",
+            "to": "rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "544418762"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "09564B4C15DCEDF89B4D68F57A9135B815A9DE7500ECABBD5F0F8645D7935C1C",
+      "coin": 144,
+      "addresses": ["r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "318525644698",
+              "delta": "-5328",
+              "new": "318525639370",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "5328"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "0C50DE23DA090AD64C3CF059F1E176F6900DE18E093489FC387B29F1384C2877",
+      "coin": 144,
+      "addresses": ["r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "318525633930",
+              "delta": "-10",
+              "new": "318525633920",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "10"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "12351D7C95DE921431732F0AA8A5E3FF72A19F1AE8920F69BF1247C4CB7FD945",
+      "coin": 144,
+      "addresses": ["rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "10940575680",
+              "delta": "-12",
+              "new": "10940575668",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "124EFABAD8B0AA4361A588D767C10B3DC630E785C41E3D5E5D17BBCB077E7817",
+      "coin": 144,
+      "addresses": ["r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "318525649916",
+              "delta": "-5218",
+              "new": "318525644698",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "5218"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "1371EE8CEA56D075FA07C2485702F85D6774B4B0FA72B0B14C27A1F2C267C553",
+      "coin": 144,
+      "addresses": ["rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100937756",
+              "delta": "-12",
+              "new": "100937744",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "14B5EF81260CFB60F3F671087CA75CA0EDAC5755E6B18F03A5B0BB0D6061BCCB",
+      "coin": 144,
+      "addresses": ["rhsZ3vN1uwiu9KAuiJQc2Fw3FTnrapW8Pm", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rhsZ3vN1uwiu9KAuiJQc2Fw3FTnrapW8Pm": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "7912686327",
+              "delta": "-150",
+              "new": "7912686177",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rhsZ3vN1uwiu9KAuiJQc2Fw3FTnrapW8Pm",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "150"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "1B78253996E8742DC232906D31194A70CC86D051637E852819340DD03E36710F",
+      "coin": 144,
+      "addresses": ["rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100730619",
+              "delta": "-12",
+              "new": "100730607",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "1FB85E9CE505B91F00CC04A899E139FF568C695A01773F4B6FA8E1D6EF76B0D6",
+      "coin": 144,
+      "addresses": ["rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5218716641",
+              "delta": "-12",
+              "new": "5218716629",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "2544A594132E38FE876D6194BAC87DE2F8AD56C54C45CEB0A34BEE38C70C7C73",
+      "coin": 144,
+      "addresses": ["rpXhhWmCvDwkzNtRbm7mmD1vZqdfatQNEe", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rpXhhWmCvDwkzNtRbm7mmD1vZqdfatQNEe": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "438963067",
+              "delta": "-150",
+              "new": "438962917",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rpXhhWmCvDwkzNtRbm7mmD1vZqdfatQNEe",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "150"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "2A479DCBAB1321441AEC25D1AAC78DA0D0C6CA5937E307F51A19D7E12151C128",
+      "coin": 144,
+      "addresses": [
+        "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+        "rNFugeoj3ZN8Wv6xhuLegUBBPXKCyWLRkB",
+        "transaction_fees"
+      ],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "798239917411528",
+              "delta": "-206548813",
+              "new": "798239710862715",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        },
+        "rNFugeoj3ZN8Wv6xhuLegUBBPXKCyWLRkB": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "103148047645",
+              "delta": "206547813",
+              "new": "103354595458",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "1000"
+          }
+        },
+        "native": {
+          "type": "transfer",
+          "detail": {
+            "from": "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+            "to": "rNFugeoj3ZN8Wv6xhuLegUBBPXKCyWLRkB",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "206547813"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "31D7BAABE695AE334381B42BE9E4C913615DCD10E582EF31CE7AA701392A0251",
+      "coin": 144,
+      "addresses": ["rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "10940575668",
+              "delta": "-12",
+              "new": "10940575656",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "367B63344AC3D86D6310994B0D2E3B47B3B0D4B67D61EFC64F6734B5249C397F",
+      "coin": 144,
+      "addresses": ["rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5141024064",
+              "delta": "-12",
+              "new": "5141024052",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "376C46494473EEF214784F197E9D54409B8E6154D4EC74DBE4B93FC474CDCBBB",
+      "coin": 144,
+      "addresses": [
+        "r34mWrX3cZCZpJEsqe1F6PNotREXwj1f3r",
+        "rLHtvB1kZimYJsDCqCX4iQxRtSAqqFtrA7",
+        "transaction_fees"
+      ],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r34mWrX3cZCZpJEsqe1F6PNotREXwj1f3r": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "20999990",
+              "delta": "12590000",
+              "new": "33589990",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        },
+        "rLHtvB1kZimYJsDCqCX4iQxRtSAqqFtrA7": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "3326503953120",
+              "delta": "-12590010",
+              "new": "3326491363110",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rLHtvB1kZimYJsDCqCX4iQxRtSAqqFtrA7",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "10"
+          }
+        },
+        "native": {
+          "type": "transfer",
+          "detail": {
+            "from": "rLHtvB1kZimYJsDCqCX4iQxRtSAqqFtrA7",
+            "to": "r34mWrX3cZCZpJEsqe1F6PNotREXwj1f3r",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12590000"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "3ED59D755DCC454C0443ED664E401B509816D511DDA7A0F552A543A6F11D36F5",
+      "coin": 144,
+      "addresses": ["rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5141024052",
+              "delta": "-12",
+              "new": "5141024040",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "459688ED1A10BF0B60CCDC7AF3CB812BC8CD84435C1819052FCE694EBCF16971",
+      "coin": 144,
+      "addresses": ["rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5141024028",
+              "delta": "-12",
+              "new": "5141024016",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "4E7258F778C8DCBD3032D81A9584E91B4637C10318B8C19219251CBDA1086DA8",
+      "coin": 144,
+      "addresses": ["rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "10940575716",
+              "delta": "-12",
+              "new": "10940575704",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "5045890C72B78F7ABE6223FDD87F361DC21194543B92B400197340B051BCBD9F",
+      "coin": 144,
+      "addresses": ["rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100937744",
+              "delta": "-12",
+              "new": "100937732",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "51AAE3A0EEA7AEDDEA4E4F8B7B5B7FF12B1AF420F7A833458D33342951897E7D",
+      "coin": 144,
+      "addresses": ["rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100937732",
+              "delta": "-12",
+              "new": "100937720",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "560C81DE7AA36A4850B9DFF1A6691015C16C2AA986CA2ED272CC46AAA9BE6854",
+      "coin": 144,
+      "addresses": ["r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100507468",
+              "delta": "-12",
+              "new": "100507456",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "578D1CCCF5D5AE7EDD6D8C46BC65FCE4EA1AC1D259099A9CEC94FFE24CF797D1",
+      "coin": 144,
+      "addresses": ["rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "10940575692",
+              "delta": "-12",
+              "new": "10940575680",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "649C374C2C8FED40BFF255ABE8C5FCA555ECCAE408CD0DD0E9F3FED952B2C214",
+      "coin": 144,
+      "addresses": ["rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5141024040",
+              "delta": "-12",
+              "new": "5141024028",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rHzKtpcB1KC1YuU4PBhk9m2abqrf2kZsfV",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "6F72586088FB49A3EA7A4FD74F3C4731F64086A80626BAF18C1912E16BFE48D7",
+      "coin": 144,
+      "addresses": [
+        "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+        "rwx2ugVEZkcwWtUVPm2bKRZviYH7JPR5wc",
+        "transaction_fees"
+      ],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "798239965455586",
+              "delta": "-48044058",
+              "new": "798239917411528",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        },
+        "rwx2ugVEZkcwWtUVPm2bKRZviYH7JPR5wc": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "1121326812",
+              "delta": "48043058",
+              "new": "1169369870",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "1000"
+          }
+        },
+        "native": {
+          "type": "transfer",
+          "detail": {
+            "from": "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+            "to": "rwx2ugVEZkcwWtUVPm2bKRZviYH7JPR5wc",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "48043058"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "7240B0A1BEC3A304A899FADFF2A3B051A0C7B3DC1DCA291E6DC9189725BBF87E",
+      "coin": 144,
+      "addresses": ["r4Z5B1hFD5Qm35Pyp3De3JGn3JznK6r28r", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r4Z5B1hFD5Qm35Pyp3De3JGn3JznK6r28r": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "2375088936",
+              "delta": "-12",
+              "new": "2375088924",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r4Z5B1hFD5Qm35Pyp3De3JGn3JznK6r28r",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "7C04E2C2D422E1955C150F5F91B52A1B957DE3EA62CB32975E86673445121483",
+      "coin": 144,
+      "addresses": ["r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100507432",
+              "delta": "-12",
+              "new": "100507420",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "85238B3981D56D348BAE31E8E0C1BE6528B6E5FE5B2CB5CBD03EF1D64B8C3398",
+      "coin": 144,
+      "addresses": ["r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5124302089",
+              "delta": "-12",
+              "new": "5124302077",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "893505F4D6B91C89A7B017C27FE83F85EB87043855EF038370C706B9B801DA36",
+      "coin": 144,
+      "addresses": ["rfEVtF3h7j9uGGvCW7Cma465dwoqyJW1kG", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rfEVtF3h7j9uGGvCW7Cma465dwoqyJW1kG": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "1803207658",
+              "delta": "-12",
+              "new": "1803207646",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rfEVtF3h7j9uGGvCW7Cma465dwoqyJW1kG",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "8E75A12A0F96490A1EDCBF7FAE1386E86A480B888B93BA9C64AB060E1AB6D108",
+      "coin": 144,
+      "addresses": ["r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "318525639370",
+              "delta": "-5440",
+              "new": "318525633930",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "5440"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "979BE8A84376D977B31D95A55244863A3329EF9283E41360E43A15D24BBB47B9",
+      "coin": 144,
+      "addresses": ["rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "10940575704",
+              "delta": "-12",
+              "new": "10940575692",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "9AC59475264FBAB0530CECCBB7373B62F3C3FD92DDCD67E07B1422B59D063BE1",
+      "coin": 144,
+      "addresses": ["r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5124302065",
+              "delta": "-12",
+              "new": "5124302053",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "9BA786751DF0E8FB6A5781C794D63672073FA20F816DA017E9BF203D0940CB9A",
+      "coin": 144,
+      "addresses": [
+        "rEpNmrCTsxnNnE9BYEcHB94QM4KiRdDepy",
+        "rhMQvDWDJ7CFPZqvwZckXuKanV1y5NCAsB",
+        "transaction_fees"
+      ],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rEpNmrCTsxnNnE9BYEcHB94QM4KiRdDepy": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "9495775692712",
+              "delta": "-55980012",
+              "new": "9495719712700",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        },
+        "rhMQvDWDJ7CFPZqvwZckXuKanV1y5NCAsB": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "577485316",
+              "delta": "55980000",
+              "new": "633465316",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rEpNmrCTsxnNnE9BYEcHB94QM4KiRdDepy",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        },
+        "native": {
+          "type": "transfer",
+          "detail": {
+            "from": "rEpNmrCTsxnNnE9BYEcHB94QM4KiRdDepy",
+            "to": "rhMQvDWDJ7CFPZqvwZckXuKanV1y5NCAsB",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "55980000"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "A556DAF9CC9CE5643DEEE1A98FCF2DBEF100E624DF86287AF20A92308381744A",
+      "coin": 144,
+      "addresses": ["rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100730595",
+              "delta": "-12",
+              "new": "100730583",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "A7364541CD52001EEAE964749841B0F04A3EF984758B31BF8D0149A95CF8D7EB",
+      "coin": 144,
+      "addresses": ["rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100730583",
+              "delta": "-12",
+              "new": "100730571",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "ACB47869F44828876A0F4B1F6B2122D6D992F52B5AB7F8C7EAB3982295A558CC",
+      "coin": 144,
+      "addresses": ["r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5124302101",
+              "delta": "-12",
+              "new": "5124302089",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "AEBFC0DBFE222CF0548F5B0FEF8C802D4F72D4267BDF2B436FA6C989048E1CDB",
+      "coin": 144,
+      "addresses": ["rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100730607",
+              "delta": "-12",
+              "new": "100730595",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "B425CD405F261E89BE699D6CF3A1654D5F4B6483ACE1B34DFDC08ED848F255A0",
+      "coin": 144,
+      "addresses": [
+        "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+        "rsRy14FvipgqudiGmptJBhr1RtpsgfzKMM",
+        "transaction_fees"
+      ],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "798274965206586",
+              "delta": "-34999751000",
+              "new": "798239965455586",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        },
+        "rsRy14FvipgqudiGmptJBhr1RtpsgfzKMM": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "118330297665",
+              "delta": "34999750000",
+              "new": "153330047665",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "1000"
+          }
+        },
+        "native": {
+          "type": "transfer",
+          "detail": {
+            "from": "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+            "to": "rsRy14FvipgqudiGmptJBhr1RtpsgfzKMM",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "34999750000"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "B4DE7A643DA31B2D6D6DD0DBF1A7166C851610FABE8C6647D6D882956C2D5E36",
+      "coin": 144,
+      "addresses": ["rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "10940575656",
+              "delta": "-12",
+              "new": "10940575644",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "B789A5D0A0D0FF504D8DA281D0BD55BFD76805FE7981F18814BA66D05B0C957D",
+      "coin": 144,
+      "addresses": ["r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100507456",
+              "delta": "-12",
+              "new": "100507444",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "B9BC0AAD543F04CD7DAF2641F674AB1D44D46FEE8A1D7E3655266877325F99B7",
+      "coin": 144,
+      "addresses": ["rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5218716665",
+              "delta": "-12",
+              "new": "5218716653",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "BAB64A9DF446DC48A6763A3BA4FB39FA24B524148CCE5B776C329099B816523A",
+      "coin": 144,
+      "addresses": [
+        "rHaJeeQCkx7aEoeqYomNqzd4mQVz8SdAzt",
+        "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+        "transaction_fees"
+      ],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rHaJeeQCkx7aEoeqYomNqzd4mQVz8SdAzt": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "20000721",
+              "delta": "20991752816",
+              "new": "21011753537",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        },
+        "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "798295956960402",
+              "delta": "-20991753816",
+              "new": "798274965206586",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "1000"
+          }
+        },
+        "native": {
+          "type": "transfer",
+          "detail": {
+            "from": "rJb5KsHsDHF1YS5B5DU6QCkH5NsPaKQTcy",
+            "to": "rHaJeeQCkx7aEoeqYomNqzd4mQVz8SdAzt",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "20991752816"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "C17C2411F0A5DABB6A824D728E3FB00248D9B7505FF2F34FCAE206F4D2BCC254",
+      "coin": 144,
+      "addresses": [
+        "rJn2zAPdFA193sixJwuFixRkYDUtx3apQh",
+        "rfMyfzcavQ4tUe1yJYMS4YPUZhAvcWRbRm",
+        "transaction_fees"
+      ],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rJn2zAPdFA193sixJwuFixRkYDUtx3apQh": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "165040235419278",
+              "delta": "571680116",
+              "new": "165040807099394",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        },
+        "rfMyfzcavQ4tUe1yJYMS4YPUZhAvcWRbRm": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "4844813468995",
+              "delta": "-571681616",
+              "new": "4844241787379",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rfMyfzcavQ4tUe1yJYMS4YPUZhAvcWRbRm",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "1500"
+          }
+        },
+        "native": {
+          "type": "transfer",
+          "detail": {
+            "from": "rfMyfzcavQ4tUe1yJYMS4YPUZhAvcWRbRm",
+            "to": "rJn2zAPdFA193sixJwuFixRkYDUtx3apQh",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "571680116"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "C1CADF48431026A7567C6B0B7B06B4466D99508990DB8E80FC239474B2601674",
+      "coin": 144,
+      "addresses": ["r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5124302077",
+              "delta": "-12",
+              "new": "5124302065",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "CE9CA637ECFA2BB1E8728E5C4B6B8EC530F6F48383500D1C2346394C04DE1097",
+      "coin": 144,
+      "addresses": [
+        "r9HwsqBnAUN4nF6nDqxd4sgP8DrDnDcZP3",
+        "rpLxZ6nLJ3EqsWUM5PtMaZEPBhYRcnAEmt",
+        "transaction_fees"
+      ],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r9HwsqBnAUN4nF6nDqxd4sgP8DrDnDcZP3": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "7274364829804",
+              "delta": "-12918985",
+              "new": "7274351910819",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        },
+        "rpLxZ6nLJ3EqsWUM5PtMaZEPBhYRcnAEmt": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "20049966",
+              "delta": "12918940",
+              "new": "32968906",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r9HwsqBnAUN4nF6nDqxd4sgP8DrDnDcZP3",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "45"
+          }
+        },
+        "native": {
+          "type": "transfer",
+          "detail": {
+            "from": "r9HwsqBnAUN4nF6nDqxd4sgP8DrDnDcZP3",
+            "to": "rpLxZ6nLJ3EqsWUM5PtMaZEPBhYRcnAEmt",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12918940"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "DDB7940818EC76ABF83D12E1EC44D94244994BDD61C8CC0EFD0BA556BD7C0553",
+      "coin": 144,
+      "addresses": ["rpXhhWmCvDwkzNtRbm7mmD1vZqdfatQNEe", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rpXhhWmCvDwkzNtRbm7mmD1vZqdfatQNEe": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "438962917",
+              "delta": "-150",
+              "new": "438962767",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rpXhhWmCvDwkzNtRbm7mmD1vZqdfatQNEe",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "150"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "E0542C428FB6789233E10AF7885F5C7B7D83FFF1472B25E6A446B2B4D4266813",
+      "coin": 144,
+      "addresses": ["rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "5218716629",
+              "delta": "-12",
+              "new": "5218716617",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rQ3fNyLjbvcDaPNS4EAJY8aT9zR3uGk17c",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "E178A31E4E6DC5E96D333E1338484BC2B817C0FF4DB575E15D1A3F4AF283F0C6",
+      "coin": 144,
+      "addresses": ["rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100937768",
+              "delta": "-12",
+              "new": "100937756",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "E4BCBA2AA500ADDCDBA73D3AE101E0B260A1C6D46499F0F3BF8B9D96ABDA3392",
+      "coin": 144,
+      "addresses": [
+        "rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh",
+        "rsV3gnMBGft1MC26ERNa1Mw3PcqPMgWQDY",
+        "transaction_fees"
+      ],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "41967816835",
+              "delta": "37989990",
+              "new": "42005806825",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        },
+        "rsV3gnMBGft1MC26ERNa1Mw3PcqPMgWQDY": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "57994990",
+              "delta": "-37994990",
+              "new": "20000000",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rsV3gnMBGft1MC26ERNa1Mw3PcqPMgWQDY",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "5000"
+          }
+        },
+        "native": {
+          "type": "transfer",
+          "detail": {
+            "from": "rsV3gnMBGft1MC26ERNa1Mw3PcqPMgWQDY",
+            "to": "rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "37989990"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "FCCB7575CE3BA3FE695FA062149DB960D060FBAF2BC592C9A678A2907F540FD9",
+      "coin": 144,
+      "addresses": [
+        "rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh",
+        "rfMyfzcavQ4tUe1yJYMS4YPUZhAvcWRbRm",
+        "transaction_fees"
+      ],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "42005806825",
+              "delta": "9498952",
+              "new": "42015305777",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        },
+        "rfMyfzcavQ4tUe1yJYMS4YPUZhAvcWRbRm": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "4844241787379",
+              "delta": "-9500452",
+              "new": "4844232286927",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "rfMyfzcavQ4tUe1yJYMS4YPUZhAvcWRbRm",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "1500"
+          }
+        },
+        "native": {
+          "type": "transfer",
+          "detail": {
+            "from": "rfMyfzcavQ4tUe1yJYMS4YPUZhAvcWRbRm",
+            "to": "rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "9498952"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "FCFE401D48841D0800F076E5EFC9AA56B3E1CAD1717563E8387DA44B1CAC7B50",
+      "coin": 144,
+      "addresses": ["r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "318525655025",
+              "delta": "-5109",
+              "new": "318525649916",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r3rhWeE31Jt5sWmi4QiGLMZnY3ENgqw96W",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "5109"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "FF65CD178CB770B2394783837F05538D2039C7CDB823AD20791A61598845713B",
+      "coin": 144,
+      "addresses": ["r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu", "transaction_fees"],
+      "assets": ["ripple/native/xrp"],
+      "date": 676484732,
+      "height": 64128683,
+      "block_id": "2676D4AEA880426FCA511653362A8B4955D608F55E6F0DD8191E7993E332510F",
+      "status": "completed",
+      "effects": {
+        "r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu": {
+          "balance_changes": {
+            "ripple/native/xrp": {
+              "old": "100507444",
+              "delta": "-12",
+              "new": "100507432",
+              "currency": {
+                "asset_path": "ripple/native/xrp",
+                "symbol": "XRP",
+                "name": "Ripple",
+                "decimals": 6,
+                "type": "native"
+              }
+            }
+          }
+        }
+      },
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "r4dgY6Mzob3NVq8CFYdEiPnXKboRScsXRu",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "ripple/native/xrp",
+              "symbol": "XRP",
+              "name": "Ripple",
+              "decimals": 6,
+              "type": "native"
+            },
+            "value": "12"
+          }
+        }
+      },
+      "tags": []
+    }
+  ],
+  "supply": {
+    "ripple/native/xrp": {
+      "maximum": "100000000000000000",
+      "total": "99990370782683038",
+      "total_created": "100000000000000000",
+      "total_burnt": "9629217316962",
+      "created": "0"
+    }
+  }
+}
