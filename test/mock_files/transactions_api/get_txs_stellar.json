@@ -1,0 +1,316 @@
+{
+  "total": 10,
+  "items": [
+    {
+      "id": "ef44a8ffea205d7f6689855d9d9d3b65eb1c9252aa5d0a5231873d53cc8dbfbe",
+      "coin": 148,
+      "addresses": [
+        "GBCIVR4USDCQTRQRIERNBHKFRNS4L2KQOCOYOM4KS6UNWXW35EQ5RU5B",
+        "transaction_fees"
+      ],
+      "assets": ["stellar/native/xlm"],
+      "date": 1623266484,
+      "height": 35817377,
+      "block_id": "810b62e89939382f1fc31fb1a97b250372ffa16449320b48ba776754a1ffd1bb",
+      "status": "completed",
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "GBCIVR4USDCQTRQRIERNBHKFRNS4L2KQOCOYOM4KS6UNWXW35EQ5RU5B",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "stellar/native/xlm",
+              "symbol": "XLM",
+              "name": "Lumen",
+              "decimals": 7,
+              "type": "native"
+            },
+            "value": "400"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "d0fcdcb0dbdb771c19bc71b24d759f969796ec4d66e6d3c13a44b578c98f193a",
+      "coin": 148,
+      "addresses": [
+        "GAPDBPWFODRQEAQZPH4LMV6NIHO7IGBPSXWMNJTSJJPWCC5JT5QA5GBL",
+        "transaction_fees"
+      ],
+      "assets": ["stellar/native/xlm"],
+      "date": 1623266484,
+      "height": 35817377,
+      "block_id": "810b62e89939382f1fc31fb1a97b250372ffa16449320b48ba776754a1ffd1bb",
+      "status": "completed",
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "GAPDBPWFODRQEAQZPH4LMV6NIHO7IGBPSXWMNJTSJJPWCC5JT5QA5GBL",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "stellar/native/xlm",
+              "symbol": "XLM",
+              "name": "Lumen",
+              "decimals": 7,
+              "type": "native"
+            },
+            "value": "100"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "cc42055597e6edbd2dad6dd6cbbbb3b196b017d600bd7b2be0d29cf28c905941",
+      "coin": 148,
+      "addresses": [
+        "GCNSMIPFDEZHPEBCREDZ3LH4AATHEA6IMUE2ZNC5WYXZH6SN4EZ7EO6H",
+        "transaction_fees"
+      ],
+      "assets": ["stellar/native/xlm"],
+      "date": 1623266484,
+      "height": 35817377,
+      "block_id": "810b62e89939382f1fc31fb1a97b250372ffa16449320b48ba776754a1ffd1bb",
+      "status": "completed",
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "GCNSMIPFDEZHPEBCREDZ3LH4AATHEA6IMUE2ZNC5WYXZH6SN4EZ7EO6H",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "stellar/native/xlm",
+              "symbol": "XLM",
+              "name": "Lumen",
+              "decimals": 7,
+              "type": "native"
+            },
+            "value": "400"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "bd6492389b4c9f9c81717fa90ba043c03ac1f6d9e2f5951de61e01ca87940872",
+      "coin": 148,
+      "addresses": [
+        "GD6I3LCAUI5KCYVOEK7B3AMHAKJ3Q7E33GCSYQRACAN7OVABMI67IHFG",
+        "transaction_fees"
+      ],
+      "assets": ["stellar/native/xlm"],
+      "date": 1623266484,
+      "height": 35817377,
+      "block_id": "810b62e89939382f1fc31fb1a97b250372ffa16449320b48ba776754a1ffd1bb",
+      "status": "completed",
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "GD6I3LCAUI5KCYVOEK7B3AMHAKJ3Q7E33GCSYQRACAN7OVABMI67IHFG",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "stellar/native/xlm",
+              "symbol": "XLM",
+              "name": "Lumen",
+              "decimals": 7,
+              "type": "native"
+            },
+            "value": "100"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "e0c2fbd3fe560170155ee41ec0cd91035bbd47bea6b7c11f18b6ba2de366a17e",
+      "coin": 148,
+      "addresses": [
+        "GDQPUOTMOKLO4R4WQWUAXYUZ2UJTCX3WAJCSAJKBR3JSTWALZUT3PFH5",
+        "transaction_fees"
+      ],
+      "assets": ["stellar/native/xlm"],
+      "date": 1623266484,
+      "height": 35817377,
+      "block_id": "810b62e89939382f1fc31fb1a97b250372ffa16449320b48ba776754a1ffd1bb",
+      "status": "completed",
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "GDQPUOTMOKLO4R4WQWUAXYUZ2UJTCX3WAJCSAJKBR3JSTWALZUT3PFH5",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "stellar/native/xlm",
+              "symbol": "XLM",
+              "name": "Lumen",
+              "decimals": 7,
+              "type": "native"
+            },
+            "value": "200"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "67f93acefe2cffd421ba0b1b5b2a59fd4446e3780e2130e0627e7890d1ccfd4b",
+      "coin": 148,
+      "addresses": [
+        "GCDNUA5JQUUV3OMLMNSYERCQ2WDPSSUXWGPGFDHLYPCTH3RDYJ52LWRL",
+        "transaction_fees"
+      ],
+      "assets": ["stellar/native/xlm"],
+      "date": 1623266484,
+      "height": 35817377,
+      "block_id": "810b62e89939382f1fc31fb1a97b250372ffa16449320b48ba776754a1ffd1bb",
+      "status": "completed",
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "GCDNUA5JQUUV3OMLMNSYERCQ2WDPSSUXWGPGFDHLYPCTH3RDYJ52LWRL",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "stellar/native/xlm",
+              "symbol": "XLM",
+              "name": "Lumen",
+              "decimals": 7,
+              "type": "native"
+            },
+            "value": "400"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "c9d1f9934968095edf7edbb071c291dc389ea326170c2cb8d7a1677bbfff133c",
+      "coin": 148,
+      "addresses": [
+        "GAFET5NOLTSZ5RR4BEVWTUBTWQYZLDGZ3IZ5IVSSQ3S6TY7IK6EA7IAB",
+        "transaction_fees"
+      ],
+      "assets": ["stellar/native/xlm"],
+      "date": 1623266484,
+      "height": 35817377,
+      "block_id": "810b62e89939382f1fc31fb1a97b250372ffa16449320b48ba776754a1ffd1bb",
+      "status": "completed",
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "GAFET5NOLTSZ5RR4BEVWTUBTWQYZLDGZ3IZ5IVSSQ3S6TY7IK6EA7IAB",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "stellar/native/xlm",
+              "symbol": "XLM",
+              "name": "Lumen",
+              "decimals": 7,
+              "type": "native"
+            },
+            "value": "200"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "999f4b1a18c908d41cafb0d8ca94277d176e9899a6546b16fe2aa1dae271c8a0",
+      "coin": 148,
+      "addresses": [
+        "GAZKG7XTKNN2O7ULT65G5KNSX5HCEWENFD3XZEGSTENCTEXOP5ZOS252",
+        "transaction_fees"
+      ],
+      "assets": ["stellar/native/xlm"],
+      "date": 1623266484,
+      "height": 35817377,
+      "block_id": "810b62e89939382f1fc31fb1a97b250372ffa16449320b48ba776754a1ffd1bb",
+      "status": "completed",
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "GAZKG7XTKNN2O7ULT65G5KNSX5HCEWENFD3XZEGSTENCTEXOP5ZOS252",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "stellar/native/xlm",
+              "symbol": "XLM",
+              "name": "Lumen",
+              "decimals": 7,
+              "type": "native"
+            },
+            "value": "100"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "bfacca62746d4e05daa6b9695ffa6fa5c82cf45d2495db175fa0ab985a63c4f1",
+      "coin": 148,
+      "addresses": [
+        "GDZSOHBF3YZPGK5KJFIOSDJJ5ZARTB7LJQ4NZEP6BW6YKYTGBVFZAXF2",
+        "transaction_fees"
+      ],
+      "assets": ["stellar/native/xlm"],
+      "date": 1623266484,
+      "height": 35817377,
+      "block_id": "810b62e89939382f1fc31fb1a97b250372ffa16449320b48ba776754a1ffd1bb",
+      "status": "completed",
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "GDZSOHBF3YZPGK5KJFIOSDJJ5ZARTB7LJQ4NZEP6BW6YKYTGBVFZAXF2",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "stellar/native/xlm",
+              "symbol": "XLM",
+              "name": "Lumen",
+              "decimals": 7,
+              "type": "native"
+            },
+            "value": "400"
+          }
+        }
+      },
+      "tags": []
+    },
+    {
+      "id": "0acd819d7e337dd56fdd6b38c7668a2b18c8aaf3c0659f5a6e6d84dad9b73d75",
+      "coin": 148,
+      "addresses": [
+        "GBEO3CZZDV5Y2BWRVW5KLGKBYCX5JXUWSBJVH35AT4GH57B2MSXJDPPQ",
+        "transaction_fees"
+      ],
+      "assets": ["stellar/native/xlm"],
+      "date": 1623266484,
+      "height": 35817377,
+      "block_id": "810b62e89939382f1fc31fb1a97b250372ffa16449320b48ba776754a1ffd1bb",
+      "status": "completed",
+      "operations": {
+        "fee": {
+          "type": "transfer",
+          "detail": {
+            "from": "GBEO3CZZDV5Y2BWRVW5KLGKBYCX5JXUWSBJVH35AT4GH57B2MSXJDPPQ",
+            "to": "transaction_fees",
+            "currency": {
+              "asset_path": "stellar/native/xlm",
+              "symbol": "XLM",
+              "name": "Lumen",
+              "decimals": 7,
+              "type": "native"
+            },
+            "value": "100"
+          }
+        }
+      },
+      "tags": []
+    }
+  ],
+  "continuation": "153834462844162048_153834462844186626"
+}
