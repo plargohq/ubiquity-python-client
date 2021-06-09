@@ -9,7 +9,7 @@ def get_mock_file_content(path):
         Gets the content of file located under path
                 relative to the test/mock_files directory
     """
-    cur_dir = os.path.dirname(__file__)
+    cur_dir = os.path.abspath(os.path.dirname(__file__))
 
     file = open(os.path.join(cur_dir, MOCK_FILE_DIR, path))
     return file.read()
@@ -25,3 +25,12 @@ def setup_mock_server(base_url, endpoints):
                                req_url,
                                status=endpoint_data["status"],
                                body=endpoint_data["response_data"])
+
+def is_platform_supported(platform, endpoint):
+    """
+        Gets mock about platform information and returns True
+        if the endpoint is supported by it according to the info
+    """
+    platform_data_mock_file = get_mock_file_content(f"platforms_api/platform_{platform}.json")
+    platform_json_mock_data = json.loads(platform_data_mock_file)
+    return endpoint in platform_json_mock_data["endpoints"]
