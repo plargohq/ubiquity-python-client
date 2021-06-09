@@ -38,7 +38,7 @@ class TestPlatformsApi(unittest.TestCase):
             "req_url": f"/{platform}/{network}",
             "method": httpretty.GET,
             "status": 200,
-            "response_data": test.mock.get_mock_file_content(f'platform_{platform}.json')
+            "response_data": test.mock.get_mock_file_content(f'platforms_api/platform_{platform}.json')
         } for platform in self.platforms]
 
 

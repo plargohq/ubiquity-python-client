@@ -43,7 +43,7 @@ class TestSyncApi(unittest.TestCase):
             "status":
             200,
             "response_data":
-            test.mock.get_mock_file_content(f'sync_block_{path}_{platform}.json')
+            test.mock.get_mock_file_content(f'sync_api/sync_block_{path}_{platform}.json')
         } for platform in self.platforms]
         return endpoints
 
