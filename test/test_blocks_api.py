@@ -31,8 +31,6 @@ class TestBlocksApi(unittest.TestCase):
         self.api_client = ApiClient(Configuration())
         self.api_instance = blocks_api.BlocksApi(self.api_client)  # noqa: E501
         self.platforms = test.utils.get_platform_enum_values()
-        print('PLATFORMS:')
-        print(self.platforms)
 
         self.block_ids = [
             test.mock.get_mock_file_content(
@@ -75,6 +73,7 @@ class TestBlocksApi(unittest.TestCase):
     def test_get_block_by_id(self):
         network = "mainnet"
         supported_platforms = test.mock.get_supported_platforms(self.platforms, "id")
+        assert len(supported_platforms) > 1
         print('supported_platforms:', supported_platforms)
         endpoints = self.get_blocks_endpoints(network, "id", supported_platforms)
         test.mock.setup_mock_server(self.api_client.configuration.host,
@@ -86,6 +85,7 @@ class TestBlocksApi(unittest.TestCase):
     def test_get_block_by_number(self):
         network = "mainnet"
         supported_platforms = test.mock.get_supported_platforms(self.platforms, "number")
+        assert len(supported_platforms) > 1
         endpoints = self.get_blocks_endpoints(network, "number", supported_platforms)
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)

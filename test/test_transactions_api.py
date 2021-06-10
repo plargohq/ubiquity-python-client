@@ -36,11 +36,6 @@ class TestTransactionsApi(unittest.TestCase):
         pass
 
     # Helper methods
-    def get_supported_platforms(self, endpoint):
-        return [
-            p for p in self.platforms
-            if test.mock.is_platform_supported(p, endpoint)
-        ]
 
     def get_transactions_endpoints(self, network, path, supported_platforms,
                                    transactions_by_platform):
@@ -75,6 +70,7 @@ class TestTransactionsApi(unittest.TestCase):
     def test_get_txs(self):
         network = "mainnet"
         supported_platforms = test.mock.get_supported_platforms(self.platforms, "/txs")
+        assert len(supported_platforms) > 1
         transactions_by_platform = self.get_transactions_by_supported_platforms(
             supported_platforms)
         endpoints, _ = self.get_transactions_endpoints(network, "txs",
@@ -94,6 +90,7 @@ class TestTransactionsApi(unittest.TestCase):
     def test_get_tx_by_id(self):
         network = "mainnet"
         supported_platforms = test.mock.get_supported_platforms(self.platforms, "/tx/:id")
+        assert len(supported_platforms) > 1
         transactions_by_platform = self.get_transactions_by_supported_platforms(
             supported_platforms)
         endpoints, parsed_transactions = self.get_transactions_endpoints(network, "tx",
