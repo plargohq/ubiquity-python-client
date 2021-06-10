@@ -72,7 +72,7 @@ class TestBlocksApi(unittest.TestCase):
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_block_by_id(self):
         network = "mainnet"
-        supported_platforms = test.mock.get_supported_platforms(self.platforms, "id")
+        supported_platforms = test.mock.get_supported_platforms(self.platforms, "/block/:id")
         assert len(supported_platforms) > 1
         print('supported_platforms:', supported_platforms)
         endpoints = self.get_blocks_endpoints(network, "id", supported_platforms)
@@ -84,7 +84,7 @@ class TestBlocksApi(unittest.TestCase):
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_block_by_number(self):
         network = "mainnet"
-        supported_platforms = test.mock.get_supported_platforms(self.platforms, "number")
+        supported_platforms = test.mock.get_supported_platforms(self.platforms, "/block/:number")
         assert len(supported_platforms) > 1
         endpoints = self.get_blocks_endpoints(network, "number", supported_platforms)
         test.mock.setup_mock_server(self.api_client.configuration.host,
