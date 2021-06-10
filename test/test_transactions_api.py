@@ -1,7 +1,7 @@
 """
     Ubiquity REST API
 
-    Ubiquity provides a RESTful and uniform way to access transactionchain resources, with a rich and reusable model across multiple cryptocurrencies.  [Documentation](https://app.blockdaemon.com/docs/ubiquity)  ### Protocols #### Mainnet The following protocols are currently supported: * bitcoin * ethereum * polkadot * xrp * algorand * stellar  #### Testnet Testnet support coming soon  ##### Pagination Certain resources contain a lot of data, more than what's practical to return for a single request. With the help of pagination, the data is split across multiple responses. Each response returns a subset of the items requested and a continuation token.  To get the next batch of items, copy the returned continuation token to the continuation query parameter and repeat the request with the new URL. In case no continuation token is returned, there is no more data available.   # noqa: E501
+    Ubiquity provides a RESTful and uniform way to access blockchain resources, with a rich and reusable model across multiple cryptocurrencies.  [Documentation](https://app.blockdaemon.com/docs/ubiquity)  ### Protocols #### Mainnet The following protocols are currently supported: * bitcoin * ethereum * polkadot * xrp * algorand * stellar  #### Testnet Testnet support coming soon  ##### Pagination Certain resources contain a lot of data, more than what's practical to return for a single request. With the help of pagination, the data is split across multiple responses. Each response returns a subset of the items requested and a continuation token.  To get the next batch of items, copy the returned continuation token to the continuation query parameter and repeat the request with the new URL. In case no continuation token is returned, there is no more data available.   # noqa: E501
 
     The version of the OpenAPI document: 2.0.0
     Contact: support@blockdaemon.com
@@ -74,7 +74,7 @@ class TestTransactionsApi(unittest.TestCase):
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_txs(self):
         network = "mainnet"
-        supported_platforms = self.get_supported_platforms("/txs")
+        supported_platforms = test.mock.get_supported_platforms(self.platforms, "/txs")
         transactions_by_platform = self.get_transactions_by_supported_platforms(
             supported_platforms)
         endpoints, _ = self.get_transactions_endpoints(network, "txs",
@@ -93,7 +93,7 @@ class TestTransactionsApi(unittest.TestCase):
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_tx_by_id(self):
         network = "mainnet"
-        supported_platforms = self.get_supported_platforms("/tx/:id")
+        supported_platforms = test.mock.get_supported_platforms(self.platforms, "/tx/:id")
         transactions_by_platform = self.get_transactions_by_supported_platforms(
             supported_platforms)
         endpoints, parsed_transactions = self.get_transactions_endpoints(network, "tx",

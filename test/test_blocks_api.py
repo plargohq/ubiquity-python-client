@@ -22,6 +22,8 @@ from ubiquity import Configuration
 import httpretty
 import urllib3
 
+# TODO
+# Add test for getting block identifiers
 
 class TestBlocksApi(unittest.TestCase):
     """BlocksApi unit test stubs"""
@@ -47,12 +49,6 @@ class TestBlocksApi(unittest.TestCase):
         pass
 
     # Helper methods
-    def get_supported_platforms(self, test_type):
-        return [
-            p for p in self.platforms
-            if test.mock.is_platform_supported(p, f"/block/:{test_type}")
-        ]
-
     def get_blocks_endpoints(self, network, path, supported_platforms):
         endpoints = [{
             "req_url":
@@ -78,7 +74,7 @@ class TestBlocksApi(unittest.TestCase):
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_block_by_id(self):
         network = "mainnet"
-        supported_platforms = self.get_supported_platforms("id")
+        supported_platforms = test.mock.get_supported_platforms(self.platforms, "id")
         print('supported_platforms:', supported_platforms)
         endpoints = self.get_blocks_endpoints(network, "id", supported_platforms)
         test.mock.setup_mock_server(self.api_client.configuration.host,
@@ -89,7 +85,7 @@ class TestBlocksApi(unittest.TestCase):
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_block_by_number(self):
         network = "mainnet"
-        supported_platforms = self.get_supported_platforms("number")
+        supported_platforms = test.mock.get_supported_platforms(self.platforms, "number")
         endpoints = self.get_blocks_endpoints(network, "number", supported_platforms)
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)
