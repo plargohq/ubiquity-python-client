@@ -1,0 +1,26 @@
+{
+  "stellar/credit_alphanum12/sdoge": {
+    "currency": {
+      "asset_path": "stellar/credit_alphanum12/sdoge",
+      "symbol": "SDOGE",
+      "decimals": 7,
+      "type": "token",
+      "detail": {
+        "type": "credit_alphanum12",
+        "id": "SDOGE",
+        "creator": "GDKZXCRYKOFFSRI37TI4XQCUQJH544M5SRC2TNFTWIDEO4Z6MUZO2FDS"
+      }
+    },
+    "balance": "47558.0391294"
+  },
+  "stellar/native/xlm": {
+    "currency": {
+      "asset_path": "stellar/native/xlm",
+      "symbol": "XLM",
+      "name": "Lumen",
+      "decimals": 7,
+      "type": "native"
+    },
+    "balance": "73.683531"
+  }
+}
