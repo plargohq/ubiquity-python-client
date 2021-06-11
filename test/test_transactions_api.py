@@ -70,7 +70,7 @@ class TestTransactionsApi(unittest.TestCase):
     def test_get_txs(self):
         network = "mainnet"
         supported_platforms = test.mock.get_supported_platforms(self.platforms, "/txs")
-        assert len(supported_platforms) > 1
+        assert len(supported_platforms) > 0
         transactions_by_platform = self.get_transactions_by_supported_platforms(
             supported_platforms)
         endpoints, _ = self.get_transactions_endpoints(network, "txs",
@@ -78,7 +78,7 @@ class TestTransactionsApi(unittest.TestCase):
                                                     transactions_by_platform)
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)
-        assert len(supported_platforms) > 1
+        assert len(supported_platforms) > 0
         for platform in supported_platforms:
             try:
                 _ = self.api_instance.get_txs(platform)
@@ -90,7 +90,7 @@ class TestTransactionsApi(unittest.TestCase):
     def test_get_tx_by_id(self):
         network = "mainnet"
         supported_platforms = test.mock.get_supported_platforms(self.platforms, "/tx/:id")
-        assert len(supported_platforms) > 1
+        assert len(supported_platforms) > 0
         transactions_by_platform = self.get_transactions_by_supported_platforms(
             supported_platforms)
         endpoints, parsed_transactions = self.get_transactions_endpoints(network, "tx",
@@ -98,7 +98,7 @@ class TestTransactionsApi(unittest.TestCase):
                                                     transactions_by_platform)
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)
-        assert len(supported_platforms) > 1
+        assert len(supported_platforms) > 0
         for i, platform in enumerate(supported_platforms):
             print("calling tx_by_id for platform", platform)
             try:
