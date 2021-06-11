@@ -8,6 +8,8 @@
     "/account/:address/txs",
     "/block/:id",
     "/block/:number",
+    "/block_identifier/:id",
+    "/block_identifier/:number",
     "/sync/block_id",
     "/sync/block_number",
     "/tx/:id",

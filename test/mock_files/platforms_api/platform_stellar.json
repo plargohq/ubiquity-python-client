@@ -7,6 +7,7 @@
     "/account/:address/report",
     "/account/:address/txs",
     "/block/:number",
+    "/block_identifier/:number",
     "/sync/block_id",
     "/sync/block_number",
     "/tx/:id",
