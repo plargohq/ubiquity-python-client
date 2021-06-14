@@ -47,13 +47,13 @@ class TestSyncApi(unittest.TestCase):
         } for platform in self.platforms]
         return endpoints
 
-    def call_endpoints(self, test_type, endpoints, platforms):
+    def call_endpoints(self, network, test_type, endpoints, platforms):
         for platform in self.platforms:
             try:
                 if test_type == "number":
-                    _ = self.api_instance.current_block_number(platform)
+                    _ = self.api_instance.current_block_number(platform, network)
                 if test_type == "id":
-                    _ = self.api_instance.current_block_id(platform)
+                    _ = self.api_instance.current_block_id(platform, network)
             except Exception as e:
                 raise e
 
@@ -67,7 +67,7 @@ class TestSyncApi(unittest.TestCase):
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)
 
-        self.call_endpoints("number", endpoints, self.platforms)
+        self.call_endpoints(network, "number", endpoints, self.platforms)
 
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_sync_block_id(self):
@@ -76,7 +76,7 @@ class TestSyncApi(unittest.TestCase):
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)
 
-        self.call_endpoints("id", endpoints, self.platforms)
+        self.call_endpoints(network, "id", endpoints, self.platforms)
 
 if __name__ == '__main__':
     unittest.main()

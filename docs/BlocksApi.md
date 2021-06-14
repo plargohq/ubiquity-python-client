@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_block**
-> Block get_block(platform, key)
+> Block get_block(platform, network, key)
 
 Block By Number/Hash
 
@@ -45,13 +45,14 @@ configuration = ubiquity.ubiquity_openapi_client.Configuration(
 with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = blocks_api.BlocksApi(api_client)
-    platform = "ethereum" # str | Coin platform handle
+    platform = "bitcoin" # str | Coin platform handle
+    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
     key = "8000000" # str | Block number or block hash/ID or Special identifier
 
     # example passing only required values which don't have defaults set
     try:
         # Block By Number/Hash
-        api_response = api_instance.get_block(platform, key)
+        api_response = api_instance.get_block(platform, network, key)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling BlocksApi->get_block: %s\n" % e)
@@ -63,8 +64,8 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **str**| Coin platform handle |
+ **network** | **str**| Which network to target. Available networks can be found with /{platform} |
  **key** | **str**| Block number or block hash/ID or Special identifier |
- **network** | **str**| Which network to target. Available networks can be found with /{platform} | defaults to "mainnet"
 
 ### Return type
 
@@ -92,7 +93,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_block_identifier**
-> BlockIdentifier get_block_identifier(platform, key)
+> BlockIdentifier get_block_identifier(platform, network, key)
 
 Block Identifier By Number/Hash
 
@@ -128,13 +129,14 @@ configuration = ubiquity.ubiquity_openapi_client.Configuration(
 with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = blocks_api.BlocksApi(api_client)
-    platform = "ethereum" # str | Coin platform handle
+    platform = "bitcoin" # str | Coin platform handle
+    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
     key = "8000000" # str | Block number or block hash/ID or Special identifier
 
     # example passing only required values which don't have defaults set
     try:
         # Block Identifier By Number/Hash
-        api_response = api_instance.get_block_identifier(platform, key)
+        api_response = api_instance.get_block_identifier(platform, network, key)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling BlocksApi->get_block_identifier: %s\n" % e)
@@ -146,8 +148,8 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **str**| Coin platform handle |
+ **network** | **str**| Which network to target. Available networks can be found with /{platform} |
  **key** | **str**| Block number or block hash/ID or Special identifier |
- **network** | **str**| Which network to target. Available networks can be found with /{platform} | defaults to "mainnet"
 
 ### Return type
 

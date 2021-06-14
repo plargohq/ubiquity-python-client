@@ -81,7 +81,7 @@ class TestTransactionsApi(unittest.TestCase):
         assert len(supported_platforms) > 0
         for platform in supported_platforms:
             try:
-                _ = self.api_instance.get_txs(platform)
+                _ = self.api_instance.get_txs(platform, network)
             except Exception as e:
                 print('error when calling platform', platform)
                 raise e
@@ -104,6 +104,7 @@ class TestTransactionsApi(unittest.TestCase):
             try:
                 _ = self.api_instance.get_tx(
                     platform,
+                    network,
                     parsed_transactions[i]['items'][0]['id']
                 )
             except Exception as e:

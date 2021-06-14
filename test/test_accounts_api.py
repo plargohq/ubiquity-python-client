@@ -68,7 +68,7 @@ class TestAccountsApi(unittest.TestCase):
                 test.mock.get_mock_file_content(
                     f'accounts_api/{platform}_account_{account_id}.json')
             }])
-            _ = self.api_instance.get_balances_by_address(platform, account_id)
+            _ = self.api_instance.get_balances_by_address(platform, network, account_id)
 
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_account_txs(self):
@@ -92,7 +92,7 @@ class TestAccountsApi(unittest.TestCase):
                 test.mock.get_mock_file_content(
                     f'accounts_api/{platform}_account_{account_id}_txs.json')
             }])
-            _ = self.api_instance.get_txs_by_address(platform, account_id)
+            _ = self.api_instance.get_txs_by_address(platform, network, account_id)
 
 
 if __name__ == '__main__':

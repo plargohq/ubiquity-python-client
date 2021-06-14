@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_platform**
-> PlatformDetail get_platform(platform, )
+> PlatformDetail get_platform(platform, network)
 
 Platform Info
 
@@ -44,12 +44,13 @@ configuration = ubiquity.ubiquity_openapi_client.Configuration(
 with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = platforms_api.PlatformsApi(api_client)
-    platform = "ethereum" # str | Coin platform handle
+    platform = "bitcoin" # str | Coin platform handle
+    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
 
     # example passing only required values which don't have defaults set
     try:
         # Platform Info
-        api_response = api_instance.get_platform(platform, )
+        api_response = api_instance.get_platform(platform, network)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling PlatformsApi->get_platform: %s\n" % e)
@@ -61,7 +62,7 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **str**| Coin platform handle |
- **network** | **str**| Which network to target. Available networks can be found with /{platform} | defaults to "mainnet"
+ **network** | **str**| Which network to target. Available networks can be found with /{platform} |
 
 ### Return type
 

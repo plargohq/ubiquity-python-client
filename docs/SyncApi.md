@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **current_block_id**
-> str current_block_id(platform, )
+> str current_block_id(platform, network)
 
 Get current block ID
 
@@ -42,12 +42,13 @@ configuration = ubiquity.ubiquity_openapi_client.Configuration(
 with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sync_api.SyncApi(api_client)
-    platform = "ethereum" # str | Coin platform handle
+    platform = "bitcoin" # str | Coin platform handle
+    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
 
     # example passing only required values which don't have defaults set
     try:
         # Get current block ID
-        api_response = api_instance.current_block_id(platform, )
+        api_response = api_instance.current_block_id(platform, network)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling SyncApi->current_block_id: %s\n" % e)
@@ -59,7 +60,7 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **str**| Coin platform handle |
- **network** | **str**| Which network to target. Available networks can be found with /{platform} | defaults to "mainnet"
+ **network** | **str**| Which network to target. Available networks can be found with /{platform} |
 
 ### Return type
 
@@ -85,7 +86,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **current_block_number**
-> int current_block_number(platform, )
+> int current_block_number(platform, network)
 
 Get current block number
 
@@ -118,12 +119,13 @@ configuration = ubiquity.ubiquity_openapi_client.Configuration(
 with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sync_api.SyncApi(api_client)
-    platform = "ethereum" # str | Coin platform handle
+    platform = "bitcoin" # str | Coin platform handle
+    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
 
     # example passing only required values which don't have defaults set
     try:
         # Get current block number
-        api_response = api_instance.current_block_number(platform, )
+        api_response = api_instance.current_block_number(platform, network)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling SyncApi->current_block_number: %s\n" % e)
@@ -135,7 +137,7 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **str**| Coin platform handle |
- **network** | **str**| Which network to target. Available networks can be found with /{platform} | defaults to "mainnet"
+ **network** | **str**| Which network to target. Available networks can be found with /{platform} |
 
 ### Return type
 

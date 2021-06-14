@@ -80,22 +80,22 @@ class TestBlocksApi(unittest.TestCase):
 
         return endpoints
 
-    def call_endpoints(self, endpoints, platforms, identifiers):
+    def call_endpoints(self, network, endpoints, platforms, identifiers):
         for platform in platforms:
             try:
-                res = self.api_instance.get_block(platform,
-                                                identifiers[platform])
+                res = self.api_instance.get_block(platform, network,
+                                                  identifiers[platform])
                 # quick check to assert if object is not only a block identifier
                 assert "txs" in res
             except Exception as e:
                 print('error when calling platform', platform)
                 raise e
 
-    def call_endpoints_get_identifier(self, endpoints, platforms, identifiers):
+    def call_endpoints_get_identifier(self, network, endpoints, platforms, identifiers):
         for platform in platforms:
             try:
                 res = self.api_instance.get_block_identifier(
-                    platform, identifiers[platform])
+                    platform, network, identifiers[platform])
 
                 # quick check to assert if object is not a whole block object
                 assert not "txs" in res
@@ -115,7 +115,7 @@ class TestBlocksApi(unittest.TestCase):
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)
 
-        self.call_endpoints(endpoints, supported_platforms, self.block_ids)
+        self.call_endpoints(network, endpoints, supported_platforms, self.block_ids)
 
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_block_by_number(self):
@@ -128,7 +128,7 @@ class TestBlocksApi(unittest.TestCase):
                                               supported_platforms)
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)
-        self.call_endpoints(endpoints, supported_platforms, self.block_numbers)
+        self.call_endpoints(network, endpoints, supported_platforms, self.block_numbers)
 
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_block_identifier_by_number(self):
@@ -143,7 +143,7 @@ class TestBlocksApi(unittest.TestCase):
                                               block_identifier_endpoint=True)
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)
-        self.call_endpoints_get_identifier(endpoints, supported_platforms,
+        self.call_endpoints_get_identifier(network, endpoints, supported_platforms,
                                            self.block_numbers)
 
     @httpretty.activate(verbose=True, allow_net_connect=False)
@@ -159,7 +159,7 @@ class TestBlocksApi(unittest.TestCase):
                                               block_identifier_endpoint=True)
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)
-        self.call_endpoints_get_identifier(endpoints, supported_platforms,
+        self.call_endpoints_get_identifier(network, endpoints, supported_platforms,
                                            self.block_ids)
 
 

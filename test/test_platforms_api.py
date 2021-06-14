@@ -47,11 +47,12 @@ class TestPlatformsApi(unittest.TestCase):
 
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_platform(self):
+        network = "mainnet"
         test.mock.setup_mock_server(self.api_client.configuration.host, self.endpoints)
 
         for platform in self.platforms:
             try:
-                _ = self.api_instance.get_platform(platform)
+                _ = self.api_instance.get_platform(platform, network)
             except Exception as e:
                 raise e
 

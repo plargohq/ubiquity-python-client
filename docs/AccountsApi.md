@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **get_balances_by_address**
-> BalancesMap get_balances_by_address(platform, address)
+> BalancesMap get_balances_by_address(platform, network, address)
 
 Balances Of Address
 
@@ -45,13 +45,14 @@ configuration = ubiquity.ubiquity_openapi_client.Configuration(
 with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = accounts_api.AccountsApi(api_client)
-    platform = "ethereum" # str | Coin platform handle
+    platform = "bitcoin" # str | Coin platform handle
+    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
     address = "0x2E31B312290A01538514806Fbb857736ea4d5555" # str | Account address
 
     # example passing only required values which don't have defaults set
     try:
         # Balances Of Address
-        api_response = api_instance.get_balances_by_address(platform, address)
+        api_response = api_instance.get_balances_by_address(platform, network, address)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling AccountsApi->get_balances_by_address: %s\n" % e)
@@ -63,8 +64,8 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **str**| Coin platform handle |
+ **network** | **str**| Which network to target. Available networks can be found with /{platform} |
  **address** | **str**| Account address |
- **network** | **str**| Which network to target. Available networks can be found with /{platform} | defaults to "mainnet"
 
 ### Return type
 
@@ -91,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_txs_by_address**
-> TxPage get_txs_by_address(platform, address)
+> TxPage get_txs_by_address(platform, network, address)
 
 Transactions Of Address
 
@@ -127,7 +128,8 @@ configuration = ubiquity.ubiquity_openapi_client.Configuration(
 with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = accounts_api.AccountsApi(api_client)
-    platform = "ethereum" # str | Coin platform handle
+    platform = "bitcoin" # str | Coin platform handle
+    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
     address = "0x2E31B312290A01538514806Fbb857736ea4d5555" # str | Account address
     order = "desc" # str | Pagination order (optional)
     continuation = "8185.123" # str | Continuation token from earlier response (optional)
@@ -136,7 +138,7 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Transactions Of Address
-        api_response = api_instance.get_txs_by_address(platform, address)
+        api_response = api_instance.get_txs_by_address(platform, network, address)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling AccountsApi->get_txs_by_address: %s\n" % e)
@@ -145,7 +147,7 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Transactions Of Address
-        api_response = api_instance.get_txs_by_address(platform, address, order=order, continuation=continuation, limit=limit)
+        api_response = api_instance.get_txs_by_address(platform, network, address, order=order, continuation=continuation, limit=limit)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling AccountsApi->get_txs_by_address: %s\n" % e)
@@ -157,8 +159,8 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **str**| Coin platform handle |
+ **network** | **str**| Which network to target. Available networks can be found with /{platform} |
  **address** | **str**| Account address |
- **network** | **str**| Which network to target. Available networks can be found with /{platform} | defaults to "mainnet"
  **order** | **str**| Pagination order | [optional]
  **continuation** | **str**| Continuation token from earlier response | [optional]
  **limit** | **int**| Max number of items to return in a response. Defaults to 25 and is capped at 100.  | [optional]
