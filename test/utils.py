@@ -8,10 +8,10 @@ def read_file(path):
     except FileNotFoundError as e:
         raise FileNotFoundError(f"File '{e.filename}' not found, make sure you run tests from the root directory.")
 
-def get_platform_enum_values():
-    yaml_spec_file = read_file("./spec/openapi.yaml")
+def get_platforms():
+    platforms_json_file = read_file("./test/platforms.json")
+    platforms = json.load(platforms_json_file)
 
-    parsed_yaml_file = yaml.load(yaml_spec_file, Loader=yaml.FullLoader)
-    yaml_spec_file.close()
-    return parsed_yaml_file['components']['parameters']['platform']['schema']['enum']
+    platforms_json_file.close()
+    return platforms
 

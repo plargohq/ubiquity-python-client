@@ -29,7 +29,7 @@ class TestBlocksApi(unittest.TestCase):
     def setUp(self):
         self.api_client = ApiClient(Configuration())
         self.api_instance = blocks_api.BlocksApi(self.api_client)  # noqa: E501
-        self.platforms = test.utils.get_platform_enum_values()
+        self.platforms = test.utils.get_platforms()
 
         self.block_numbers = {
             platform: test.mock.get_mock_file_content(

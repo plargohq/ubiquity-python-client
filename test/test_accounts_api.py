@@ -30,7 +30,7 @@ class TestAccountsApi(unittest.TestCase):
         self.api_client = ApiClient(Configuration())
         self.api_instance = accounts_api.AccountsApi(
             self.api_client)  # noqa: E501
-        self.platforms = test.utils.get_platform_enum_values()
+        self.platforms = test.utils.get_platforms()
         self.accounts_by_platform = {
             "algorand":
             "5K6J3Z54656IR7YY65WNJT54UW6RBZZYL5LWQUTG4RWOTRTRBE2MR2AODQ",

@@ -28,7 +28,7 @@ class TestSyncApi(unittest.TestCase):
     def setUp(self):
         self.api_client = ApiClient(Configuration())
         self.api_instance = sync_api.SyncApi(self.api_client)  # noqa: E501
-        self.platforms = test.utils.get_platform_enum_values()
+        self.platforms = test.utils.get_platforms()
 
     def tearDown(self):
         pass

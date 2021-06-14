@@ -20,7 +20,8 @@ info:
     * stellar
 
     #### Testnet
-    Testnet support coming soon
+    * bitcoin/testnet
+    * ethereum/ropsten
 
     ##### Pagination
     Certain resources contain a lot of data, more than what's practical
@@ -434,6 +435,98 @@ paths:
       security:
         - bearerAuth: [ ]
 
+  /{platform}/{network}/tx/create:
+    post:
+      summary: Create an unsigned transaction
+      description: |
+        Creates an unsigned transaction for BTC and ETH.
+
+        **Note** that Ethereum currently only supports singular transaction destinations
+      operationId: TxCreate
+      tags:
+        - Transactions
+      parameters:
+        - $ref: '#/components/parameters/platform'
+        - $ref: '#/components/parameters/network'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/tx_create'
+      responses:
+        200:
+          description: An unsigned transaction
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/unsigned_tx'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "bad-request",
+                "code": 16396,
+                "title": "Bad Request",
+                "status": 400,
+                "detail": "only single destination transactions currently supported"
+              }
+
+
+
+  /{platform}/{network}/tx/send:
+    post:
+      summary: Submit a signed transaction
+      description: |
+        Submit a signed transaction to the network.
+
+        **Note**: A successful transaction may still be rejected on chain or not processed due to a too low fee.
+        You can monitor successful transactions through Ubiquity websockets.
+      operationId: TxSend
+      tags:
+        - Transactions
+      parameters:
+        - $ref: '#/components/parameters/platform'
+        - $ref: '#/components/parameters/network'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/signed_tx'
+      responses:
+        200:
+          description: A submitted Transaction ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tx_receipt'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "bad-request",
+                "code": 16396,
+                "title": "Bad Request",
+                "status": 400,
+                "detail": "failed to send transaction: json-rpc error #-27: Transaction already in block chain"
+              }
+
+
 components:
   securitySchemes:
     bearerAuth:
@@ -589,20 +682,20 @@ components:
           example: 60
         addresses:
           type: array
-          nullable: true
           description: List of involved addresses (excluding contracts)
           uniqueItems: true
           items:
             type: string
             example: "0x123456070D674D44a7F9cb4Ab272bd88fAd004b5"
+          nullable: true
         assets:
           type: array
-          nullable: true
           description: List of moved assets by asset path
           uniqueItems: true
           items:
             type: string
             example: "ethereum/native/eth"
+          nullable: true
         date:
           type: integer
           format: int64
@@ -625,12 +718,12 @@ components:
           enum: [ completed, failed ]
         tags:
           type: array
-          nullable: true
           description: List of tags for this transaction
           uniqueItems: true
           items:
             type: string
             example: "coinbase"
+          nullable: true
         operations:
           type: object
           description: Operations in this transaction (opaque keys).
@@ -881,6 +974,76 @@ components:
           type: string
           description: Coins created at this block
           example: "0"
+    tx_create:
+      type: object
+      properties:
+        from:
+          type: string
+          description: The source UTXO or account ID for the originating funds
+          example: "31c129468975e4ef41135a405000e6428a399a03d023b6627eed4cb95faf19ca"
+        to:
+          type: array
+          description: A list of recipients
+          items:
+            $ref: "#/components/schemas/tx_destination"
+        index:
+          type: integer
+          description: The UTXO index or the account Nonce
+          example: 5
+        fee:
+          description: The fee you are willing to pay (required only for Ethereum) for the transaction
+          type: string
+          example: "21000"
+      required:
+        - from
+        - to
+        - index
+    tx_destination:
+      type: object
+      description: A list of recipients
+      properties:
+        destination:
+          type: string
+          example: "mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt"
+        amount:
+          description: The amount you wish to transfer
+          type: string
+          example: "0.0001"
+      required:
+        - destination
+        - amount
+    unsigned_tx:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The transaction ID
+          example: "0x711fbebdf0c7bcf352dbd6fa7064d12e1f0fed5ddb2e562df742252287b1f5b1"
+        unsigned_tx:
+          type: string
+          description: The transaction data needed to sign
+          example: "e909843b9aca008252089481b7e08f65bdf5648606c89998a9cc81643976478601d1a94a200080808080"
+      required:
+        - id
+        - unsigned_tx
+    signed_tx:
+      type: object
+      properties:
+        tx:
+          type: string
+          description: The signed TX
+          example: "0100000001ca19af5fb94ced7e62b623d0039a398a42e60050405a1341efe475894629c131010000008b483045022100d77b002b3142013b3f825a730f5bc3ead2014266f07ba4449269af0cf6f086310220365bca1d616ba86fac42ad69efd5f92c5ed6cf16f27ebf5ab55010efc72c219d014104417eb0abe69db2eca63c84eb44266c29c24973dc81cde16ca86c9d923630cb5f797bae7d7fab13498e06146111356eb271da74add05ebda8f72ff2b2878fddb7ffffffff0410270000000000001976a914344a0f48ca150ec2b903817660b9b68b13a6702688ac204e0000000000001976a914344a0f48ca150ec2b903817660b9b68b13a6702688ac30750000000000001976a914344a0f48ca150ec2b903817660b9b68b13a6702688ac48710000000000001976a914d6fa8814924b480fa7ff903b5ef61100ab4d92fe88ac00000000"
+      required:
+        - tx
+    tx_receipt:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The transaction ID
+          example: "9c8ac345b443dd10a418ea0beaa320ef233dbae5590be2a11ac090e0e9839c1c"
+      required:
+        - id
     error:
       type: object
       properties:
@@ -912,14 +1075,15 @@ components:
       description: Coin platform handle
       schema:
         type: string
-        enum:
-          - algorand
-          - bitcoin
-          - ethereum
-          - polkadot
-          - stellar
-          - xrp
-      example: ethereum
+      examples:
+        Bitcoin:
+          value: bitcoin
+        Ethereum:
+          value: ethereum
+        Stellar:
+          value: stellar
+        Ripple:
+          value: xrp
     network:
       name: network
       in: path
@@ -927,9 +1091,11 @@ components:
       description: Which network to target. Available networks can be found with /{platform}
       schema:
         type: string
-        enum:
-          - mainnet
-      example: mainnet
+      examples:
+        Mainnet:
+          value: mainnet
+        Testnet:
+          value: testnet
     address:
       name: address
       in: path
@@ -974,7 +1140,12 @@ components:
       examples:
         Block number:
           value: 8000000
+          summary: Block number
         "Block hash/ID":
           value: "0x4e454b49dc8a2e2a229e0ce911e9fd4d2aa647de4cf6e0df40cf71bff7283330"
+          summary: Block hash or Block ID
         Special identifier:
           value: current
+          summary: Special identifier for the current bloc
+
+

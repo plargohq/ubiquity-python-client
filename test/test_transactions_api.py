@@ -30,7 +30,7 @@ class TestTransactionsApi(unittest.TestCase):
         self.api_client = ApiClient(Configuration())
         self.api_instance = transactions_api.TransactionsApi(
             self.api_client)  # noqa: E501
-        self.platforms = test.utils.get_platform_enum_values()
+        self.platforms = test.utils.get_platforms()
 
     def tearDown(self):
         pass
