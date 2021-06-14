@@ -11,7 +11,8 @@ all: clean generate
 generate:
 	@echo "Generating code..."
 	java -jar $(openapi_jar_path) generate -v -i spec/openapi.yaml -c open-api-conf.yaml -g python -o generated 
-	cp -r generated/ubiquity/ubiquity_openapi_client ubiquity/
+	/bin/cp -r generated/docs . # use /bin/cp to prevent aliasing from cp to cp -i
+	cp -r generated/ubiquity/ubiquity_openapi_client ubiquity/ # don't do this for the generated library to not overwrite code by mistake
 	
 clean_generated:
 	@echo "Cleaning up 'generated' folder..."

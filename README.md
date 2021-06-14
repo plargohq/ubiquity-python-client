@@ -1,11 +1,16 @@
 # ubiquity-python-client
 A Python client to the Ubiquity service of blockdaemon.com.
 
-
 # Requirements
 Python 3.6 or newer.
 
 # Installation
+
+To generate the library code from the OpenAPI spec:
+
+```bash
+$ make
+```
 
 To install in your global Python installation with [pip](https://pip.pypa.io/en/stable/), run the following from the repository's root:
 
@@ -26,6 +31,7 @@ To run the test suite first install the test dependencies with pip then run `pyt
 
 ```bash
 $ pip install -r test-requirements.txt
+$ make clean_generated
 $ pytest
 ```
 
@@ -55,7 +61,7 @@ import ubiquity
 from ubiquity.api import blocks_api
 
 conf = ubiquity.Configuration(
-    host="url", 
+    host="url",
     access_token="token"
 )
 
@@ -112,3 +118,6 @@ with ubiquity.ApiClient(conf) as client:
 
     txPage2 = txs_api_instance.get_txs(platform, order=order, limit=limit, continuation=continuation);
 ```
+
+## Docs
+Additional documentation and examples can be found in the `docs` directory.
