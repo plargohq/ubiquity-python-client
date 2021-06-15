@@ -1,6 +1,6 @@
 .PHONY: all generate clean
 
-default_openapi_jar_path = openapi-generator-cli-5.2.0.jar
+default_openapi_jar_path = openapi-generator-cli.jar
 ifeq "$(OPENAPI_GENERATOR_JAR_PATH)" ""
 	openapi_jar_path := $(default_openapi_jar_path)
 else
