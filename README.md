@@ -6,12 +6,6 @@ Python 3.6 or newer.
 
 # Installation
 
-To generate the library code from the OpenAPI spec:
-
-```bash
-$ make
-```
-
 To install in your global Python installation with [pip](https://pip.pypa.io/en/stable/), run the following from the repository's root:
 
 ```bash
