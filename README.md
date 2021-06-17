@@ -43,9 +43,10 @@ conf = ubiquity.Configuration(
 
 with ubiquity.ApiClient(conf) as client:
     blocks_api_instance = blocks_api.BlocksApi(client)
-    platform = "bitcoin"
+    platform = "ethereum"
+    network = "mainnet"
 
-    block = blocks_api_instance.get_block(platform, "current")
+    block = blocks_api_instance.get_block(platform, network, "current")
 ```
 
 An API URL may also be specified if you have a personal ubiquity endpoint 
@@ -61,9 +62,10 @@ conf = ubiquity.Configuration(
 
 with ubiquity.ApiClient(conf) as client:
     blocks_api_instance = blocks_api.BlocksApi(client)
-    platform = "bitcoin"
+    platform = "ethereum"
+    network = "mainnet"
 
-    block = blocks_api_instance.get_block(platform, "current")
+    block = blocks_api_instance.get_block(platform, network, "current")
 ```
 
 
@@ -84,16 +86,17 @@ conf = ubiquity.Configuration(
 
 with ubiquity.ApiClient(conf) as client:
     platform = "bitcoin"
+    network = "mainnet"
 
     txs_api_instance = transactions_api.TransactionsApi(client)
 
     order = "desc"
     limit = 10
 
-    txPage1 = txs_api_instance.get_txs(platform, order=order, limit=limit);
+    txPage1 = txs_api_instance.get_txs(platform, network, order=order, limit=limit);
     continuation = txPage1['continuation']
 
-    txPage2 = txs_api_instance.get_txs(platform, order=order, limit=limit, continuation=continuation);
+    txPage2 = txs_api_instance.get_txs(platform, network, order=order, limit=limit, continuation=continuation);
 ```
 
 To continue through the pages of transactions the continuation from the previous page must be supplied to the next request:
@@ -101,16 +104,17 @@ To continue through the pages of transactions the continuation from the previous
 ```python
 with ubiquity.ApiClient(conf) as client:
     platform = "bitcoin"
+    network = "mainnet"
 
     txs_api_instance = transactions_api.TransactionsApi(client)
 
     order = "desc"
     limit = 10
 
-    txPage1 = txs_api_instance.get_txs(platform, order=order, limit=limit);
+    txPage1 = txs_api_instance.get_txs(platform, network, order=order, limit=limit);
     continuation = txPage1['continuation']
 
-    txPage2 = txs_api_instance.get_txs(platform, order=order, limit=limit, continuation=continuation);
+    txPage2 = txs_api_instance.get_txs(platform, network, order=order, limit=limit, continuation=continuation);
 ```
 
 ## Docs
