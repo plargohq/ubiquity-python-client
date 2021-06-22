@@ -19,7 +19,7 @@ clean_generated:
 	rm -rf generated
 
 clean_library:
-	@echo "Cleaning up generated library at 'ubiquity/ubiquity_client'..."
-	rm -rf ubiquity/ubiquity_client
+	@echo "Cleaning up generated library at 'ubiquity/ubiquity_openapi_client'..."
+	rm -rf ubiquity/ubiquity_openapi_client
 
 clean: clean_generated clean_library
