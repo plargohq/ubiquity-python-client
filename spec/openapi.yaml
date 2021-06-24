@@ -525,6 +525,44 @@ paths:
                 "status": 400,
                 "detail": "failed to send transaction: json-rpc error #-27: Transaction already in block chain"
               }
+  /{platform}/{network}/tx/estimate_fee:
+    get:
+      summary: Get fee estimate
+      description: |
+        Get a fee estimation in decimals from the network.
+        If supported by the platform, the number of blocks used to make
+        the estimation can be customized by the confirmed_within_blocks query parameter.
+      operationId: EstimateFee
+      tags:
+        - Transactions
+      parameters:
+        - $ref: '#/components/parameters/platform'
+        - $ref: '#/components/parameters/network'
+        - $ref: '#/components/parameters/confirmed_within_blocks'
+      responses:
+        200:
+          description: A fee estimation from bitcoin (satoshis)
+          content:
+            application/json:
+              schema:
+                type: string
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "bad-request",
+                "code": 16396,
+                "title": "Bad Request",
+                "status": 400,
+                "detail": "failed to get estimated fee: json-rpc error #-8:  : Invalid conf_target, must be between 1 and 1008"
+              }
 
 
 components:
@@ -1147,5 +1185,15 @@ components:
         Special identifier:
           value: current
           summary: Special identifier for the current bloc
+    confirmed_within_blocks:
+      name: confirmed_within_blocks
+      in: query
+      required: false
+      description: |
+        The number of blocks you would like the transaction to be processed within.
+        Lower numbers produce higher fees.
+      schema:
+        type: number
+        default: 10
 
 
