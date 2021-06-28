@@ -4,11 +4,93 @@ All URIs are relative to *https://ubiquity.api.blockdaemon.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**estimate_fee**](TransactionsApi.md#estimate_fee) | **GET** /{platform}/{network}/tx/estimate_fee | Get fee estimate
 [**get_tx**](TransactionsApi.md#get_tx) | **GET** /{platform}/{network}/tx/{id} | Transaction By Hash
 [**get_txs**](TransactionsApi.md#get_txs) | **GET** /{platform}/{network}/txs | All Transactions
 [**tx_create**](TransactionsApi.md#tx_create) | **POST** /{platform}/{network}/tx/create | Create an unsigned transaction
 [**tx_send**](TransactionsApi.md#tx_send) | **POST** /{platform}/{network}/tx/send | Submit a signed transaction
 
+
+# **estimate_fee**
+> str estimate_fee(platform, network)
+
+Get fee estimate
+
+Get a fee estimation in decimals from the network. If supported by the platform, the number of blocks used to make the estimation can be customized by the confirmed_within_blocks query parameter. 
+
+### Example
+
+```python
+import time
+import ubiquity.ubiquity_openapi_client
+from ubiquity.ubiquity_openapi_client.api import transactions_api
+from ubiquity.ubiquity_openapi_client.model.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ubiquity.ubiquity_openapi_client.Configuration(
+    host = "https://ubiquity.api.blockdaemon.com/v2"
+)
+
+
+# Enter a context with an instance of the API client
+with ubiquity.ubiquity_openapi_client.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = transactions_api.TransactionsApi(api_client)
+    platform = "bitcoin" # str | Coin platform handle
+    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
+    confirmed_within_blocks = 10 # float | The number of blocks you would like the transaction to be processed within. Lower numbers produce higher fees.  (optional) if omitted the server will use the default value of 10
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get fee estimate
+        api_response = api_instance.estimate_fee(platform, network)
+        pprint(api_response)
+    except ubiquity.ubiquity_openapi_client.ApiException as e:
+        print("Exception when calling TransactionsApi->estimate_fee: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get fee estimate
+        api_response = api_instance.estimate_fee(platform, network, confirmed_within_blocks=confirmed_within_blocks)
+        pprint(api_response)
+    except ubiquity.ubiquity_openapi_client.ApiException as e:
+        print("Exception when calling TransactionsApi->estimate_fee: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **platform** | **str**| Coin platform handle |
+ **network** | **str**| Which network to target. Available networks can be found with /{platform} |
+ **confirmed_within_blocks** | **float**| The number of blocks you would like the transaction to be processed within. Lower numbers produce higher fees.  | [optional] if omitted the server will use the default value of 10
+
+### Return type
+
+**str**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A fee estimation from bitcoin (satoshis) |  -  |
+**401** | Invalid or expired token |  -  |
+**429** | Rate limit exceeded |  -  |
+**400** | Bad Request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_tx**
 > Tx get_tx(platform, network, id)
