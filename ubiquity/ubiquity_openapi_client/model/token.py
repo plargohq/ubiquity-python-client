@@ -1,7 +1,7 @@
 """
     Ubiquity REST API
 
-    Ubiquity provides a RESTful and uniform way to access blockchain resources, with a rich and reusable model across multiple cryptocurrencies.  [Documentation](https://app.blockdaemon.com/docs/ubiquity)  ### Protocols #### Mainnet The following protocols are currently supported: * bitcoin * ethereum * polkadot * xrp * algorand * stellar  #### Testnet * bitcoin/testnet * ethereum/ropsten  ##### Pagination Certain resources contain a lot of data, more than what's practical to return for a single request. With the help of pagination, the data is split across multiple responses. Each response returns a subset of the items requested and a continuation token.  To get the next batch of items, copy the returned continuation token to the continuation query parameter and repeat the request with the new URL. In case no continuation token is returned, there is no more data available.   # noqa: E501
+    Ubiquity provides a RESTful and uniform way to access blockchain resources, with a rich and reusable model across multiple cryptocurrencies.  [Documentation](https://app.blockdaemon.com/docs/ubiquity)  ### Protocols #### Mainnet The following protocols are currently supported: * bitcoin * ethereum * polkadot * xrp * algorand * stellar * dogecoin  #### Testnet * bitcoin/testnet * ethereum/ropsten * dogecoin/testnet  ##### Pagination Certain resources contain a lot of data, more than what's practical to return for a single request. With the help of pagination, the data is split across multiple responses. Each response returns a subset of the items requested and a continuation token.  To get the next batch of items, copy the returned continuation token to the continuation query parameter and repeat the request with the new URL. In case no continuation token is returned, there is no more data available.   # noqa: E501
 
     The version of the OpenAPI document: 2.0.0
     Contact: support@blockdaemon.com
@@ -105,13 +105,12 @@ class Token(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, type, id, creator, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, type, id, *args, **kwargs):  # noqa: E501
         """Token - a model defined in OpenAPI
 
         Args:
             type (str): Name of token mechanism
             id (str): Token identifier
-            creator (str): Address that created token
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -144,6 +143,7 @@ class Token(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            creator (str): Address that created token. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -173,7 +173,6 @@ class Token(ModelNormal):
 
         self.type = type
         self.id = id
-        self.creator = creator
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -194,13 +193,12 @@ class Token(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, type, id, creator, *args, **kwargs):  # noqa: E501
+    def __init__(self, type, id, *args, **kwargs):  # noqa: E501
         """Token - a model defined in OpenAPI
 
         Args:
             type (str): Name of token mechanism
             id (str): Token identifier
-            creator (str): Address that created token
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -233,6 +231,7 @@ class Token(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            creator (str): Address that created token. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -260,7 +259,6 @@ class Token(ModelNormal):
 
         self.type = type
         self.id = id
-        self.creator = creator
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

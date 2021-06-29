@@ -79,7 +79,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/problem+json
+ - **Accept**: text/plain, application/json, application/problem+json
 
 
 ### HTTP response details

@@ -1,7 +1,7 @@
 """
     Ubiquity REST API
 
-    Ubiquity provides a RESTful and uniform way to access blockchain resources, with a rich and reusable model across multiple cryptocurrencies.  [Documentation](https://app.blockdaemon.com/docs/ubiquity)  ### Protocols #### Mainnet The following protocols are currently supported: * bitcoin * ethereum * polkadot * xrp * algorand * stellar  #### Testnet * bitcoin/testnet * ethereum/ropsten  ##### Pagination Certain resources contain a lot of data, more than what's practical to return for a single request. With the help of pagination, the data is split across multiple responses. Each response returns a subset of the items requested and a continuation token.  To get the next batch of items, copy the returned continuation token to the continuation query parameter and repeat the request with the new URL. In case no continuation token is returned, there is no more data available.   # noqa: E501
+    Ubiquity provides a RESTful and uniform way to access blockchain resources, with a rich and reusable model across multiple cryptocurrencies.  [Documentation](https://app.blockdaemon.com/docs/ubiquity)  ### Protocols #### Mainnet The following protocols are currently supported: * bitcoin * ethereum * polkadot * xrp * algorand * stellar * dogecoin  #### Testnet * bitcoin/testnet * ethereum/ropsten * dogecoin/testnet  ##### Pagination Certain resources contain a lot of data, more than what's practical to return for a single request. With the help of pagination, the data is split across multiple responses. Each response returns a subset of the items requested and a continuation token.  To get the next batch of items, copy the returned continuation token to the continuation query parameter and repeat the request with the new URL. In case no continuation token is returned, there is no more data available.   # noqa: E501
 
     The version of the OpenAPI document: 2.0.0
     Contact: support@blockdaemon.com
@@ -32,7 +32,9 @@ from ubiquity.ubiquity_openapi_client.exceptions import ApiAttributeError
 
 def lazy_import():
     from ubiquity.ubiquity_openapi_client.model.currency import Currency
+    from ubiquity.ubiquity_openapi_client.model.fee import Fee
     globals()['Currency'] = Currency
+    globals()['Fee'] = Fee
 
 
 class Transfer(ModelNormal):
@@ -92,6 +94,7 @@ class Transfer(ModelNormal):
             'to': (str,),  # noqa: E501
             'currency': (Currency,),  # noqa: E501
             'value': (str,),  # noqa: E501
+            'fee': (Fee,),  # noqa: E501
         }
 
     @cached_property
@@ -104,6 +107,7 @@ class Transfer(ModelNormal):
         'to': 'to',  # noqa: E501
         'currency': 'currency',  # noqa: E501
         'value': 'value',  # noqa: E501
+        'fee': 'fee',  # noqa: E501
     }
 
     read_only_vars = {
@@ -153,6 +157,7 @@ class Transfer(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            fee (Fee): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -244,6 +249,7 @@ class Transfer(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            fee (Fee): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
