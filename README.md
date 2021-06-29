@@ -38,7 +38,7 @@ import ubiquity
 from ubiquity.api import blocks_api
 
 conf = ubiquity.Configuration(
-    access_token="token"
+    access_token="<token>"
 )
 
 with ubiquity.ApiClient(conf) as client:
@@ -56,8 +56,8 @@ import ubiquity
 from ubiquity.api import blocks_api
 
 conf = ubiquity.Configuration(
-    host="url",
-    access_token="token"
+    host="<url>",
+    access_token="<token>"
 )
 
 with ubiquity.ApiClient(conf) as client:
@@ -116,6 +116,74 @@ with ubiquity.ApiClient(conf) as client:
 
     txPage2 = txs_api_instance.get_txs(platform, network, order=order, limit=limit, continuation=continuation);
 ```
+
+## Transaction creation and signing
+You can also create and sign transactions directly from the SDK.
+Currently supported platforms are Bitcoin and Ethereum.
+
+To create and sign a transaction that sends 0.0001 BTC (10000 satoshis) with a 0.00001 BTC (1000 satoshis) fee from an account to another:
+```python
+import ubiquity.transaction as tx
+
+signing_key = "<key>"
+
+from_ = [{
+    "address": "<input transaction>",
+    "index": 0
+}]
+to = [
+    {
+        "address": "<destination address>",
+        "amount": 10000
+    }
+]
+fee = 1000
+
+platform = "bitcoin"
+network = "testnet" # can be "mainnet" or "testnet"
+
+signed_tx = tx.create_and_sign(from_, to, fee, signing_key, { "network": network, "platform": platform })
+```
+
+For Bitcoin an unsigned transaction can also be created with the function `ubiquity.transaction.create`.
+
+To create and sign a transaction that sends 1 ETH and pays 21000 gas as fee from an account to another:
+```python
+import ubiquity
+import ubiquity.transaction as tx
+from ubiquity.api import ApiClient
+
+platform = "ethereum"
+network = "ropsten" # can be "mainnet" or "testnet"
+
+signing_key = "<key>"
+
+from_ = [] # Ethereum transactions don't contain an input address
+to = [{
+    "address": "<destination address>",
+    "amount": 10 ** 18 # 1 ETH in smallest possible units (wei)
+}]
+index = 3 # nonce
+fee = 21000
+
+api_client = ApiClient(ubiquity.Configuration(
+    host="<url>",
+    access_token="<token>"
+))
+
+# An ApiClient object has to be passed to create_and_sign
+#   for Ethereum because the gas price needs to be
+#   fetched from the ethereum network
+signed_tx = tx.create_and_sign(from_, to, fee, signing_key, {
+    "api_client": api_client,
+    "platform" platform,
+    "network": network
+})
+
+api_client.close()
+print('signed: ', signed_tx)
+```
+For Ethereum only transactions with a single output are currently supported.
 
 ## Docs
 Additional documentation and examples can be found in the `docs` directory.
