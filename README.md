@@ -125,7 +125,7 @@ To create and sign a transaction that sends 0.0001 BTC (10000 satoshis) with a 0
 ```python
 import ubiquity.transaction as tx
 
-signing_key = "<key>"
+key = "<key>"
 
 from_ = [{
     "address": "<input transaction>",
@@ -142,7 +142,7 @@ fee = 1000
 platform = "bitcoin"
 network = "testnet" # can be "mainnet" or "testnet"
 
-signed_tx = tx.create_and_sign(from_, to, fee, signing_key, { "network": network, "platform": platform })
+signed_tx = tx.create_and_sign(from_, to, fee, key, { "network": network, "platform": platform })
 ```
 
 For Bitcoin an unsigned transaction can also be created with the function `ubiquity.transaction.create`.
@@ -156,7 +156,7 @@ from ubiquity.api import ApiClient
 platform = "ethereum"
 network = "ropsten" # can be "mainnet" or "testnet"
 
-signing_key = "<key>"
+key = "<key>"
 
 from_ = [] # Ethereum transactions don't contain an input address
 to = [{
@@ -174,7 +174,7 @@ api_client = ApiClient(ubiquity.Configuration(
 # An ApiClient object has to be passed to create_and_sign
 #   for Ethereum because the gas price needs to be
 #   fetched from the ethereum network
-signed_tx = tx.create_and_sign(from_, to, fee, signing_key, {
+signed_tx = tx.create_and_sign(from_, to, fee, key, {
     "api_client": api_client,
     "platform" platform,
     "network": network
