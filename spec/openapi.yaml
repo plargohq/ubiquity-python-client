@@ -18,10 +18,12 @@ info:
     * xrp
     * algorand
     * stellar
+    * dogecoin
 
     #### Testnet
     * bitcoin/testnet
     * ethereum/ropsten
+    * dogecoin/testnet
 
     ##### Pagination
     Certain resources contain a lot of data, more than what's practical
@@ -96,7 +98,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/balancesMap"
+                $ref: "#/components/schemas/balances_map"
         400:
           description: Bad request
           content:
@@ -134,7 +136,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/txPage"
+                $ref: "#/components/schemas/tx_page"
           links:
             Continuation:
               operationId: GetTxsByAddress
@@ -173,6 +175,70 @@ paths:
       security:
         - bearerAuth: [ ]
 
+  /{platform}/{network}/account/{address}/report:
+    get:
+      summary: A financial report for an address between a time period. Default timescale is within the last 30 days
+      operationId: GetReportByAddress
+      description: |
+        Returns account activity
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/platform'
+        - $ref: '#/components/parameters/network'
+        - $ref: '#/components/parameters/address'
+        - name: from
+          in: query
+          description: Unix Timestamp from where to start
+          schema:
+            type: integer
+          example: 961846434
+        - name: to
+          in: query
+          description: Unix Timestamp from where to end
+          schema:
+            type: integer
+          example: 1119612834
+      responses:
+        200:
+          description: Account Activity
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/report"
+            text/csv:
+              schema:
+                type: string
+                example: |
+                  Protocol,PublicAddress,Currency,EventID,Block,BlockTimestamp,BlockTime,Hash,Action,Value,SenderAddress,TransactionFee,SenderReward,RecipientReward,Close,CloseAmount,CloseReward
+                  Algorand,GXL2EQ6JV54MTMP2IXOTF5CJLS7GAWMRDZMOY7JZAPO72AQRDDYGD6OX3E,ALGO,RNEYUT3MRYGT5ENSLIC7LGJCJMW6BXNS6SAW7A25DTYRW4TFJ5JA,8986217,1599745403,2020-09-10 13:43:23 +0000 UTC,RNEYUT3MRYGT5ENSLIC7LGJCJMW6BXNS6SAW7A25DTYRW4TFJ5JA,pay,1,T3BYUTYZCWV7UVK7IFYPC2UKH5VNBGVP4PUKSUBF5F6GQ244Y4I2XUWCQM,0.001,0.000003,0,,0,0
+        400:
+          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+        413:
+          description: Too Many Transactions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "unsupported",
+                "code": 16390,
+                "title": "Unsupported functionality",
+                "status": 413,
+                "detail": "current query size is too large for this account. try reducing query range (from, to)"
+              }
+
+      security:
+        - bearerAuth: [ ]
+
   /{platform}/{network}/txs:
     get:
       summary: All Transactions
@@ -202,7 +268,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/txPage"
+                $ref: "#/components/schemas/tx_page"
           links:
             Continuation:
               operationId: GetTxs
@@ -296,7 +362,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/blockIdentifier"
+                $ref: "#/components/schemas/block_identifier"
         400:
           description: Invalid Block Number
           content:
@@ -543,7 +609,7 @@ paths:
         200:
           description: A fee estimation from bitcoin (satoshis)
           content:
-            application/json:
+            text/plain:
               schema:
                 type: string
         401:
@@ -638,7 +704,7 @@ components:
           description: Coin supplies with asset paths as keys
           additionalProperties:
             $ref: "#/components/schemas/supply"
-    blockIdentifier:
+    block_identifier:
       type: object
       properties:
         number:
@@ -654,7 +720,7 @@ components:
           type: string
           description: Parent block hash
           example: "0xfcf029ffd36a6714aae09dcc7acbdd8f2b96327f"
-    txPage:
+    tx_page:
       type: object
       properties:
         total:
@@ -670,7 +736,7 @@ components:
           description: Token to get the next page
           example: "8185.123"
           nullable: true
-    balancesMap:
+    balances_map:
       type: object
       description: Currency balances with asset paths as keys
       additionalProperties:
@@ -692,21 +758,6 @@ components:
           "balance": "99999"
         }
       }
-    operation:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-            - transfer
-            - utxo_transfer
-            - multi_transfer
-        detail:
-          $ref: "#/components/schemas/operationDetail"
-    operationDetail:
-      oneOf:
-        - $ref: "#/components/schemas/transfer"
-        - $ref: "#/components/schemas/utxo_transfer"
     tx:
       type: object
       properties:
@@ -783,6 +834,38 @@ components:
               }
             }
           }
+    operation:
+      type: object
+      oneOf:
+        - $ref: "#/components/schemas/transfer_operation"
+        - $ref: "#/components/schemas/multi_transfer_operation"
+      discriminator:
+        propertyName: type
+        mapping:
+          transfer: "#/components/schemas/transfer_operation"
+          multi_transfer: "#/components/schemas/multi_transfer_operation"
+    transfer_operation:
+      type: object
+      properties:
+        type:
+          type: string
+          default: transfer
+        detail:
+          $ref: "#/components/schemas/transfer"
+      required:
+        - type
+        - detail
+    multi_transfer_operation:
+      type: object
+      properties:
+        type:
+          type: string
+          default: multi_transfer
+        detail:
+          $ref: "#/components/schemas/multi_transfer"
+      required:
+        - type
+        - detail
     effect:
       type: object
       description: Effects are the state changes on an account
@@ -833,12 +916,14 @@ components:
           $ref: "#/components/schemas/currency"
         value:
           $ref: "#/components/schemas/amount"
+        fee:
+          $ref: "#/components/schemas/fee"
       required:
         - from
         - to
         - currency
         - value
-    utxo_transfer:
+    multi_transfer:
       type: object
       description: Transfer of currency in the UTXO model
       properties:
@@ -852,13 +937,31 @@ components:
             $ref: "#/components/schemas/utxo"
         currency:
           $ref: "#/components/schemas/currency"
+        total_in:
+          $ref: "#/components/schemas/amount"
+        total_out:
+          $ref: "#/components/schemas/amount"
         unspent:
           $ref: "#/components/schemas/amount"
       required:
         - inputs
         - outputs
         - currency
+        - total_in
+        - total_out
         - unspent
+    currency:
+      type: object
+      oneOf:
+        - $ref: "#/components/schemas/native_currency"
+        - $ref: "#/components/schemas/token_currency"
+        - $ref: "#/components/schemas/smart_token_currency"
+      discriminator:
+        propertyName: type
+        mapping:
+          native: "#/components/schemas/native_currency"
+          token: "#/components/schemas/token_currency"
+          smart_token: "#/components/schemas/smart_token_currency"
     coin:
       type: object
       properties:
@@ -885,7 +988,7 @@ components:
         sample_address:
           type: string
           description: Random address seen on chain (optional)
-    currency:
+    native_currency: # in that case currency detail is null
       type: object
       properties:
         asset_path:
@@ -906,16 +1009,64 @@ components:
           example: 18
         type:
           type: string
-          enum:
-            - native
-            - token
-            - smart_token
+          default: native
+      required:
+        - asset_path
+        - type
+    token_currency:
+      type: object
+      properties:
+        asset_path:
+          type: string
+          description: Asset path of transferred currency
+          example: "ethereum/native/eth"
+        symbol:
+          type: string
+          description: Currency symbol
+          example: "ETH"
+        name:
+          type: string
+          description: Name of currency
+          example: Ether
+        decimals:
+          type: integer
+          description: Decimal places right to the comma
+          example: 18
+        type:
+          type: string
+          default: token
         detail:
-          $ref: "#/components/schemas/currencyDetail"
-    currencyDetail:
-      oneOf:
-        - $ref: "#/components/schemas/token"
-        - $ref: "#/components/schemas/smart_token"
+          $ref: "#/components/schemas/token"
+      required:
+        - asset_path
+        - type
+    smart_token_currency:
+      type: object
+      properties:
+        asset_path:
+          type: string
+          description: Asset path of transferred currency
+          example: "ethereum/native/eth"
+        symbol:
+          type: string
+          description: Currency symbol
+          example: "ETH"
+        name:
+          type: string
+          description: Name of currency
+          example: Ether
+        decimals:
+          type: integer
+          description: Decimal places right to the comma
+          example: 18
+        type:
+          type: string
+          default: smart_token
+        detail:
+          $ref: "#/components/schemas/smart_token"
+      required:
+        - asset_path
+        - type
     token:
       type: object
       properties:
@@ -934,7 +1085,6 @@ components:
       required:
         - type
         - id
-        - creator
     smart_token:
       type: object
       properties:
@@ -949,6 +1099,18 @@ components:
       required:
         - type
         - contract
+    fee:
+      type: object
+      properties:
+        amount:
+          $ref: "#/components/schemas/amount"
+        destination:
+          type: string
+          description: Destination
+          example: E.g. address
+      required:
+        - amount
+        - destination
     utxo:
       type: object
       description: An unspent transaction output
@@ -1105,6 +1267,121 @@ components:
           type: string
           description: Long error description
           example: "The requested address is invalid on this platform"
+    report:
+      type: object
+      properties:
+        fields:
+          type: array
+          description: Transaction items
+          items:
+            $ref: "#/components/schemas/report_field"
+        items:
+          type: integer
+          description: The number of transactions in the report
+          example: 1
+      required:
+        - fields
+        - items
+    report_field:
+      type: object
+      properties:
+        protocol:
+          type: string
+          description: The protocol the address relates to
+          example: "Algorand"
+        address:
+          type: string
+          description: The wallet/account the transaction occurred
+          example: "GXL2EQ6JV54MTMP2IXOTF5CJLS7GAWMRDZMOY7JZAPO72AQRDDYGD6OX3E"
+        currency:
+          type: string
+          description: The currency symbol
+          example: "ALGO"
+        event_id:
+          type: string
+          description: The ID of the event within a transaction
+          example: "RNEYUT3MRYGT5ENSLIC7LGJCJMW6BXNS6SAW7A25DTYRW4TFJ5JA"
+        block:
+          type: integer
+          format: int64
+          description: The block number the transaction occurred on
+          example: 8986217
+        timestamp:
+          type: integer
+          format: int32
+          description: The unix timestamp when the transaction was added to a block
+          example: 1599745403
+        hash:
+          type: string
+          description: The transaction ID
+          example: RNEYUT3MRYGT5ENSLIC7LGJCJMW6BXNS6SAW7A25DTYRW4TFJ5JA
+        action:
+          type: string
+          description: The action type e.g. Transfer, Deposit, Staking Reward etc..
+          example: pay
+        value:
+          type: string
+          description: The amount of currency involved in the transaction (smallest unit)
+          example: "1000000"
+        sender_address:
+          type: string
+          description: The address where the funds originated
+          example: "T3BYUTYZCWV7UVK7IFYPC2UKH5VNBGVP4PUKSUBF5F6GQ244Y4I2XUWCQM"
+        fee:
+          type: string
+          description: How much was charged as a fee for processing the transaction
+          example: "1000"
+        decimals:
+          type: integer
+          format: int32
+          description: The number of decimals in one coin, used to convert smallest unit to 1 whole coin if needed
+          example: 6
+        meta:
+          $ref: "#/components/schemas/report_field_meta"
+      required:
+        - action
+        - address
+        - block
+        - currency
+        - decimals
+        - event_id
+        - fee
+        - hash
+        - protocol
+        - sender_address
+        - timestamp
+        - value
+    report_field_meta:
+      description: Additional metadata bespoke to specific protocols
+      nullable: true
+      oneOf:
+        - $ref: "#/components/schemas/algorand_meta"
+      discriminator:
+        propertyName: type
+        mapping:
+          algorand_meta: "#/components/schemas/algorand_meta"
+    algorand_meta:
+      type: object
+      properties:
+        type:
+          type: string
+          default: algorand_meta
+        sender_reward:
+          type: string
+          example: "121176"
+        recipient_reward:
+          type: string
+          example: "0"
+        close:
+          type: string
+          example: "XIU7HGGAJ3QOTATPDSIIHPFVKMICXKHMOR2FJKHTVLII4FAOA3CYZQDLG4"
+        close_amount:
+          type: string
+          example: "0"
+        close_reward:
+          type: string
+          example: "0"
+
   parameters:
     platform:
       in: path
@@ -1195,5 +1472,3 @@ components:
       schema:
         type: number
         default: 10
-
-
