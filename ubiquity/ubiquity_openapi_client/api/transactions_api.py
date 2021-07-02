@@ -63,14 +63,14 @@ class TransactionsApi(object):
                 network (str): Which network to target. Available networks can be found with /{platform}
 
             Keyword Args:
-                confirmed_within_blocks (float): The number of blocks you would like the transaction to be processed within. Lower numbers produce higher fees. . [optional] if omitted the server will use the default value of 10
+                confirmed_within_blocks (int): The number of blocks you would like the transaction to be processed within. Lower numbers produce higher fees. . [optional] if omitted the server will use the default value of 10
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
                 _check_input_type (bool): specifies if type checking
@@ -117,7 +117,9 @@ class TransactionsApi(object):
         self.estimate_fee = _Endpoint(
             settings={
                 'response_type': (str,),
-                'auth': [],
+                'auth': [
+                    'bearerAuth'
+                ],
                 'endpoint_path': '/{platform}/{network}/tx/estimate_fee',
                 'operation_id': 'estimate_fee',
                 'http_method': 'GET',
@@ -151,7 +153,7 @@ class TransactionsApi(object):
                     'network':
                         (str,),
                     'confirmed_within_blocks':
-                        (float,),
+                        (int,),
                 },
                 'attribute_map': {
                     'platform': 'platform',
@@ -204,8 +206,8 @@ class TransactionsApi(object):
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
                 _check_input_type (bool): specifies if type checking
@@ -346,8 +348,8 @@ class TransactionsApi(object):
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
                 _check_input_type (bool): specifies if type checking
@@ -504,8 +506,8 @@ class TransactionsApi(object):
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
                 _check_input_type (bool): specifies if type checking
@@ -554,7 +556,9 @@ class TransactionsApi(object):
         self.tx_create = _Endpoint(
             settings={
                 'response_type': (UnsignedTx,),
-                'auth': [],
+                'auth': [
+                    'bearerAuth'
+                ],
                 'endpoint_path': '/{platform}/{network}/tx/create',
                 'operation_id': 'tx_create',
                 'http_method': 'POST',
@@ -643,8 +647,8 @@ class TransactionsApi(object):
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
                     will be returned without reading/decoding response data.
                     Default is True.
-                _request_timeout (float/tuple): timeout setting for this request. If one
-                    number provided, it will be total request timeout. It can also
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
                     be a pair (tuple) of (connection, read) timeouts.
                     Default is None.
                 _check_input_type (bool): specifies if type checking
@@ -693,7 +697,9 @@ class TransactionsApi(object):
         self.tx_send = _Endpoint(
             settings={
                 'response_type': (TxReceipt,),
-                'auth': [],
+                'auth': [
+                    'bearerAuth'
+                ],
                 'endpoint_path': '/{platform}/{network}/tx/send',
                 'operation_id': 'tx_send',
                 'http_method': 'POST',

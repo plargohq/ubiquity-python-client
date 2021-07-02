@@ -20,6 +20,7 @@ Get a fee estimation in decimals from the network. If supported by the platform,
 
 ### Example
 
+* Bearer (Opaque) Authentication (bearerAuth):
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -32,14 +33,23 @@ configuration = ubiquity.ubiquity_openapi_client.Configuration(
     host = "https://ubiquity.api.blockdaemon.com/v2"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = ubiquity.ubiquity_openapi_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
-with ubiquity.ubiquity_openapi_client.ApiClient() as api_client:
+with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = transactions_api.TransactionsApi(api_client)
     platform = "bitcoin" # str | Coin platform handle
     network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
-    confirmed_within_blocks = 10 # float | The number of blocks you would like the transaction to be processed within. Lower numbers produce higher fees.  (optional) if omitted the server will use the default value of 10
+    confirmed_within_blocks = 10 # int | The number of blocks you would like the transaction to be processed within. Lower numbers produce higher fees.  (optional) if omitted the server will use the default value of 10
 
     # example passing only required values which don't have defaults set
     try:
@@ -66,7 +76,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **str**| Coin platform handle |
  **network** | **str**| Which network to target. Available networks can be found with /{platform} |
- **confirmed_within_blocks** | **float**| The number of blocks you would like the transaction to be processed within. Lower numbers produce higher fees.  | [optional] if omitted the server will use the default value of 10
+ **confirmed_within_blocks** | **int**| The number of blocks you would like the transaction to be processed within. Lower numbers produce higher fees.  | [optional] if omitted the server will use the default value of 10
 
 ### Return type
 
@@ -74,7 +84,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -281,6 +291,7 @@ Creates an unsigned transaction for BTC and ETH.  **Note** that Ethereum current
 
 ### Example
 
+* Bearer (Opaque) Authentication (bearerAuth):
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -295,9 +306,18 @@ configuration = ubiquity.ubiquity_openapi_client.Configuration(
     host = "https://ubiquity.api.blockdaemon.com/v2"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = ubiquity.ubiquity_openapi_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
-with ubiquity.ubiquity_openapi_client.ApiClient() as api_client:
+with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = transactions_api.TransactionsApi(api_client)
     platform = "bitcoin" # str | Coin platform handle
@@ -338,7 +358,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -365,6 +385,7 @@ Submit a signed transaction to the network.  **Note**: A successful transaction 
 
 ### Example
 
+* Bearer (Opaque) Authentication (bearerAuth):
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -379,9 +400,18 @@ configuration = ubiquity.ubiquity_openapi_client.Configuration(
     host = "https://ubiquity.api.blockdaemon.com/v2"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = ubiquity.ubiquity_openapi_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Enter a context with an instance of the API client
-with ubiquity.ubiquity_openapi_client.ApiClient() as api_client:
+with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = transactions_api.TransactionsApi(api_client)
     platform = "bitcoin" # str | Coin platform handle
@@ -414,7 +444,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
