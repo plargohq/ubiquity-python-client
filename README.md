@@ -117,8 +117,10 @@ with ubiquity.ApiClient(conf) as client:
     txPage2 = txs_api_instance.get_txs(platform, network, order=order, limit=limit, continuation=continuation);
 ```
 
-## Transaction creation and signing
-You can also create and sign transactions directly from the SDK.
+## Working with transactions
+
+### Transaction creation and signing
+Transactions can be created and signed directly from the SDK.
 Currently supported platforms are Bitcoin and Ethereum.
 
 To create and sign a transaction that sends 0.0001 BTC (10000 satoshis) with a 0.00001 BTC (1000 satoshis) fee from an account to another:
@@ -184,6 +186,45 @@ api_client.close()
 print('signed: ', signed_tx)
 ```
 For Ethereum only transactions with a single output are currently supported.
+
+#### Broadcasting signed transactions
+After a transaction is created and signed, it can be broadcasted through Ubiquity's `/tx/send` endpoint, that is interfaced through the `tx_send` method:
+
+```python
+conf = ubiquity.Configuration(
+    host="url",
+    access_token="token"
+)
+
+with ubiquity.ApiClient(conf) as api_client:
+    api_instance = ubiquity.api.transactions_api.TransactionsApi(api_client)
+    try:
+        # Submit a signed transaction
+        print("Sending signed transaction...")
+        api_response = api_instance.tx_send(platform, network, signed_tx)
+        print(api_response)
+        print("Transaction sent successfully with id:", api_response.id)
+    except ubiquity.ubiquity_openapi_client.ApiException as e:
+        print("Exception when calling TransactionsApi->tx_send: %s\n" % e)
+
+```
+
+#### Estimating fees
+Ubiquity's `/tx/estimate_fee` endpoint returns an estimation of the fee value required for transactions to be pushed to the network.
+It can be used through the `TransactionsApi.estimate_fee` method:
+
+```python
+with ubiquity.ApiClient(config) as api_client:
+    api_instance = ubiquity.api.transactions_api.TransactionsApi(api_client)
+    try:
+        # For bitcoin, the 'confirmed_within_blocks' parameter (defaults to 10) specifies
+        #   the number of blocks the transaction would be processed within, which
+        #   reflects in different fee values
+        api_response = api_instance.estimate_fee("bitcoin", "testnet", confirmed_within_blocks=15)
+        print("Fee value:", api_response)
+    except ubiquity.ubiquity_openapi_client.ApiException as e:
+        print("Exception when calling TransactionsApi->estimate_fee: %s\n" % e)
+```
 
 ## Docs
 Additional documentation and examples can be found in the `docs` directory.
