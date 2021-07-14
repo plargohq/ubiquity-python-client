@@ -40,7 +40,7 @@ def get_attr_from_opts(attr, options, default_val=None):
 chain_ids = {"mainnet": 1, "ropsten": 3}
 
 
-def create_and_sign_ethereum(from_, to, fee, key, options):
+def create_and_sign_ethereum(from_, to, key, options):
     """
     Creates raw Bitcoin transaction and sign it with provided key.
 
@@ -53,11 +53,11 @@ def create_and_sign_ethereum(from_, to, fee, key, options):
         - Each element is a dict with the following keys:
             - address (string): destination address.
             - amount (number): value to be transferred, in satoshis.
-    fee (number): fee to be paid for transaction in satoshis.
     key (string): private key used to sign the transaction.
     options (dict): options dictionary with the following keys:
         - network (string)
         - api_client (ubiquity.api.ApiClient): ApiClient instance used to fetch current gas price.
+        - fee (number): fee to be paid for transaction in satoshis.
         - data (bytes): additional transaction data.
     ----------
 
@@ -68,6 +68,7 @@ def create_and_sign_ethereum(from_, to, fee, key, options):
     """
     api_client = get_attr_from_opts("api_client", options)
     network = get_attr_from_opts("network", options, "ropsten")
+    fee = get_attr_from_opts("fee", options)
     data = get_attr_from_opts("data", options, b"")
 
     if len(to) > 1:
@@ -100,7 +101,7 @@ def create_and_sign_ethereum(from_, to, fee, key, options):
     return signed_tx.rawTransaction.hex()
 
 
-def create_bitcoin(from_, to, fee, options):
+def create_bitcoin(from_, to, options):
     """
     Creates and returns a raw unsigned Bitcoin transaction
 
@@ -114,7 +115,6 @@ def create_bitcoin(from_, to, fee, options):
         - Each element is a dict with the following keys:
             - address (string): destination address.
             - amount (number): value to be transferred, in satoshis.
-    fee (number): fee to be paid for transaction in satoshis.
     options (dict): options dictionary with the following keys:
         - network (string)
     ----------
@@ -126,7 +126,7 @@ def create_bitcoin(from_, to, fee, options):
     """
     network = get_attr_from_opts('network', options)
 
-    tx = txs.Transaction(network=network, fee=fee)
+    tx = txs.Transaction(network=network)
 
     for from_obj in from_:
         tx.add_input(prev_txid=from_obj['address'],
@@ -139,7 +139,7 @@ def create_bitcoin(from_, to, fee, options):
     return tx.raw_hex()
 
 
-def create_and_sign_bitcoin(from_, to, fee, key, options):
+def create_and_sign_bitcoin(from_, to, key, options):
     """
     Creates raw Bitcoin transaction and sign it with provided key.
 
@@ -153,7 +153,6 @@ def create_and_sign_bitcoin(from_, to, fee, key, options):
         - Each element is a dict with the following keys:
             - address (string): destination address.
             - amount (number): value to be transferred, in satoshis.
-    fee (number): fee to be paid for transaction in satoshis.
     key (string): private key used to sign the transaction.
     options (dict): options dictionary with the following keys:
         - network (string)
@@ -164,7 +163,7 @@ def create_and_sign_bitcoin(from_, to, fee, key, options):
         signed_tx_str (string): the raw signed transaction string.
     ----------
     """
-    raw_tx = create_bitcoin(from_, to, fee, options)
+    raw_tx = create_bitcoin(from_, to, options)
 
     network = get_attr_from_opts('network', options)
 
@@ -185,7 +184,7 @@ create_and_sign_fns = {
 }
 
 
-def create(from_, to, fee, options):
+def create(from_, to, options):
     """
     Creates and returns a raw unsigned transaction
 
@@ -199,11 +198,11 @@ def create(from_, to, fee, options):
         - Each element is a dict with the following keys:
             - address (string): destination address.
             - amount (number): value to be transferred, in decimals (smallest possible unit for currency).
-    fee (number): fee to be paid for transaction, in the smallest possible unit.
     options (dict): options dictionary with the following keys:
         - platform (string)
         - network (string)
         - api_client (ubiquity.api.ApiClient): ApiClient instance in case the there's some information that need to be fetched from the network.
+        - fee (number): fee to be paid for transaction, in the smallest possible unit.
         - data (bytes): additional data the specific platform might use.
     ----------
 
@@ -216,13 +215,13 @@ def create(from_, to, fee, options):
     platform = get_attr_from_opts('platform', options)
     create_fn = create_fns[platform]
 
-    raw_unsigned_tx = create_fn(from_, to, fee, options)
+    raw_unsigned_tx = create_fn(from_, to, options)
     unsigned_tx_obj = txs.transaction_deserialize(raw_unsigned_tx)
 
     return UnsignedTx(id=unsigned_tx_obj.txid, unsigned_tx=raw_unsigned_tx)
 
 
-def create_and_sign(from_, to, fee, key, options):
+def create_and_sign(from_, to, key, options):
     """
     Creates raw transaction and sign it with provided key.
 
@@ -252,6 +251,6 @@ def create_and_sign(from_, to, fee, key, options):
     """
     platform = get_attr_from_opts('platform', options)
     create_and_sign_fn = create_and_sign_fns[platform]
-    raw_signed_tx = create_and_sign_fn(from_, to, fee, key, options)
+    raw_signed_tx = create_and_sign_fn(from_, to, key, options)
 
     return SignedTx(tx=raw_signed_tx)
