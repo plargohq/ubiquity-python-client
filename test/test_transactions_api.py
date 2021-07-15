@@ -18,6 +18,7 @@ from ubiquity.api import (
     transactions_api,
     ApiClient,
 )
+from ubiquity.ubiquity_openapi_client.model.signed_tx import SignedTx
 from ubiquity import Configuration
 
 import httpretty
@@ -42,21 +43,20 @@ class TestTransactionsApi(unittest.TestCase):
         endpoints_data_platforms = []
         parsed_transactions_platforms = []
         for platform in supported_platforms:
-            parsed_transactions = json.loads(transactions_by_platform[platform])
+            parsed_transactions = json.loads(
+                transactions_by_platform[platform])
             parsed_transactions_platforms.append(parsed_transactions)
-            endpoints_data_platforms.append(
-                {
-                    "req_url":
-                    f"/{platform}/{network}/{'tx/' + parsed_transactions['items'][0]['id'] if path == 'tx' else path}",
-                    "method":
-                    httpretty.GET,
-                    "status":
-                    200,
-                    "response_data":
-                    json.dumps(parsed_transactions['items'][0])
-                    if path == "tx" else transactions_by_platform[platform]
-                }
-            )
+            endpoints_data_platforms.append({
+                "req_url":
+                f"/{platform}/{network}/{'tx/' + parsed_transactions['items'][0]['id'] if path == 'tx' else path}",
+                "method":
+                httpretty.GET,
+                "status":
+                200,
+                "response_data":
+                json.dumps(parsed_transactions['items'][0])
+                if path == "tx" else transactions_by_platform[platform]
+            })
         return endpoints_data_platforms, parsed_transactions_platforms
 
     def get_transactions_by_supported_platforms(self, supported_platforms):
@@ -69,13 +69,13 @@ class TestTransactionsApi(unittest.TestCase):
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_txs(self):
         network = "mainnet"
-        supported_platforms = test.mock.get_supported_platforms(self.platforms, "/txs")
+        supported_platforms = test.mock.get_supported_platforms(
+            self.platforms, "/txs")
         assert len(supported_platforms) > 0
         transactions_by_platform = self.get_transactions_by_supported_platforms(
             supported_platforms)
-        endpoints, _ = self.get_transactions_endpoints(network, "txs",
-                                                    supported_platforms,
-                                                    transactions_by_platform)
+        endpoints, _ = self.get_transactions_endpoints(
+            network, "txs", supported_platforms, transactions_by_platform)
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)
         assert len(supported_platforms) > 0
@@ -89,13 +89,13 @@ class TestTransactionsApi(unittest.TestCase):
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_tx_by_id(self):
         network = "mainnet"
-        supported_platforms = test.mock.get_supported_platforms(self.platforms, "/tx/:id")
+        supported_platforms = test.mock.get_supported_platforms(
+            self.platforms, "/tx/:id")
         assert len(supported_platforms) > 0
         transactions_by_platform = self.get_transactions_by_supported_platforms(
             supported_platforms)
-        endpoints, parsed_transactions = self.get_transactions_endpoints(network, "tx",
-                                                    supported_platforms,
-                                                    transactions_by_platform)
+        endpoints, parsed_transactions = self.get_transactions_endpoints(
+            network, "tx", supported_platforms, transactions_by_platform)
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     endpoints)
         assert len(supported_platforms) > 0
@@ -103,13 +103,59 @@ class TestTransactionsApi(unittest.TestCase):
             print("calling tx_by_id for platform", platform)
             try:
                 _ = self.api_instance.get_tx(
-                    platform,
-                    network,
-                    parsed_transactions[i]['items'][0]['id']
-                )
+                    platform, network,
+                    parsed_transactions[i]['items'][0]['id'])
             except Exception as e:
                 print('error when calling platform', platform)
                 raise e
+
+    @httpretty.activate(verbose=True, allow_net_connect=False)
+    def test_estimate_fee(self):
+        platform = "bitcoin"
+        network = "testnet"
+
+        endpoint = {
+            "req_url":
+            f"/{platform}/{network}/tx/estimate_fee",
+            "method":
+            httpretty.GET,
+            "status":
+            200,
+            "response_data":
+            test.mock.get_mock_file_content(
+                "transactions_api/estimate_fee.json")
+        }
+        test.mock.setup_mock_server(self.api_client.configuration.host,
+                                    [endpoint])
+        fee = self.api_instance.estimate_fee(platform, network)
+
+        assert fee == "1000"
+
+    @httpretty.activate(verbose=True, allow_net_connect=False)
+    def test_tx_send(self):
+        platform = "bitcoin"
+        network = "testnet"
+
+        endpoint = {
+            "req_url":
+            f"/{platform}/{network}/tx/send",
+            "method":
+            httpretty.POST,
+            "status":
+            200,
+            "response_data":
+            test.mock.get_mock_file_content("transactions_api/send.json")
+        }
+        test.mock.setup_mock_server(self.api_client.configuration.host,
+                                    [endpoint])
+
+        raw_signed_tx = "0100000001aa3bec3844a9a49"
+        signed_tx = SignedTx(tx=raw_signed_tx)
+
+        tx = self.api_instance.tx_send(platform, network, signed_tx)
+        assert 'id' in tx
+        assert tx[
+            'id'] == "6d435b5cbfce209237ede9841586bbffbec5388a1c9da8b7879efe9e806e95b8"
 
 
 if __name__ == '__main__':
