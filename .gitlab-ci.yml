@@ -35,8 +35,18 @@ build:
     - apt-get install default-jre -y
     # TODO -> Have the jar url in a env/config variable somewhere to use it in the Makefile as well
     - wget https://oss.sonatype.org/content/repositories/snapshots/org/openapitools/openapi-generator-cli/5.2.0-SNAPSHOT/openapi-generator-cli-5.2.0-20210629.131254-142.jar -O openapi-generator-cli.jar
-    - make
-    - make clean_generated
+    - make > /dev/null
+    - git config --global user.name "Mr.Roboto 🤖"
+    - git config --global user.email "mrRoboto@blockdaemon.com"
+    - git add ./ubiquity ./docs
+    - git commit -m "UB-00 Updating generated code with changes from ${CI_JOB_ID}"
+    - git push http://gitlab-ci-token:${AUTH_TOKEN_UBIQUITY_PYTHON_CLIENT}@gitlab.com/Blockdaemon/ubiquity/ubiquity-python-client.git HEAD:master
+  only:
+      refs:
+        - master
+      changes:
+        - spec/openapi.yaml
+
 
 test:
   stage: test
