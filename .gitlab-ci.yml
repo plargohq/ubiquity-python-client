@@ -42,7 +42,7 @@ test:
   stage: test
   script:
     - pip install -r test-requirements.txt
-    - pytest
+    - make test
 
 run:
   stage: run
