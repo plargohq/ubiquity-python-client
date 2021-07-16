@@ -23,3 +23,7 @@ clean_library:
 	rm -rf ubiquity/ubiquity_openapi_client
 
 clean: clean_generated clean_library
+
+.PHONY: test
+test: clean_generated
+	pytest

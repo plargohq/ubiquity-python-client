@@ -25,8 +25,7 @@ To run the test suite first install the test dependencies with pip then run `pyt
 
 ```bash
 $ pip install -r test-requirements.txt
-$ make clean_generated
-$ pytest
+$ make test
 ```
 
 # Usage
