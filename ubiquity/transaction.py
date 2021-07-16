@@ -57,7 +57,7 @@ def create_and_sign_ethereum(from_, to, key, options):
     options (dict): options dictionary with the following keys:
         - network (string)
         - api_client (ubiquity.api.ApiClient): ApiClient instance used to fetch current gas price.
-        - fee (number): fee to be paid for transaction in satoshis.
+        - fee (number): fee to be paid for transaction in wei.
         - data (bytes): additional transaction data.
     ----------
 
@@ -235,12 +235,12 @@ def create_and_sign(from_, to, key, options):
         - Each element is a dict with the following keys:
             - address (string): destination address.
             - amount (number): value to be transferred, in decimals (smallest possible unit for currency).
-    fee (number): fee to be paid for transaction, in the smallest possible unit.
     key (string): private key used to sign the transaction.
     options (dict): options dictionary with the following keys:
         - platform (string)
         - network (string)
         - api_client (ApiClient): ApiClient instance in case the there's some information that need to be fetched from the network.
+        - fee (number): fee to be paid for transaction, in the smallest possible unit.
         - data (bytes): additional data the specific platform might use.
     ----------
 

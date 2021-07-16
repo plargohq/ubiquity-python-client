@@ -1,5 +1,6 @@
 import json
 import yaml
+import socket
 
 def read_file(path):
     try:
@@ -15,3 +16,7 @@ def get_platforms():
     platforms_json_file.close()
     return platforms
 
+def get_open_port():
+    s = socket.socket()
+    s.bind(('', 0))
+    return s.getsockname()[1]

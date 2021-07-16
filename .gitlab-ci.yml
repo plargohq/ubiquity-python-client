@@ -4,7 +4,7 @@ stages:
 - run
 
 # Using 3.6 as it's the minimal required version
-image: python:3.6.13
+image: python:3.7.2
 
 # Change pip's cache directory to be inside the project directory since we can
 # only cache local items.
