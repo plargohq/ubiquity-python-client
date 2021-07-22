@@ -34,7 +34,7 @@ build:
     - apt-get update -y
     - apt-get install default-jre -y
     # TODO -> Have the jar url in a env/config variable somewhere to use it in the Makefile as well
-    - wget https://oss.sonatype.org/content/repositories/snapshots/org/openapitools/openapi-generator-cli/5.2.0-SNAPSHOT/openapi-generator-cli-5.2.0-20210629.131254-142.jar -O openapi-generator-cli.jar
+    - wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.2.0/openapi-generator-cli-5.2.0.jar -O openapi-generator-cli.jar
     - make > /dev/null
     - git config --global user.name "Mr.Roboto 🤖"
     - git config --global user.email "mrRoboto@blockdaemon.com"
