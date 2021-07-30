@@ -90,6 +90,7 @@ class TransferOperation(ModelNormal):
         return {
             'type': (str,),  # noqa: E501
             'detail': (Transfer,),  # noqa: E501
+            'event': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -100,6 +101,7 @@ class TransferOperation(ModelNormal):
     attribute_map = {
         'type': 'type',  # noqa: E501
         'detail': 'detail',  # noqa: E501
+        'event': 'event',  # noqa: E501
     }
 
     read_only_vars = {
@@ -147,6 +149,7 @@ class TransferOperation(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            event (str): [optional]  # noqa: E501
         """
 
         type = kwargs.get('type', "transfer")
@@ -235,6 +238,7 @@ class TransferOperation(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            event (str): [optional]  # noqa: E501
         """
 
         type = kwargs.get('type', "transfer")

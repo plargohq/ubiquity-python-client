@@ -93,6 +93,7 @@ class Operation(ModelComposed):
         lazy_import()
         return {
             'type': (str,),  # noqa: E501
+            'event': (str,),  # noqa: E501
             'detail': (MultiTransfer,),  # noqa: E501
         }
 
@@ -111,6 +112,7 @@ class Operation(ModelComposed):
 
     attribute_map = {
         'type': 'type',  # noqa: E501
+        'event': 'event',  # noqa: E501
         'detail': 'detail',  # noqa: E501
     }
 
@@ -154,6 +156,7 @@ class Operation(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            event (str): [optional]  # noqa: E501
             detail (MultiTransfer): [optional]  # noqa: E501
         """
 
@@ -256,6 +259,7 @@ class Operation(ModelComposed):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            event (str): [optional]  # noqa: E501
             detail (MultiTransfer): [optional]  # noqa: E501
         """
 
