@@ -25,6 +25,8 @@ from ubiquity.ubiquity_openapi_client.model.native_currency import NativeCurrenc
 from ubiquity.ubiquity_openapi_client.model.operation import Operation
 from ubiquity.ubiquity_openapi_client.model.platform_detail import PlatformDetail
 from ubiquity.ubiquity_openapi_client.model.platform_endpoint import PlatformEndpoint
+from ubiquity.ubiquity_openapi_client.model.platforms_overview import PlatformsOverview
+from ubiquity.ubiquity_openapi_client.model.platforms_overview_platforms import PlatformsOverviewPlatforms
 from ubiquity.ubiquity_openapi_client.model.report import Report
 from ubiquity.ubiquity_openapi_client.model.report_field import ReportField
 from ubiquity.ubiquity_openapi_client.model.report_field_meta import ReportFieldMeta
