@@ -82,7 +82,7 @@ class PlatformsOverviewPlatforms(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'platform': (str,),  # noqa: E501
+            'handle': (str,),  # noqa: E501
             'network': (str,),  # noqa: E501
         }
 
@@ -92,7 +92,7 @@ class PlatformsOverviewPlatforms(ModelNormal):
 
 
     attribute_map = {
-        'platform': 'platform',  # noqa: E501
+        'handle': 'handle',  # noqa: E501
         'network': 'network',  # noqa: E501
     }
 
@@ -137,7 +137,7 @@ class PlatformsOverviewPlatforms(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            platform (str): [optional]  # noqa: E501
+            handle (str): [optional]  # noqa: E501
             network (str): [optional]  # noqa: E501
         """
 
@@ -220,7 +220,7 @@ class PlatformsOverviewPlatforms(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            platform (str): [optional]  # noqa: E501
+            handle (str): [optional]  # noqa: E501
             network (str): [optional]  # noqa: E501
         """
 
