@@ -26,4 +26,4 @@ clean: clean_generated clean_library
 
 .PHONY: test
 test: clean_generated
-	pytest
+	python -m pytest
