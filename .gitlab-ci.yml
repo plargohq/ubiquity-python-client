@@ -3,7 +3,7 @@ stages:
 - test
 - run
 
-# Using 3.6 as it's the minimal required version
+# Using 3.7.2 as it's the minimal required version
 image: python:3.7.2
 
 # Change pip's cache directory to be inside the project directory since we can
@@ -19,14 +19,19 @@ variables:
 cache:
   paths:
     - .cache/pip
-    - venv/
 
-before_script:
-  - python -V  # Print out python version for debugging
-  - pip install virtualenv
-  - virtualenv venv
-  - source venv/bin/activate
-  - pip install -r requirements.txt
+build:setup:
+  stage: build
+  script:
+    # Setup virtualenv and dependencies
+    - python -V  # Print out python version for debugging
+    - pip install virtualenv
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install -r requirements.txt
+  artifacts:
+    paths:
+      - venv
 
 build:
   stage: build
@@ -46,13 +51,19 @@ build:
         - master
       changes:
         - spec/openapi.yaml
+  dependencies:
+    - build:setup
 
 
 test:
   stage: test
   script:
-    - pip install -r test-requirements.txt
-    - make test
+    #- source venv/bin/activate
+    - venv/bin/python -m pip install -r test-requirements.txt
+    - PYTHON_INTERPRETER=venv/bin/python make test
+  dependencies:
+    - build:setup
+    - build
 
 run:
   stage: run
@@ -64,6 +75,9 @@ run:
   artifacts:
     paths:
       - dist/*.whl
+  dependencies:
+    - build:setup
+    - build
 
 include:
   - template: Code-Quality.gitlab-ci.yml
