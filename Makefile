@@ -7,6 +7,13 @@ else
 	openapi_jar_path := $(OPENAPI_GENERATOR_JAR_PATH)
 endif
 
+default_python_interpreter = python
+ifeq "$(PYTHON_INTERPRETER)" ""
+	pythoni := $(default_python_interpreter)
+else
+	pythoni := $(PYTHON_INTERPRETER)
+endif
+
 all: clean generate
 generate:
 	@echo "Generating code..."
@@ -26,4 +33,4 @@ clean: clean_generated clean_library
 
 .PHONY: test
 test: clean_generated
-	python -m pytest
+	$(pythoni) -m pytest
