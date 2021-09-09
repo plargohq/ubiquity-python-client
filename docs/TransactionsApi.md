@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**estimate_fee**](TransactionsApi.md#estimate_fee) | **GET** /{platform}/{network}/tx/estimate_fee | Get fee estimate
 [**get_tx**](TransactionsApi.md#get_tx) | **GET** /{platform}/{network}/tx/{id} | Transaction By Hash
 [**get_txs**](TransactionsApi.md#get_txs) | **GET** /{platform}/{network}/txs | All Transactions
-[**tx_create**](TransactionsApi.md#tx_create) | **POST** /{platform}/{network}/tx/create | Create an unsigned transaction
 [**tx_send**](TransactionsApi.md#tx_send) | **POST** /{platform}/{network}/tx/send | Submit a signed transaction
 
 
@@ -279,100 +278,6 @@ Name | Type | Description  | Notes
 **401** | Invalid or expired token |  -  |
 **403** | Invalid continuation |  -  |
 **429** | Rate limit exceeded |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **tx_create**
-> UnsignedTx tx_create(platform, network, tx_create)
-
-Create an unsigned transaction
-
-Creates an unsigned transaction for BTC and ETH.  **Note** that Ethereum currently only supports singular transaction destinations 
-
-### Example
-
-* Bearer (Opaque) Authentication (bearerAuth):
-```python
-import time
-import ubiquity.ubiquity_openapi_client
-from ubiquity.ubiquity_openapi_client.api import transactions_api
-from ubiquity.ubiquity_openapi_client.model.unsigned_tx import UnsignedTx
-from ubiquity.ubiquity_openapi_client.model.tx_create import TxCreate
-from ubiquity.ubiquity_openapi_client.model.error import Error
-from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com/v2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (Opaque): bearerAuth
-configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = transactions_api.TransactionsApi(api_client)
-    platform = "bitcoin" # str | Coin platform handle
-    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
-    tx_create = TxCreate(
-        _from="31c129468975e4ef41135a405000e6428a399a03d023b6627eed4cb95faf19ca",
-        to=[
-            TxDestination(
-                destination="mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt",
-                amount="0.0001",
-            ),
-        ],
-        index=5,
-        fee="21000",
-    ) # TxCreate | 
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Create an unsigned transaction
-        api_response = api_instance.tx_create(platform, network, tx_create)
-        pprint(api_response)
-    except ubiquity.ubiquity_openapi_client.ApiException as e:
-        print("Exception when calling TransactionsApi->tx_create: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **platform** | **str**| Coin platform handle |
- **network** | **str**| Which network to target. Available networks can be found with /{platform} |
- **tx_create** | [**TxCreate**](TxCreate.md)|  |
-
-### Return type
-
-[**UnsignedTx**](UnsignedTx.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json, application/problem+json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | An unsigned transaction |  -  |
-**401** | Invalid or expired token |  -  |
-**429** | Rate limit exceeded |  -  |
-**400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -39,9 +39,7 @@ from ubiquity.ubiquity_openapi_client.model.token_currency import TokenCurrency
 from ubiquity.ubiquity_openapi_client.model.transfer import Transfer
 from ubiquity.ubiquity_openapi_client.model.transfer_operation import TransferOperation
 from ubiquity.ubiquity_openapi_client.model.tx import Tx
-from ubiquity.ubiquity_openapi_client.model.tx_create import TxCreate
 from ubiquity.ubiquity_openapi_client.model.tx_destination import TxDestination
 from ubiquity.ubiquity_openapi_client.model.tx_page import TxPage
 from ubiquity.ubiquity_openapi_client.model.tx_receipt import TxReceipt
-from ubiquity.ubiquity_openapi_client.model.unsigned_tx import UnsignedTx
 from ubiquity.ubiquity_openapi_client.model.utxo import Utxo
