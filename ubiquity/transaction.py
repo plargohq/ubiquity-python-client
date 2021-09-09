@@ -1,7 +1,8 @@
+from dataclasses import dataclass
+
 import bitcoinlib.transactions as txs
 import web3
 
-from ubiquity.ubiquity_openapi_client.model.unsigned_tx import UnsignedTx
 from ubiquity.ubiquity_openapi_client.model.signed_tx import SignedTx
 from ubiquity.api import (
     transactions_api,
@@ -26,6 +27,18 @@ class RequiredOptionError(Exception):
 
 
 # ================================================
+
+
+@dataclass
+class UnsignedTx():
+    id: str
+    unsigned_tx: str
+
+    def __post_init__(self):
+        if type(self.id) != str:
+            raise ValueError("'id' property should have type 'str'")
+        if type(self.unsigned_tx) != str:
+            raise ValueError("'unsigned_tx' property should have type 'str'")
 
 
 def get_attr_from_opts(attr, options, default_val=None):
