@@ -63,33 +63,27 @@ class TestTransactions(unittest.TestCase):
         signed_tx = tx.create_and_sign_bitcoin(from_, to, signing_key,
                                                {"network": network})
 
-        signed_expected = "0100000001317f4a711605e1251b4edc607684073daf47add0d801c7c6496f71ddd110456b000000008b483045022100ee8b153da42ee923050644bc154391a32d4e2ce6d05b69a32622d5b8f2ab520f02204e94f1b27574c8f72fca167cf5d6bb5bd324df71258539b839e07d586226fb9d014104a8db88ba9cc7ee9f5530e87a2a523d2fa9a4cfd1923c756c6590cdb7dd12745ee0a641a6b4314a5dbd251d7a8157dc8d0f20df2aa01b606f543902e523d5b9d1ffffffff02c67e0100000000001976a9143e762bc9a952a0aeb30c79491921151e7d412f6b88ac0a000000000000001976a914344a0f48ca150ec2b903817660b9b68b13a6702688ac00000000"
+        signed_expected = "0100000001317f4a711605e1251b4edc607684073daf47add0d801c7c6496f71ddd110456b000000008b483045022100cd79f27cdf5c6bbd9284c07308adee9d814ce06c8801ee8df1e26929f71b3682022008a70f9283913e0c7b121f837f33ffe9882c3e83c9ec4ea6912d275ffbf713ab014104a8db88ba9cc7ee9f5530e87a2a523d2fa9a4cfd1923c756c6590cdb7dd12745ee0a641a6b4314a5dbd251d7a8157dc8d0f20df2aa01b606f543902e523d5b9d1ffffffff02c67e0100000000001976a9143e762bc9a952a0aeb30c79491921151e7d412f6b88ac0a000000000000001976a914344a0f48ca150ec2b903817660b9b68b13a6702688ac00000000"
         assert signed_tx == signed_expected
 
     def test_sign_bitcoin_transaction_multiple_input(self):
         signing_key = "92VNZDvn5NWbtALVxv6s1cKdKVq4Udd6zQ6SxgVK87qE3x7gZEZ"
 
-        from_ = [
-            {
-                "address":
-                "ff2a60b53cd8bf4637dfd508a425d80b626da2ac929011094cf390b17327778a",
-                "index": 0
-            },  # newest, 0.0005 BTC
-            {
-                "address":
-                "35b9e6de6d4141f6b23a9b707c2f60cba58a9ac4fba6d54b3ded336110183426",
-                "index": 0
-            }  # oldest, 0.00096 BTC
-        ]
+        from_ = [{
+            "address":
+            "a287e3d84fca57bc06d7d0b04e8fcf0bae2226dd27f077709b40e7168eba89d9",
+            "index": 0
+        }, {
+            "address":
+            "6c8c9213b2e10f2fef032d08c6dddf24bbb85109437abbe434e8ae53bde2e859",
+            "index": 0
+        }]
 
         to = [{
             "address": "mmDDkcfXF5co6itzXrivWyxut7XifYywtR",
-            "amount": 143000
+            "amount": 119000
         }, {
             "address": "mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt",
-            "amount": 1000
-        }, {
-            "address": "tb1qj3kpr7fve8ht40lvvplc6rm8n7r9nxvj8zppuz",
             "amount": 1000
         }]
 
@@ -98,7 +92,7 @@ class TestTransactions(unittest.TestCase):
         signed_tx = tx.create_and_sign_bitcoin(from_, to, signing_key,
                                                {"network": network})
 
-        signed_expected = "01000000028a772773b190f34c09119092aca26d620bd825a408d5df3746bfd83cb5602aff000000008b483045022100b3d3fa315f0d3119de2ad80e48c1a95017f843e350e823971dcedcdefca38348022060d2e7d59c10205b16da378be61ee2f0ab365dbff6568f589c696b60d4b93890014104a8db88ba9cc7ee9f5530e87a2a523d2fa9a4cfd1923c756c6590cdb7dd12745ee0a641a6b4314a5dbd251d7a8157dc8d0f20df2aa01b606f543902e523d5b9d1ffffffff263418106133ed3d4bd5a6fbc49a8aa5cb602f7c709b3ab2f641416ddee6b935000000008a47304402200b60149d972e1a323154f534873666e9d7640d37ddb6c0847e83de9feee6c834022038ad6179401353d4a8eed4f89053be7d90167bb6335cfdbb49451d7dc02aa4ba014104a8db88ba9cc7ee9f5530e87a2a523d2fa9a4cfd1923c756c6590cdb7dd12745ee0a641a6b4314a5dbd251d7a8157dc8d0f20df2aa01b606f543902e523d5b9d1ffffffff03982e0200000000001976a9143e762bc9a952a0aeb30c79491921151e7d412f6b88ace8030000000000001976a914344a0f48ca150ec2b903817660b9b68b13a6702688ace803000000000000160014946c11f92cc9eebabfec607f8d0f679f8659999200000000"
+        signed_expected = "0100000002d989ba8e16e7409b7077f027dd2622ae0bcf8f4eb0d0d706bc57ca4fd8e387a2000000008b483045022100ade5005f6b771f9579eaa5e148f47e551b834947b54209fbbf316bc23a88302602202c3e03038ffb43d2d575f351145aa2d1fcc27b879bb2ba2ddc9d4577c5037ed8014104a8db88ba9cc7ee9f5530e87a2a523d2fa9a4cfd1923c756c6590cdb7dd12745ee0a641a6b4314a5dbd251d7a8157dc8d0f20df2aa01b606f543902e523d5b9d1ffffffff59e8e2bd53aee834e4bb7a430951b8bb24dfddc6082d03ef2f0fe1b213928c6c000000008b483045022100dbafb0109a65718dc57d3d4d4f682adee12a4b3a2c8581439e8829dba0b33061022019016f0b6e2ffe3e65458e42fb736998d45da20f13983a9bf9784a20bc3b87ea014104a8db88ba9cc7ee9f5530e87a2a523d2fa9a4cfd1923c756c6590cdb7dd12745ee0a641a6b4314a5dbd251d7a8157dc8d0f20df2aa01b606f543902e523d5b9d1ffffffff02d8d00100000000001976a9143e762bc9a952a0aeb30c79491921151e7d412f6b88ace8030000000000001976a914344a0f48ca150ec2b903817660b9b68b13a6702688ac00000000"
         assert signed_tx == signed_expected
 
     @httpretty.activate(verbose=True, allow_net_connect=False)
