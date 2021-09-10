@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 
-import bitcoinlib.transactions as txs
 import web3
+from pycoin.networks.registry import network_for_netcode
+from pycoin.encoding.hexbytes import h2b, h2b_rev, b2h_rev
+from pycoin.coins.bitcoin.Spendable import Spendable
 
 from ubiquity.ubiquity_openapi_client.model.signed_tx import SignedTx
 from ubiquity.api import (
@@ -114,6 +116,9 @@ def create_and_sign_ethereum(from_, to, key, options):
     return signed_tx.rawTransaction.hex()
 
 
+bitcoin_network_codes_dic = {"mainnet": "BTC", "testnet": "XTN"}
+
+
 def create_bitcoin(from_, to, options):
     """
     Creates and returns a raw unsigned Bitcoin transaction
@@ -137,19 +142,20 @@ def create_bitcoin(from_, to, options):
         unsigned_tx_str (string): the raw unsigned transaction string.
     ----------
     """
-    network = get_attr_from_opts('network', options)
+    network_name = get_attr_from_opts('network', options)
+    network = network_for_netcode(bitcoin_network_codes_dic[network_name])
 
-    tx = txs.Transaction(network=network)
-
+    ins = []
+    outs = []
     for from_obj in from_:
-        tx.add_input(prev_txid=from_obj['address'],
-                     output_n=from_obj['index'],
-                     compressed=False)
-
+        ins.append(
+            network.Tx.Spendable(0, h2b(""), h2b_rev(from_obj['address']),
+                                 from_obj['index']).as_dict())
     for to_obj in to:
-        tx.add_output(to_obj['amount'], to_obj['address'])
+        outs.append((to_obj['address'], to_obj['amount']))
 
-    return tx.raw_hex()
+    tx = network.tx_utils.create_tx(ins, outs)
+    return tx.as_hex()
 
 
 def create_and_sign_bitcoin(from_, to, key, options):
@@ -178,13 +184,25 @@ def create_and_sign_bitcoin(from_, to, key, options):
     """
     raw_tx = create_bitcoin(from_, to, options)
 
-    network = get_attr_from_opts('network', options)
+    network_name = get_attr_from_opts('network', options)
+    network = network_for_netcode(bitcoin_network_codes_dic[network_name])
 
-    tx = txs.transaction_deserialize(raw_tx, network=network)
-    tx.sign(key)
-    if not tx.verify():
-        raise TxVerificationError(tx)
-    return tx.raw_hex()
+    tx = network.tx.from_hex(raw_tx)
+
+    address = network.parse(key).address()
+    script = network.contract.for_address(address)
+
+    spends = []
+    for tx_in in tx.txs_in:
+        spends.append(
+            Spendable(0, script, b2h_rev(tx_in.previous_hash),
+                      tx_in.previous_index))
+
+    tx.set_unspents(spends)
+
+    network.tx_utils.sign_tx(tx, wifs=[key])
+
+    return tx.as_hex()
 
 
 create_fns = {
@@ -229,9 +247,12 @@ def create(from_, to, options):
     create_fn = create_fns[platform]
 
     raw_unsigned_tx = create_fn(from_, to, options)
-    unsigned_tx_obj = txs.transaction_deserialize(raw_unsigned_tx)
 
-    return UnsignedTx(id=unsigned_tx_obj.txid, unsigned_tx=raw_unsigned_tx)
+    network_name = get_attr_from_opts('network', options)
+    network = network_for_netcode(bitcoin_network_codes_dic[network_name])
+    unsigned_tx_obj = network.tx.from_hex(raw_unsigned_tx)
+
+    return UnsignedTx(id=unsigned_tx_obj.id(), unsigned_tx=raw_unsigned_tx)
 
 
 def create_and_sign(from_, to, key, options):

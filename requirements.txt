@@ -1,7 +1,7 @@
-bitcoinlib>=0.5.3
-python_dateutil >= 2.5.3
+pycoin>=0.91.20210515
+python_dateutil>=2.5.3
 PyYAML>=5.4.1
-setuptools >= 21.0.0
-urllib3 >= 1.25.3
+setuptools>=21.0.0
+urllib3>=1.25.3
 web3==5.12.2
 websockets<9.0.0,>=8.1.0
