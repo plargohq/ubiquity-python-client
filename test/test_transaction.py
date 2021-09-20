@@ -116,7 +116,7 @@ class TestTransactions(unittest.TestCase):
         }]
         to = [{
             "address": "0x78c115F1c8B7D0804FbDF3CF7995B030c512ee78",
-            "amount": 10**18
+            "amount": 1
         }]
 
         fee = 21000

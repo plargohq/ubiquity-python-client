@@ -67,7 +67,7 @@ def create_and_sign_ethereum(from_, to, key, options):
     to (list): List of dicts describing the transaction destination.
         - Each element is a dict with the following keys:
             - address (string): destination address.
-            - amount (number): value to be transferred, in satoshis.
+            - amount (number): value to be transferred, in wei.
     key (string): private key used to sign the transaction.
     options (dict): options dictionary with the following keys:
         - network (string)
@@ -97,16 +97,13 @@ def create_and_sign_ethereum(from_, to, key, options):
     api_instance = transactions_api.TransactionsApi(api_client)
     gas_price = int(api_instance.estimate_fee("ethereum", network))
 
-    ETH_DECIMALS = 18
-    amount = to_obj['amount'] // (10**ETH_DECIMALS)
-
     tx_dict = {
         "chainId": chain_ids[network],
         "nonce": from_obj['index'],
         "gasPrice": gas_price,
         "gas": fee,
         "to": to_obj['address'],
-        "value": amount,
+        "value": to_obj['amount'],
         "data": data
     }
 
