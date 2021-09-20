@@ -201,6 +201,11 @@ def create_and_sign_bitcoin(from_, to, key, options):
 
     return tx.as_hex()
 
+def get_tx_id_from_raw_tx_bitcoin(raw_unsigned_tx, options):
+    network_name = get_attr_from_opts('network', options, 'testnet')
+    network = network_for_netcode(bitcoin_network_codes_dic[network_name])
+    unsigned_tx_obj = network.tx.from_hex(raw_unsigned_tx)
+    return unsigned_tx_obj.id()
 
 create_fns = {
     "bitcoin": create_bitcoin,
@@ -211,6 +216,9 @@ create_and_sign_fns = {
     "ethereum": create_and_sign_ethereum
 }
 
+tx_id_from_raw_tx_fns = {
+    "bitcoin": get_tx_id_from_raw_tx_bitcoin
+}
 
 def create(from_, to, options):
     """
@@ -236,7 +244,7 @@ def create(from_, to, options):
 
     Returns:
     ----------
-        unsigned_tx (UnignedTx): the unsigned transaction object.
+        unsigned_tx (UnsignedTx): the unsigned transaction object.
     ----------
     """
 
@@ -245,11 +253,10 @@ def create(from_, to, options):
 
     raw_unsigned_tx = create_fn(from_, to, options)
 
-    network_name = get_attr_from_opts('network', options)
-    network = network_for_netcode(bitcoin_network_codes_dic[network_name])
-    unsigned_tx_obj = network.tx.from_hex(raw_unsigned_tx)
+    tx_id_from_raw_tx_fn = tx_id_from_raw_tx_fns[platform]
+    unsigned_tx_id = tx_id_from_raw_tx_fn(raw_unsigned_tx, options)
 
-    return UnsignedTx(id=unsigned_tx_obj.id(), unsigned_tx=raw_unsigned_tx)
+    return UnsignedTx(id=unsigned_tx_id, unsigned_tx=raw_unsigned_tx)
 
 
 def create_and_sign(from_, to, key, options):

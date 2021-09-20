@@ -20,7 +20,7 @@ class TestTransactions(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_create_bitcoin_transaction_single_destination(self):
+    def test_create_bitcoin_transaction_single_input(self):
         from_ = [{
             "address":
             "6b4510d1dd716f49c6c701d8d0ad47af3d07847660dc4e1b25e10516714a7f31",
