@@ -143,7 +143,7 @@ fee = 1000
 platform = "bitcoin"
 network = "testnet" # can be "mainnet" or "testnet"
 
-signed_tx = tx.create_and_sign(from_, to, fee, key, { "network": network, "platform": platform })
+signed_tx = tx.create_and_sign(from_, to, key, { "network": network, "platform": platform })
 ```
 
 For Bitcoin an unsigned transaction can also be created with the function `ubiquity.transaction.create`.
@@ -159,12 +159,14 @@ network = "ropsten" # can be "mainnet" or "testnet"
 
 key = "<key>"
 
-from_ = [] # Ethereum transactions don't contain an input address
+# Note: Ethereum transactions don't contain an input address
+from_ = [{
+    "index: 3" # nonce
+}]
 to = [{
     "address": "<destination address>",
     "amount": 10 ** 18 # 1 ETH in smallest possible units (wei)
 }]
-index = 3 # nonce
 fee = 21000
 
 api_client = ApiClient(ubiquity.Configuration(
@@ -175,10 +177,11 @@ api_client = ApiClient(ubiquity.Configuration(
 # An ApiClient object has to be passed to create_and_sign
 #   for Ethereum because the gas price needs to be
 #   fetched from the ethereum network
-signed_tx = tx.create_and_sign(from_, to, fee, key, {
+signed_tx = tx.create_and_sign(from_, to, key, {
     "api_client": api_client,
     "platform" platform,
-    "network": network
+    "network": network,
+    "fee": fee
 })
 
 api_client.close()
