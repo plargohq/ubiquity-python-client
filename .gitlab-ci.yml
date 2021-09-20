@@ -44,13 +44,14 @@ build:
     - git config --global user.name "Mr.Roboto 🤖"
     - git config --global user.email "mrRoboto@blockdaemon.com"
     - git add ./ubiquity ./docs
-    - git commit -m "UB-00 Updating generated code with changes from ${CI_JOB_ID}"
+      # - git commit -m "UB-00 Updating generated code with changes from ${CI_JOB_ID}"
+     - git status | grep "nothing to commit, working tree clean" || git commit -a -m "UB-00 Updating generated code with changes from ${CI_JOB_ID}"
     - git push http://gitlab-ci-token:${AUTH_TOKEN_UBIQUITY_PYTHON_CLIENT}@gitlab.com/Blockdaemon/ubiquity/ubiquity-python-client.git HEAD:master
-  only:
-      refs:
-        - master
-      changes:
-        - spec/openapi.yaml
+  # only:
+  #     refs:
+  #       - master
+  #     changes:
+  #       - spec/openapi.yaml
   dependencies:
     - build:setup
 
