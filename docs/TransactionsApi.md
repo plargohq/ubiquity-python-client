@@ -225,7 +225,7 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     order = "desc" # str | Pagination order (optional)
     continuation = "8185.123" # str | Continuation token from earlier response (optional)
     limit = 25 # int | Max number of items to return in a response. Defaults to 25 and is capped at 100.  (optional)
-    assets = "ethereum/native/eth:ethereum/currency2" # str | Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. (optional)
+    assets = "ethereum/native/eth" # str | Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. (optional)
 
     # example passing only required values which don't have defaults set
     try:

@@ -9,6 +9,8 @@
 # import sys
 # sys.setrecursionlimit(n)
 
+from ubiquity.ubiquity_openapi_client.model.accounts_balances_map import AccountsBalancesMap
+from ubiquity.ubiquity_openapi_client.model.accounts_obj import AccountsObj
 from ubiquity.ubiquity_openapi_client.model.algorand_meta import AlgorandMeta
 from ubiquity.ubiquity_openapi_client.model.balance_change import BalanceChange
 from ubiquity.ubiquity_openapi_client.model.balances_map import BalancesMap

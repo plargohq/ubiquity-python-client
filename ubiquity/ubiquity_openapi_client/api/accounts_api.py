@@ -22,6 +22,8 @@ from ubiquity.ubiquity_openapi_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from ubiquity.ubiquity_openapi_client.model.accounts_balances_map import AccountsBalancesMap
+from ubiquity.ubiquity_openapi_client.model.accounts_obj import AccountsObj
 from ubiquity.ubiquity_openapi_client.model.balances_map import BalancesMap
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from ubiquity.ubiquity_openapi_client.model.report import Report
@@ -62,6 +64,7 @@ class AccountsApi(object):
                 address (str): Account address
 
             Keyword Args:
+                assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -130,6 +133,7 @@ class AccountsApi(object):
                     'platform',
                     'network',
                     'address',
+                    'assets',
                 ],
                 'required': [
                     'platform',
@@ -155,16 +159,20 @@ class AccountsApi(object):
                         (str,),
                     'address':
                         (str,),
+                    'assets':
+                        (str,),
                 },
                 'attribute_map': {
                     'platform': 'platform',
                     'network': 'network',
                     'address': 'address',
+                    'assets': 'assets',
                 },
                 'location_map': {
                     'platform': 'path',
                     'network': 'path',
                     'address': 'path',
+                    'assets': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -178,6 +186,153 @@ class AccountsApi(object):
             },
             api_client=api_client,
             callable=__get_balances_by_address
+        )
+
+        def __get_balances_by_addresses(
+            self,
+            platform,
+            network,
+            accounts_obj,
+            **kwargs
+        ):
+            """Balances Of Addresses  # noqa: E501
+
+            Returns the balances of accounts for all supported currencies.   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_balances_by_addresses(platform, network, accounts_obj, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                platform (str): Coin platform handle
+                network (str): Which network to target. Available networks can be found with /{platform}
+                accounts_obj (AccountsObj):
+
+            Keyword Args:
+                assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                AccountsBalancesMap
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['platform'] = \
+                platform
+            kwargs['network'] = \
+                network
+            kwargs['accounts_obj'] = \
+                accounts_obj
+            return self.call_with_http_info(**kwargs)
+
+        self.get_balances_by_addresses = _Endpoint(
+            settings={
+                'response_type': (AccountsBalancesMap,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/{platform}/{network}/accounts',
+                'operation_id': 'get_balances_by_addresses',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'platform',
+                    'network',
+                    'accounts_obj',
+                    'assets',
+                ],
+                'required': [
+                    'platform',
+                    'network',
+                    'accounts_obj',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'platform':
+                        (str,),
+                    'network':
+                        (str,),
+                    'accounts_obj':
+                        (AccountsObj,),
+                    'assets':
+                        (str,),
+                },
+                'attribute_map': {
+                    'platform': 'platform',
+                    'network': 'network',
+                    'assets': 'assets',
+                },
+                'location_map': {
+                    'platform': 'path',
+                    'network': 'path',
+                    'accounts_obj': 'body',
+                    'assets': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json',
+                    'application/problem+json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client,
+            callable=__get_balances_by_addresses
         )
 
         def __get_report_by_address(
@@ -358,6 +513,7 @@ class AccountsApi(object):
                 order (str): Pagination order. [optional]
                 continuation (str): Continuation token from earlier response. [optional]
                 limit (int): Max number of items to return in a response. Defaults to 25 and is capped at 100. . [optional]
+                assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -429,6 +585,7 @@ class AccountsApi(object):
                     'order',
                     'continuation',
                     'limit',
+                    'assets',
                 ],
                 'required': [
                     'platform',
@@ -466,6 +623,8 @@ class AccountsApi(object):
                         (str,),
                     'limit':
                         (int,),
+                    'assets':
+                        (str,),
                 },
                 'attribute_map': {
                     'platform': 'platform',
@@ -474,6 +633,7 @@ class AccountsApi(object):
                     'order': 'order',
                     'continuation': 'continuation',
                     'limit': 'limit',
+                    'assets': 'assets',
                 },
                 'location_map': {
                     'platform': 'path',
@@ -482,6 +642,7 @@ class AccountsApi(object):
                     'order': 'query',
                     'continuation': 'query',
                     'limit': 'query',
+                    'assets': 'query',
                 },
                 'collection_format_map': {
                 }

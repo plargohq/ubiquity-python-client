@@ -5,6 +5,7 @@ All URIs are relative to *https://ubiquity.api.blockdaemon.com/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**get_balances_by_address**](AccountsApi.md#get_balances_by_address) | **GET** /{platform}/{network}/account/{address} | Balances Of Address
+[**get_balances_by_addresses**](AccountsApi.md#get_balances_by_addresses) | **POST** /{platform}/{network}/accounts | Balances Of Addresses
 [**get_report_by_address**](AccountsApi.md#get_report_by_address) | **GET** /{platform}/{network}/account/{address}/report | A financial report for an address between a time period. Default timescale is within the last 30 days
 [**get_txs_by_address**](AccountsApi.md#get_txs_by_address) | **GET** /{platform}/{network}/account/{address}/txs | Transactions Of Address
 
@@ -49,11 +50,21 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     platform = "bitcoin" # str | Coin platform handle
     network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
     address = "0x2E31B312290A01538514806Fbb857736ea4d5555" # str | Account address
+    assets = "ethereum/native/eth" # str | Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Balances Of Address
         api_response = api_instance.get_balances_by_address(platform, network, address)
+        pprint(api_response)
+    except ubiquity.ubiquity_openapi_client.ApiException as e:
+        print("Exception when calling AccountsApi->get_balances_by_address: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Balances Of Address
+        api_response = api_instance.get_balances_by_address(platform, network, address, assets=assets)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling AccountsApi->get_balances_by_address: %s\n" % e)
@@ -67,6 +78,7 @@ Name | Type | Description  | Notes
  **platform** | **str**| Coin platform handle |
  **network** | **str**| Which network to target. Available networks can be found with /{platform} |
  **address** | **str**| Account address |
+ **assets** | **str**| Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. | [optional]
 
 ### Return type
 
@@ -79,6 +91,105 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Balances |  -  |
+**400** | Bad request |  -  |
+**401** | Invalid or expired token |  -  |
+**429** | Rate limit exceeded |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_balances_by_addresses**
+> AccountsBalancesMap get_balances_by_addresses(platform, network, accounts_obj)
+
+Balances Of Addresses
+
+Returns the balances of accounts for all supported currencies. 
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+```python
+import time
+import ubiquity.ubiquity_openapi_client
+from ubiquity.ubiquity_openapi_client.api import accounts_api
+from ubiquity.ubiquity_openapi_client.model.accounts_obj import AccountsObj
+from ubiquity.ubiquity_openapi_client.model.error import Error
+from ubiquity.ubiquity_openapi_client.model.accounts_balances_map import AccountsBalancesMap
+from pprint import pprint
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ubiquity.ubiquity_openapi_client.Configuration(
+    host = "https://ubiquity.api.blockdaemon.com/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = ubiquity.ubiquity_openapi_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = accounts_api.AccountsApi(api_client)
+    platform = "bitcoin" # str | Coin platform handle
+    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
+    accounts_obj = AccountsObj(
+        addresses=[
+            "addresses_example",
+        ],
+    ) # AccountsObj | 
+    assets = "ethereum/native/eth" # str | Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. (optional)
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Balances Of Addresses
+        api_response = api_instance.get_balances_by_addresses(platform, network, accounts_obj)
+        pprint(api_response)
+    except ubiquity.ubiquity_openapi_client.ApiException as e:
+        print("Exception when calling AccountsApi->get_balances_by_addresses: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Balances Of Addresses
+        api_response = api_instance.get_balances_by_addresses(platform, network, accounts_obj, assets=assets)
+        pprint(api_response)
+    except ubiquity.ubiquity_openapi_client.ApiException as e:
+        print("Exception when calling AccountsApi->get_balances_by_addresses: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **platform** | **str**| Coin platform handle |
+ **network** | **str**| Which network to target. Available networks can be found with /{platform} |
+ **accounts_obj** | [**AccountsObj**](AccountsObj.md)|  |
+ **assets** | **str**| Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. | [optional]
+
+### Return type
+
+[**AccountsBalancesMap**](AccountsBalancesMap.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json, application/problem+json
 
 
@@ -232,6 +343,7 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     order = "desc" # str | Pagination order (optional)
     continuation = "8185.123" # str | Continuation token from earlier response (optional)
     limit = 25 # int | Max number of items to return in a response. Defaults to 25 and is capped at 100.  (optional)
+    assets = "ethereum/native/eth" # str | Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -245,7 +357,7 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Transactions Of Address
-        api_response = api_instance.get_txs_by_address(platform, network, address, order=order, continuation=continuation, limit=limit)
+        api_response = api_instance.get_txs_by_address(platform, network, address, order=order, continuation=continuation, limit=limit, assets=assets)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling AccountsApi->get_txs_by_address: %s\n" % e)
@@ -262,6 +374,7 @@ Name | Type | Description  | Notes
  **order** | **str**| Pagination order | [optional]
  **continuation** | **str**| Continuation token from earlier response | [optional]
  **limit** | **int**| Max number of items to return in a response. Defaults to 25 and is capped at 100.  | [optional]
+ **assets** | **str**| Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. | [optional]
 
 ### Return type
 
