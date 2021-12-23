@@ -1,11 +1,11 @@
 # ubiquity.ubiquity_openapi_client.SyncApi
 
-All URIs are relative to *https://ubiquity.api.blockdaemon.com/v2*
+All URIs are relative to *https://ubiquity.api.blockdaemon.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**current_block_id**](SyncApi.md#current_block_id) | **GET** /{platform}/{network}/sync/block_id | Get current block ID
-[**current_block_number**](SyncApi.md#current_block_number) | **GET** /{platform}/{network}/sync/block_number | Get current block number
+[**current_block_id**](SyncApi.md#current_block_id) | **GET** /v2/{platform}/{network}/sync/block_id | Get current block ID
+[**current_block_number**](SyncApi.md#current_block_number) | **GET** /v2/{platform}/{network}/sync/block_number | Get current block number
 
 
 # **current_block_id**
@@ -16,16 +16,17 @@ Get current block ID
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
+
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
 from ubiquity.ubiquity_openapi_client.api import sync_api
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v2
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com/v2"
+    host = "https://ubiquity.api.blockdaemon.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -77,6 +78,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Current block ID |  -  |
@@ -93,16 +95,17 @@ Get current block number
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
+
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
 from ubiquity.ubiquity_openapi_client.api import sync_api
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v2
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com/v2"
+    host = "https://ubiquity.api.blockdaemon.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -154,6 +157,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Current block number |  -  |

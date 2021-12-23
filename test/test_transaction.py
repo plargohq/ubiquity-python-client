@@ -102,7 +102,7 @@ class TestTransactions(unittest.TestCase):
         test.mock.setup_mock_server(
             self.api_client.configuration.host,
             [{
-                "req_url": f"/{platform}/{network}/tx/estimate_fee",
+                "req_url": f"/v2/{platform}/{network}/tx/estimate_fee",
                 "method": httpretty.GET,
                 "status": 200,
                 "response_data": "\"21000000000\""

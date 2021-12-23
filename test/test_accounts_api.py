@@ -31,6 +31,7 @@ class TestAccountsApi(unittest.TestCase):
         self.api_instance = accounts_api.AccountsApi(
             self.api_client)  # noqa: E501
         self.platforms = test.utils.get_platforms()
+        self.platforms_v1 = test.utils.get_platforms_v1()
         self.accounts_by_platform = {
             "algorand":
             "5K6J3Z54656IR7YY65WNJT54UW6RBZZYL5LWQUTG4RWOTRTRBE2MR2AODQ",
@@ -59,7 +60,7 @@ class TestAccountsApi(unittest.TestCase):
 
             test.mock.setup_mock_server(self.api_client.configuration.host, [{
                 "req_url":
-                f"/{platform}/{network}/account/{account_id}",
+                f"/v2/{platform}/{network}/account/{account_id}",
                 "method":
                 httpretty.GET,
                 "status":
@@ -83,7 +84,7 @@ class TestAccountsApi(unittest.TestCase):
 
             test.mock.setup_mock_server(self.api_client.configuration.host, [{
                 "req_url":
-                f"/{platform}/{network}/account/{account_id}/txs",
+                f"/v2/{platform}/{network}/account/{account_id}/txs",
                 "method":
                 httpretty.GET,
                 "status":
@@ -93,6 +94,28 @@ class TestAccountsApi(unittest.TestCase):
                     f'accounts_api/{platform}_account_{account_id}_txs.json')
             }])
             _ = self.api_instance.get_txs_by_address(platform, network, account_id)
+
+    @httpretty.activate(verbose=True, allow_net_connect=False)
+    def test_get_account_balances_v1(self):
+        network = 'mainnet'
+        supported_platforms = test.mock.get_supported_platforms(
+            self.platforms_v1, 'v1/account/:address')
+        print(supported_platforms)
+        assert len(supported_platforms) > 0
+        for platform in supported_platforms:
+            account_id = self.accounts_by_platform[platform]
+            test.mock.setup_mock_server(self.api_client.configuration.host, [{
+                "req_url":
+                f"/v1/{platform}/{network}/account/{account_id}",
+                "method":
+                httpretty.GET,
+                "status":
+                200,
+                "response_data":
+                test.mock.get_mock_file_content(
+                    f'accounts_api/{platform}_account_{account_id}.json')
+            }])
+            _ = self.api_instance.get_list_of_balances_by_address(platform, network, account_id)
 
 
 if __name__ == '__main__':

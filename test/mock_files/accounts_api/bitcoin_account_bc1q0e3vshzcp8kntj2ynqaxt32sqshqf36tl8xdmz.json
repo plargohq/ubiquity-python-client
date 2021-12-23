@@ -1,0 +1,14 @@
+[
+  {
+    "currency": {
+      "asset_path": "bitcoin/native/btc",
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "decimals": 8,
+      "type": "native"
+    },
+    "confirmed_balance": "34128475",
+    "pending_balance": "34128475",
+    "confirmed_block": 715383
+  }
+]

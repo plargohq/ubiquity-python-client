@@ -16,6 +16,13 @@ def get_platforms():
     platforms_json_file.close()
     return platforms
 
+def get_platforms_v1():
+    platforms_json_file = read_file("./test/platforms_v1.json")
+    platforms = json.load(platforms_json_file)
+
+    platforms_json_file.close()
+    return platforms
+
 def get_open_port():
     s = socket.socket()
     s.bind(('', 0))

@@ -1,0 +1,15 @@
+[
+  {
+    "currency": {
+      "asset_path": "ethereum/native/eth",
+      "symbol": "ETH",
+      "name": "Ether",
+      "decimals": 18,
+      "type": "native"
+    },
+    "confirmed_balance": "234567187542195952",
+    "pending_balance": "234567187542195952",
+    "confirmed_nonce": 2418,
+    "confirmed_block": 13860799
+  }
+]

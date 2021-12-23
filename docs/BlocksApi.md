@@ -1,11 +1,11 @@
 # ubiquity.ubiquity_openapi_client.BlocksApi
 
-All URIs are relative to *https://ubiquity.api.blockdaemon.com/v2*
+All URIs are relative to *https://ubiquity.api.blockdaemon.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_block**](BlocksApi.md#get_block) | **GET** /{platform}/{network}/block/{key} | Block By Number/Hash
-[**get_block_identifier**](BlocksApi.md#get_block_identifier) | **GET** /{platform}/{network}/block_identifier/{key} | Block Identifier By Number/Hash
+[**get_block**](BlocksApi.md#get_block) | **GET** /v2/{platform}/{network}/block/{key} | Block By Number/Hash
+[**get_block_identifier**](BlocksApi.md#get_block_identifier) | **GET** /v2/{platform}/{network}/block_identifier/{key} | Block Identifier By Number/Hash
 
 
 # **get_block**
@@ -18,6 +18,7 @@ Get a block and all its transactions by the block number or hash
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
+
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -25,10 +26,10 @@ from ubiquity.ubiquity_openapi_client.api import blocks_api
 from ubiquity.ubiquity_openapi_client.model.block import Block
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v2
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com/v2"
+    host = "https://ubiquity.api.blockdaemon.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -82,6 +83,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Block |  -  |
@@ -102,6 +104,7 @@ Get minimal block identifier by block number or hash
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
+
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -109,10 +112,10 @@ from ubiquity.ubiquity_openapi_client.api import blocks_api
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from ubiquity.ubiquity_openapi_client.model.block_identifier import BlockIdentifier
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v2
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com/v2"
+    host = "https://ubiquity.api.blockdaemon.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -166,6 +169,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Block |  -  |
