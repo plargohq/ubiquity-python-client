@@ -48,7 +48,7 @@ class TestTransactionsApi(unittest.TestCase):
             parsed_transactions_platforms.append(parsed_transactions)
             endpoints_data_platforms.append({
                 "req_url":
-                f"/{platform}/{network}/{'tx/' + parsed_transactions['items'][0]['id'] if path == 'tx' else path}",
+                f"/v2/{platform}/{network}/{'tx/' + parsed_transactions['items'][0]['id'] if path == 'tx' else path}",
                 "method":
                 httpretty.GET,
                 "status":
@@ -116,7 +116,7 @@ class TestTransactionsApi(unittest.TestCase):
 
         endpoint = {
             "req_url":
-            f"/{platform}/{network}/tx/estimate_fee",
+            f"/v2/{platform}/{network}/tx/estimate_fee",
             "method":
             httpretty.GET,
             "status":
@@ -138,7 +138,7 @@ class TestTransactionsApi(unittest.TestCase):
 
         endpoint = {
             "req_url":
-            f"/{platform}/{network}/tx/send",
+            f"/v2/{platform}/{network}/tx/send",
             "method":
             httpretty.POST,
             "status":
@@ -156,6 +156,33 @@ class TestTransactionsApi(unittest.TestCase):
         assert 'id' in tx
         assert tx[
             'id'] == "6d435b5cbfce209237ede9841586bbffbec5388a1c9da8b7879efe9e806e95b8"
+
+    @httpretty.activate(verbose=True, allow_net_connect=False)
+    def test_estimate_fee_v1(self):
+        platform = "bitcoin"
+        network = "mainnet"
+
+        endpoint = {
+            "req_url":
+            f"/v1/{platform}/{network}/tx/estimate_fee",
+            "method":
+            httpretty.GET,
+            "status":
+            200,
+            "response_data":
+            test.mock.get_mock_file_content(
+                "transactions_api/estimate_fee_v1.json")
+        }
+        test.mock.setup_mock_server(self.api_client.configuration.host,
+                                    [endpoint])
+        fee = self.api_instance.fee_estimate(platform, network)
+        expected_response = {"estimated_fees": { "fast": 10.0, "medium": 7.0, "slow": 6.0 },
+                                    "most_recent_block": 714558}
+
+        assert fee["most_recent_block"] == 714558
+        assert fee["estimated_fees"]["fast"] == 10.0  #to note using any type in python the numerical value defaults to float
+        assert fee["estimated_fees"]["medium"] == 7.0
+        assert fee["estimated_fees"]["slow"] == 6.0
 
 
 if __name__ == '__main__':

@@ -35,7 +35,7 @@ class TestPlatformsApi(unittest.TestCase):
 
         self.get_platform_endpoints = [{
             "req_url":
-            f"/{platform}/{network}",
+            f"/v2/{platform}/{network}",
             "method":
             httpretty.GET,
             "status":
@@ -64,7 +64,7 @@ class TestPlatformsApi(unittest.TestCase):
     def test_platforms_overview(self):
         test.mock.setup_mock_server(self.api_client.configuration.host, [{
             "req_url":
-            f"/",
+            f"/v2/",
             "method":
             httpretty.GET,
             "status":

@@ -37,7 +37,7 @@ class TestSyncApi(unittest.TestCase):
     def get_sync_endpoints(self, network, path):
         endpoints = [{
             "req_url":
-            f"/{platform}/{network}/sync/block_{path}",
+            f"/v2/{platform}/{network}/sync/block_{path}",
             "method":
             httpretty.GET,
             "status":

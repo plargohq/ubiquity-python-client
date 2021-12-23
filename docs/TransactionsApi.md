@@ -1,13 +1,14 @@
 # ubiquity.ubiquity_openapi_client.TransactionsApi
 
-All URIs are relative to *https://ubiquity.api.blockdaemon.com/v2*
+All URIs are relative to *https://ubiquity.api.blockdaemon.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**estimate_fee**](TransactionsApi.md#estimate_fee) | **GET** /{platform}/{network}/tx/estimate_fee | Get fee estimate
-[**get_tx**](TransactionsApi.md#get_tx) | **GET** /{platform}/{network}/tx/{id} | Transaction By Hash
-[**get_txs**](TransactionsApi.md#get_txs) | **GET** /{platform}/{network}/txs | All Transactions
-[**tx_send**](TransactionsApi.md#tx_send) | **POST** /{platform}/{network}/tx/send | Submit a signed transaction
+[**estimate_fee**](TransactionsApi.md#estimate_fee) | **GET** /v2/{platform}/{network}/tx/estimate_fee | Get fee estimate
+[**fee_estimate**](TransactionsApi.md#fee_estimate) | **GET** /v1/{platform}/{network}/tx/estimate_fee | Get fee estimate
+[**get_tx**](TransactionsApi.md#get_tx) | **GET** /v2/{platform}/{network}/tx/{id} | Transaction By Hash
+[**get_txs**](TransactionsApi.md#get_txs) | **GET** /v2/{platform}/{network}/txs | All Transactions
+[**tx_send**](TransactionsApi.md#tx_send) | **POST** /v2/{platform}/{network}/tx/send | Submit a signed transaction
 
 
 # **estimate_fee**
@@ -20,16 +21,17 @@ Get a fee estimation in decimals from the network. If supported by the platform,
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
+
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
 from ubiquity.ubiquity_openapi_client.api import transactions_api
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v2
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com/v2"
+    host = "https://ubiquity.api.blockdaemon.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -92,12 +94,95 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A fee estimation from bitcoin (satoshis) |  -  |
 **401** | Invalid or expired token |  -  |
 **429** | Rate limit exceeded |  -  |
 **400** | Bad Request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **fee_estimate**
+> FeeEstimate fee_estimate(platform, network)
+
+Get fee estimate
+
+Get a fee estimation in decimals from the ubiquity fee estimation service. Currently supported for Bitcoin and Ethereum. Endpoint will return 3 fee estimations fast, medium and slow 
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+
+```python
+import time
+import ubiquity.ubiquity_openapi_client
+from ubiquity.ubiquity_openapi_client.api import transactions_api
+from ubiquity.ubiquity_openapi_client.model.fee_estimate import FeeEstimate
+from ubiquity.ubiquity_openapi_client.model.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ubiquity.ubiquity_openapi_client.Configuration(
+    host = "https://ubiquity.api.blockdaemon.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = ubiquity.ubiquity_openapi_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = transactions_api.TransactionsApi(api_client)
+    platform = "bitcoin" # str | Coin platform handle
+    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Get fee estimate
+        api_response = api_instance.fee_estimate(platform, network)
+        pprint(api_response)
+    except ubiquity.ubiquity_openapi_client.ApiException as e:
+        print("Exception when calling TransactionsApi->fee_estimate: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **platform** | **str**| Coin platform handle |
+ **network** | **str**| Which network to target. Available networks can be found with /{platform} |
+
+### Return type
+
+[**FeeEstimate**](FeeEstimate.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Platforms overview |  -  |
+**401** | Invalid or expired token |  -  |
+**429** | Rate limit exceeded |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -109,6 +194,7 @@ Transaction By Hash
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
+
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -116,10 +202,10 @@ from ubiquity.ubiquity_openapi_client.api import transactions_api
 from ubiquity.ubiquity_openapi_client.model.tx import Tx
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v2
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com/v2"
+    host = "https://ubiquity.api.blockdaemon.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -173,6 +259,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Transaction |  -  |
@@ -193,6 +280,7 @@ Get all transactions on the platform, starting with the lastest one. Each call r
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
+
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -200,10 +288,10 @@ from ubiquity.ubiquity_openapi_client.api import transactions_api
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from ubiquity.ubiquity_openapi_client.model.tx_page import TxPage
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v2
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com/v2"
+    host = "https://ubiquity.api.blockdaemon.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -272,6 +360,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Transactions |  -  |
@@ -291,6 +380,7 @@ Submit a signed transaction to the network.  **Note**: A successful transaction 
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
+
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -299,10 +389,10 @@ from ubiquity.ubiquity_openapi_client.model.signed_tx import SignedTx
 from ubiquity.ubiquity_openapi_client.model.tx_receipt import TxReceipt
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v2
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com/v2"
+    host = "https://ubiquity.api.blockdaemon.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -358,6 +448,7 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A submitted Transaction ID |  -  |
