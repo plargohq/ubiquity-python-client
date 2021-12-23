@@ -22,7 +22,6 @@ Returns the account balances for all supported currencies.
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -98,7 +97,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Balances |  -  |
@@ -118,7 +116,6 @@ Returns the balances of accounts for all supported currencies.
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -199,7 +196,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Balances |  -  |
@@ -219,7 +215,6 @@ Returns the account balances for all supported currencies.
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -284,7 +279,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Balances |  -  |
@@ -304,7 +298,6 @@ Returns the balances of accounts for all supported currencies.
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -374,7 +367,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Balances |  -  |
@@ -394,7 +386,6 @@ Returns account activity
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -472,7 +463,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Account Activity |  -  |
@@ -493,7 +483,6 @@ Gets transactions that an address was involved with, from newest to oldest. This
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -575,7 +564,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Transactions |  -  |

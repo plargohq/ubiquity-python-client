@@ -16,7 +16,6 @@ Get current block ID
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -78,7 +77,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Current block ID |  -  |
@@ -95,7 +93,6 @@ Get current block number
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -157,7 +154,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Current block number |  -  |

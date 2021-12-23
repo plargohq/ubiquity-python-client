@@ -18,7 +18,6 @@ Get a block and all its transactions by the block number or hash
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -83,7 +82,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Block |  -  |
@@ -104,7 +102,6 @@ Get minimal block identifier by block number or hash
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -169,7 +166,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Block |  -  |

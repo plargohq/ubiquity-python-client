@@ -43,7 +43,83 @@ class AccountsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
-        self.get_balances_by_address_endpoint = _Endpoint(
+
+        def __get_balances_by_address(
+            self,
+            platform,
+            network,
+            address,
+            **kwargs
+        ):
+            """Balances Of Address  # noqa: E501
+
+            Returns the account balances for all supported currencies.   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_balances_by_address(platform, network, address, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                platform (str): Coin platform handle
+                network (str): Which network to target. Available networks can be found with /{platform}
+                address (str): Account address
+
+            Keyword Args:
+                assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                BalancesMap
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['platform'] = \
+                platform
+            kwargs['network'] = \
+                network
+            kwargs['address'] = \
+                address
+            return self.call_with_http_info(**kwargs)
+
+        self.get_balances_by_address = _Endpoint(
             settings={
                 'response_type': (BalancesMap,),
                 'auth': [
@@ -110,9 +186,86 @@ class AccountsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client
+            api_client=api_client,
+            callable=__get_balances_by_address
         )
-        self.get_balances_by_addresses_endpoint = _Endpoint(
+
+        def __get_balances_by_addresses(
+            self,
+            platform,
+            network,
+            accounts_obj,
+            **kwargs
+        ):
+            """Balances Of Addresses  # noqa: E501
+
+            Returns the balances of accounts for all supported currencies.   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_balances_by_addresses(platform, network, accounts_obj, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                platform (str): Coin platform handle
+                network (str): Which network to target. Available networks can be found with /{platform}
+                accounts_obj (AccountsObj):
+
+            Keyword Args:
+                assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                AccountsBalancesMap
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['platform'] = \
+                platform
+            kwargs['network'] = \
+                network
+            kwargs['accounts_obj'] = \
+                accounts_obj
+            return self.call_with_http_info(**kwargs)
+
+        self.get_balances_by_addresses = _Endpoint(
             settings={
                 'response_type': (AccountsBalancesMap,),
                 'auth': [
@@ -180,9 +333,85 @@ class AccountsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client
+            api_client=api_client,
+            callable=__get_balances_by_addresses
         )
-        self.get_list_of_balances_by_address_endpoint = _Endpoint(
+
+        def __get_list_of_balances_by_address(
+            self,
+            platform,
+            network,
+            address,
+            **kwargs
+        ):
+            """Balances Of Address  # noqa: E501
+
+            Returns the account balances for all supported currencies.   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_list_of_balances_by_address(platform, network, address, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                platform (str): Coin platform handle
+                network (str): Which network to target. Available networks can be found with /{platform}
+                address (str): Account address
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                BalancesMapV1
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['platform'] = \
+                platform
+            kwargs['network'] = \
+                network
+            kwargs['address'] = \
+                address
+            return self.call_with_http_info(**kwargs)
+
+        self.get_list_of_balances_by_address = _Endpoint(
             settings={
                 'response_type': (BalancesMapV1,),
                 'auth': [
@@ -244,9 +473,85 @@ class AccountsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client
+            api_client=api_client,
+            callable=__get_list_of_balances_by_address
         )
-        self.get_list_of_balances_by_addresses_endpoint = _Endpoint(
+
+        def __get_list_of_balances_by_addresses(
+            self,
+            platform,
+            network,
+            accounts_obj,
+            **kwargs
+        ):
+            """Balances Of Addresses  # noqa: E501
+
+            Returns the balances of accounts for all supported currencies.   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_list_of_balances_by_addresses(platform, network, accounts_obj, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                platform (str): Coin platform handle
+                network (str): Which network to target. Available networks can be found with /{platform}
+                accounts_obj (AccountsObj):
+
+            Keyword Args:
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                AccountsBalancesMapV1
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['platform'] = \
+                platform
+            kwargs['network'] = \
+                network
+            kwargs['accounts_obj'] = \
+                accounts_obj
+            return self.call_with_http_info(**kwargs)
+
+        self.get_list_of_balances_by_addresses = _Endpoint(
             settings={
                 'response_type': (AccountsBalancesMapV1,),
                 'auth': [
@@ -309,9 +614,87 @@ class AccountsApi(object):
                     'application/json'
                 ]
             },
-            api_client=api_client
+            api_client=api_client,
+            callable=__get_list_of_balances_by_addresses
         )
-        self.get_report_by_address_endpoint = _Endpoint(
+
+        def __get_report_by_address(
+            self,
+            platform,
+            network,
+            address,
+            **kwargs
+        ):
+            """A financial report for an address between a time period. Default timescale is within the last 30 days  # noqa: E501
+
+            Returns account activity   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_report_by_address(platform, network, address, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                platform (str): Coin platform handle
+                network (str): Which network to target. Available networks can be found with /{platform}
+                address (str): Account address
+
+            Keyword Args:
+                _from (int): Unix Timestamp from where to start. [optional]
+                to (int): Unix Timestamp from where to end. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                Report
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['platform'] = \
+                platform
+            kwargs['network'] = \
+                network
+            kwargs['address'] = \
+                address
+            return self.call_with_http_info(**kwargs)
+
+        self.get_report_by_address = _Endpoint(
             settings={
                 'response_type': (Report,),
                 'auth': [
@@ -384,9 +767,89 @@ class AccountsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client
+            api_client=api_client,
+            callable=__get_report_by_address
         )
-        self.get_txs_by_address_endpoint = _Endpoint(
+
+        def __get_txs_by_address(
+            self,
+            platform,
+            network,
+            address,
+            **kwargs
+        ):
+            """Transactions Of Address  # noqa: E501
+
+            Gets transactions that an address was involved with, from newest to oldest. This call uses pagination.   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.get_txs_by_address(platform, network, address, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                platform (str): Coin platform handle
+                network (str): Which network to target. Available networks can be found with /{platform}
+                address (str): Account address
+
+            Keyword Args:
+                order (str): Pagination order. [optional]
+                continuation (str): Continuation token from earlier response. [optional]
+                limit (int): Max number of items to return in a response. Defaults to 25 and is capped at 100. . [optional]
+                assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                TxPage
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['platform'] = \
+                platform
+            kwargs['network'] = \
+                network
+            kwargs['address'] = \
+                address
+            return self.call_with_http_info(**kwargs)
+
+        self.get_txs_by_address = _Endpoint(
             settings={
                 'response_type': (TxPage,),
                 'auth': [
@@ -474,488 +937,6 @@ class AccountsApi(object):
                 ],
                 'content_type': [],
             },
-            api_client=api_client
+            api_client=api_client,
+            callable=__get_txs_by_address
         )
-
-    def get_balances_by_address(
-        self,
-        platform,
-        network,
-        address,
-        **kwargs
-    ):
-        """Balances Of Address  # noqa: E501
-
-        Returns the account balances for all supported currencies.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_balances_by_address(platform, network, address, async_req=True)
-        >>> result = thread.get()
-
-        Args:
-            platform (str): Coin platform handle
-            network (str): Which network to target. Available networks can be found with /{platform}
-            address (str): Account address
-
-        Keyword Args:
-            assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _content_type (str/None): force body content-type.
-                Default is None and content-type will be predicted by allowed
-                content-types and body.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            BalancesMap
-                If the method is called asynchronously, returns the request
-                thread.
-        """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_content_type'] = kwargs.get(
-            '_content_type')
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['platform'] = \
-            platform
-        kwargs['network'] = \
-            network
-        kwargs['address'] = \
-            address
-        return self.get_balances_by_address_endpoint.call_with_http_info(**kwargs)
-
-    def get_balances_by_addresses(
-        self,
-        platform,
-        network,
-        accounts_obj,
-        **kwargs
-    ):
-        """Balances Of Addresses  # noqa: E501
-
-        Returns the balances of accounts for all supported currencies.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_balances_by_addresses(platform, network, accounts_obj, async_req=True)
-        >>> result = thread.get()
-
-        Args:
-            platform (str): Coin platform handle
-            network (str): Which network to target. Available networks can be found with /{platform}
-            accounts_obj (AccountsObj):
-
-        Keyword Args:
-            assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _content_type (str/None): force body content-type.
-                Default is None and content-type will be predicted by allowed
-                content-types and body.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            AccountsBalancesMap
-                If the method is called asynchronously, returns the request
-                thread.
-        """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_content_type'] = kwargs.get(
-            '_content_type')
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['platform'] = \
-            platform
-        kwargs['network'] = \
-            network
-        kwargs['accounts_obj'] = \
-            accounts_obj
-        return self.get_balances_by_addresses_endpoint.call_with_http_info(**kwargs)
-
-    def get_list_of_balances_by_address(
-        self,
-        platform,
-        network,
-        address,
-        **kwargs
-    ):
-        """Balances Of Address  # noqa: E501
-
-        Returns the account balances for all supported currencies.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_list_of_balances_by_address(platform, network, address, async_req=True)
-        >>> result = thread.get()
-
-        Args:
-            platform (str): Coin platform handle
-            network (str): Which network to target. Available networks can be found with /{platform}
-            address (str): Account address
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _content_type (str/None): force body content-type.
-                Default is None and content-type will be predicted by allowed
-                content-types and body.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            BalancesMapV1
-                If the method is called asynchronously, returns the request
-                thread.
-        """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_content_type'] = kwargs.get(
-            '_content_type')
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['platform'] = \
-            platform
-        kwargs['network'] = \
-            network
-        kwargs['address'] = \
-            address
-        return self.get_list_of_balances_by_address_endpoint.call_with_http_info(**kwargs)
-
-    def get_list_of_balances_by_addresses(
-        self,
-        platform,
-        network,
-        accounts_obj,
-        **kwargs
-    ):
-        """Balances Of Addresses  # noqa: E501
-
-        Returns the balances of accounts for all supported currencies.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_list_of_balances_by_addresses(platform, network, accounts_obj, async_req=True)
-        >>> result = thread.get()
-
-        Args:
-            platform (str): Coin platform handle
-            network (str): Which network to target. Available networks can be found with /{platform}
-            accounts_obj (AccountsObj):
-
-        Keyword Args:
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _content_type (str/None): force body content-type.
-                Default is None and content-type will be predicted by allowed
-                content-types and body.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            AccountsBalancesMapV1
-                If the method is called asynchronously, returns the request
-                thread.
-        """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_content_type'] = kwargs.get(
-            '_content_type')
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['platform'] = \
-            platform
-        kwargs['network'] = \
-            network
-        kwargs['accounts_obj'] = \
-            accounts_obj
-        return self.get_list_of_balances_by_addresses_endpoint.call_with_http_info(**kwargs)
-
-    def get_report_by_address(
-        self,
-        platform,
-        network,
-        address,
-        **kwargs
-    ):
-        """A financial report for an address between a time period. Default timescale is within the last 30 days  # noqa: E501
-
-        Returns account activity   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_report_by_address(platform, network, address, async_req=True)
-        >>> result = thread.get()
-
-        Args:
-            platform (str): Coin platform handle
-            network (str): Which network to target. Available networks can be found with /{platform}
-            address (str): Account address
-
-        Keyword Args:
-            _from (int): Unix Timestamp from where to start. [optional]
-            to (int): Unix Timestamp from where to end. [optional]
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _content_type (str/None): force body content-type.
-                Default is None and content-type will be predicted by allowed
-                content-types and body.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            Report
-                If the method is called asynchronously, returns the request
-                thread.
-        """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_content_type'] = kwargs.get(
-            '_content_type')
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['platform'] = \
-            platform
-        kwargs['network'] = \
-            network
-        kwargs['address'] = \
-            address
-        return self.get_report_by_address_endpoint.call_with_http_info(**kwargs)
-
-    def get_txs_by_address(
-        self,
-        platform,
-        network,
-        address,
-        **kwargs
-    ):
-        """Transactions Of Address  # noqa: E501
-
-        Gets transactions that an address was involved with, from newest to oldest. This call uses pagination.   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-
-        >>> thread = api.get_txs_by_address(platform, network, address, async_req=True)
-        >>> result = thread.get()
-
-        Args:
-            platform (str): Coin platform handle
-            network (str): Which network to target. Available networks can be found with /{platform}
-            address (str): Account address
-
-        Keyword Args:
-            order (str): Pagination order. [optional]
-            continuation (str): Continuation token from earlier response. [optional]
-            limit (int): Max number of items to return in a response. Defaults to 25 and is capped at 100. . [optional]
-            assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
-            _return_http_data_only (bool): response data without head status
-                code and headers. Default is True.
-            _preload_content (bool): if False, the urllib3.HTTPResponse object
-                will be returned without reading/decoding response data.
-                Default is True.
-            _request_timeout (int/float/tuple): timeout setting for this request. If
-                one number provided, it will be total request timeout. It can also
-                be a pair (tuple) of (connection, read) timeouts.
-                Default is None.
-            _check_input_type (bool): specifies if type checking
-                should be done one the data sent to the server.
-                Default is True.
-            _check_return_type (bool): specifies if type checking
-                should be done one the data received from the server.
-                Default is True.
-            _content_type (str/None): force body content-type.
-                Default is None and content-type will be predicted by allowed
-                content-types and body.
-            _host_index (int/None): specifies the index of the server
-                that we want to use.
-                Default is read from the configuration.
-            async_req (bool): execute request asynchronously
-
-        Returns:
-            TxPage
-                If the method is called asynchronously, returns the request
-                thread.
-        """
-        kwargs['async_req'] = kwargs.get(
-            'async_req', False
-        )
-        kwargs['_return_http_data_only'] = kwargs.get(
-            '_return_http_data_only', True
-        )
-        kwargs['_preload_content'] = kwargs.get(
-            '_preload_content', True
-        )
-        kwargs['_request_timeout'] = kwargs.get(
-            '_request_timeout', None
-        )
-        kwargs['_check_input_type'] = kwargs.get(
-            '_check_input_type', True
-        )
-        kwargs['_check_return_type'] = kwargs.get(
-            '_check_return_type', True
-        )
-        kwargs['_content_type'] = kwargs.get(
-            '_content_type')
-        kwargs['_host_index'] = kwargs.get('_host_index')
-        kwargs['platform'] = \
-            platform
-        kwargs['network'] = \
-            network
-        kwargs['address'] = \
-            address
-        return self.get_txs_by_address_endpoint.call_with_http_info(**kwargs)
-

@@ -21,7 +21,6 @@ Get a fee estimation in decimals from the network. If supported by the platform,
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -94,7 +93,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A fee estimation from bitcoin (satoshis) |  -  |
@@ -114,7 +112,6 @@ Get a fee estimation in decimals from the ubiquity fee estimation service. Curre
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -177,7 +174,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Platforms overview |  -  |
@@ -194,7 +190,6 @@ Transaction By Hash
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -259,7 +254,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Transaction |  -  |
@@ -280,7 +274,6 @@ Get all transactions on the platform, starting with the lastest one. Each call r
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -360,7 +353,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Transactions |  -  |
@@ -380,7 +372,6 @@ Submit a signed transaction to the network.  **Note**: A successful transaction 
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -448,7 +439,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A submitted Transaction ID |  -  |

@@ -25,8 +25,8 @@ from ubiquity.ubiquity_openapi_client.model_utils import (  # noqa: F401
     file_type,
     none_type,
     validate_get_composed_info,
-    OpenApiModel
 )
+from ..model_utils import OpenApiModel
 from ubiquity.ubiquity_openapi_client.exceptions import ApiAttributeError
 
 
@@ -61,7 +61,14 @@ class BalancesMapV1(ModelSimple):
     validations = {
     }
 
-    additional_properties_type = None
+    @cached_property
+    def additional_properties_type():
+        """
+        This must be a method because a model may have properties that are
+        of type self, this must run after the class is loaded
+        """
+        lazy_import()
+        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
 

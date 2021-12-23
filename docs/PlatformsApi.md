@@ -20,7 +20,6 @@ Provides information about supported endpoints and generic platform information.
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -83,7 +82,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Platform overview |  -  |
@@ -102,7 +100,6 @@ Provides information about supported endpoints and generic platform information.
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -165,7 +162,6 @@ Name | Type | Description  | Notes
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Platform overview |  -  |
@@ -184,7 +180,6 @@ Provides a list of supported platforms and networks.
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -241,7 +236,6 @@ This endpoint does not need any parameter.
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Platforms overview |  -  |
@@ -260,7 +254,6 @@ Provides a list of supported platforms and networks.
 ### Example
 
 * Bearer (Opaque) Authentication (bearerAuth):
-
 ```python
 import time
 import ubiquity.ubiquity_openapi_client
@@ -317,7 +310,6 @@ This endpoint does not need any parameter.
 
 
 ### HTTP response details
-
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Platforms overview |  -  |
