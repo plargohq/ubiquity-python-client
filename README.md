@@ -48,7 +48,7 @@ with ubiquity.ApiClient(conf) as client:
     block = blocks_api_instance.get_block(platform, network, "current")
 ```
 
-An API URL may also be specified if you have a personal ubiquity endpoint 
+An API URL may also be specified if you have a personal Ubiquity endpoint: 
 
 ```python
 import ubiquity
@@ -68,11 +68,13 @@ with ubiquity.ApiClient(conf) as client:
 ```
 
 
-## Paginated API's
+## Paginated APIs
 
-Certain resources contain more data than can practically returned in a single request. In these resources the data is split across multiple responses where each response returns a subset of the items requested and a continuation token. Requests for the first page of data should not contain a continuation token. To get the next batch of items the continuation token should be passed with the subsequent request. If no continuation token is returned all of the available data has been returned.
+Certain resources contain more data than can be practically returned in a single request. In these resources the data is split across multiple responses where each response returns a subset of the items requested and a continuation token.
 
-Initial request to paged API's should not include a continuation. If no limit is supplied the default of 25 will be applied.
+Requests for the first page of data should not contain a continuation token. To get the next batch of items ,the continuation token should be passed with the subsequent request. If no continuation token is returned, all of the available data has been returned.
+
+Initial request to paged APIs should not include a continuation. If no limit is supplied the default of 25 will be applied.
 
 ```python
 import ubiquity
@@ -98,7 +100,7 @@ with ubiquity.ApiClient(conf) as client:
     txPage2 = txs_api_instance.get_txs(platform, network, order=order, limit=limit, continuation=continuation);
 ```
 
-To continue through the pages of transactions the continuation from the previous page must be supplied to the next request:
+To continue through the pages of transactions, the continuation from the previous page must be supplied to the next request:
 
 ```python
 with ubiquity.ApiClient(conf) as client:
@@ -118,11 +120,11 @@ with ubiquity.ApiClient(conf) as client:
 
 ## Working with transactions
 
-### Transaction creation and signing
-Transactions can be created and signed directly from the SDK.
-Currently supported platforms are Bitcoin and Ethereum.
+### Creating and signing transactions
+Transactions can be created and signed directly from the SDK. Currently supported platforms are Bitcoin and Ethereum.
 
 To create and sign a transaction that sends 0.0001 BTC (10000 satoshis) with a 0.00001 BTC (1000 satoshis) fee from an account to another:
+
 ```python
 import ubiquity.transaction as tx
 
@@ -149,6 +151,7 @@ signed_tx = tx.create_and_sign(from_, to, key, { "network": network, "platform":
 For Bitcoin an unsigned transaction can also be created with the function `ubiquity.transaction.create`.
 
 To create and sign a transaction that sends 1 ETH and pays 21000 gas as fee from an account to another:
+
 ```python
 import ubiquity
 import ubiquity.transaction as tx
@@ -190,7 +193,7 @@ print('signed: ', signed_tx)
 For Ethereum only transactions with a single output are currently supported.
 
 #### Broadcasting signed transactions
-After a transaction is created and signed, it can be broadcasted through Ubiquity's `/tx/send` endpoint, that is interfaced through the `tx_send` method:
+After a transaction is created and signed, it can be broadcasted through Ubiquity's `/tx/send` endpoint, which is interfaced through the `tx_send` method:
 
 ```python
 conf = ubiquity.Configuration(
@@ -213,6 +216,7 @@ with ubiquity.ApiClient(conf) as api_client:
 
 #### Estimating fees
 Ubiquity's `/tx/estimate_fee` endpoint returns an estimation of the fee value required for transactions to be pushed to the network.
+
 It can be used through the `TransactionsApi.estimate_fee` method:
 
 ```python
@@ -231,6 +235,7 @@ with ubiquity.ApiClient(config) as api_client:
 ## Websockets support
 
 Ubiquity also supports websockets connections (see [docs](https://app.blockdaemon.com/docs/ubiquity#ubiquity-web-sockets-api)).
+
 A client can communicate with this service to get notifications about new data from the network.
 
 See the following example to subscribe to events for new blocks added to the network:
