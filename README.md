@@ -1,4 +1,4 @@
-# ubiquity-python-client
+# Ubiquity Python client
 A Python client to the Ubiquity service of blockdaemon.com.
 
 # Requirements
@@ -72,9 +72,9 @@ with ubiquity.ApiClient(conf) as client:
 
 Certain resources contain more data than can be practically returned in a single request. In these resources the data is split across multiple responses where each response returns a subset of the items requested and a continuation token.
 
-Requests for the first page of data should not contain a continuation token. To get the next batch of items ,the continuation token should be passed with the subsequent request. If no continuation token is returned, all of the available data has been returned.
+Requests for the first page of data should not contain a continuation token. To get the next batch of items, the continuation token should be passed with the subsequent request. If no continuation token is returned, all of the available data has been returned.
 
-Initial request to paged APIs should not include a continuation. If no limit is supplied the default of 25 will be applied.
+Initial request to paged APIs should not include a continuation. If no limit is supplied, the default of 25 will be applied.
 
 ```python
 import ubiquity
@@ -182,7 +182,7 @@ api_client = ApiClient(ubiquity.Configuration(
 #   fetched from the ethereum network
 signed_tx = tx.create_and_sign(from_, to, key, {
     "api_client": api_client,
-    "platform" platform,
+    "platform": platform,
     "network": network,
     "fee": fee
 })
