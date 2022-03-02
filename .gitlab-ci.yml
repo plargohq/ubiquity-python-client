@@ -3,13 +3,14 @@ stages:
 - test
 - run
 
-# Using 3.7.2 as it's the minimal required version
-image: python:3.7.2
-
 # Change pip's cache directory to be inside the project directory since we can
 # only cache local items.
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_DRIVER: overlay2
+
 
 # Pip's cache doesn't store the python packages
 # https://pip.pypa.io/en/stable/reference/pip_install/#caching
@@ -21,6 +22,7 @@ cache:
     - .cache/pip
 
 build:setup:
+  image: python:3.7.2
   stage: build
   script:
     # Setup virtualenv and dependencies
@@ -34,12 +36,17 @@ build:setup:
       - venv
 
 build:
+  image: docker:19.03.12
   stage: build
+  services:
+    - docker:19.03.12-dind
+  variables:
+    DOCKER_HOST: "tcp://docker:2375"
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_DRIVER: overlay2
   script:
-    - apt-get update -y
-    - apt-get install default-jre -y
-    # TODO -> Have the jar url in a env/config variable somewhere to use it in the Makefile as well
-    - wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.2.0/openapi-generator-cli-5.2.0.jar -O openapi-generator-cli.jar
+    - apk update
+    - apk add git make
     - make > /dev/null
     - git config --global user.name "Mr.Roboto 🤖"
     - git config --global user.email "mrRoboto@blockdaemon.com"
@@ -56,6 +63,7 @@ build:
 
 
 test:
+  image: python:3.7.2
   stage: test
   script:
     #- source venv/bin/activate
@@ -66,6 +74,7 @@ test:
     - build
 
 run:
+  image: python:3.7.2
   stage: run
   script:
     - python setup.py bdist_wheel
