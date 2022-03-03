@@ -17,6 +17,7 @@ To install using virtual environments:
 ```bash
 $ python -m venv env
 $ source testenv/bin/activate
+$ pip install -r requirements.txt
 $ pip install -e .
 ```
 
