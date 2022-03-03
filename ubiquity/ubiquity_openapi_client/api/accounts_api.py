@@ -30,6 +30,7 @@ from ubiquity.ubiquity_openapi_client.model.balances_map_v1 import BalancesMapV1
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from ubiquity.ubiquity_openapi_client.model.report import Report
 from ubiquity.ubiquity_openapi_client.model.tx_page import TxPage
+from ubiquity.ubiquity_openapi_client.model.tx_page_v1 import TxPageV1
 
 
 class AccountsApi(object):
@@ -830,7 +831,7 @@ class AccountsApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                TxPage
+                TxPageV1
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -863,11 +864,11 @@ class AccountsApi(object):
 
         self.get_txs_by_address = _Endpoint(
             settings={
-                'response_type': (TxPage,),
+                'response_type': (TxPageV1,),
                 'auth': [
                     'bearerAuth'
                 ],
-                'endpoint_path': '/v2/{platform}/{network}/account/{address}/txs',
+                'endpoint_path': '/v1/{platform}/{network}/account/{address}/txs',
                 'operation_id': 'get_txs_by_address',
                 'http_method': 'GET',
                 'servers': None,
@@ -1116,4 +1117,174 @@ class AccountsApi(object):
             },
             api_client=api_client,
             callable=__v2_get_report_by_address
+        )
+
+        def __v2_get_txs_by_address(
+            self,
+            platform,
+            network,
+            address,
+            **kwargs
+        ):
+            """Transactions Of Address  # noqa: E501
+
+            Gets transactions that an address was involved with, from newest to oldest. This call uses pagination.   # noqa: E501
+            This method makes a synchronous HTTP request by default. To make an
+            asynchronous HTTP request, please pass async_req=True
+
+            >>> thread = api.v2_get_txs_by_address(platform, network, address, async_req=True)
+            >>> result = thread.get()
+
+            Args:
+                platform (str): Coin platform handle
+                network (str): Which network to target. Available networks can be found with /{platform}
+                address (str): Account address
+
+            Keyword Args:
+                order (str): Pagination order. [optional]
+                continuation (str): Continuation token from earlier response. [optional]
+                limit (int): Max number of items to return in a response. Defaults to 25 and is capped at 100. . [optional]
+                assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
+                _return_http_data_only (bool): response data without head status
+                    code and headers. Default is True.
+                _preload_content (bool): if False, the urllib3.HTTPResponse object
+                    will be returned without reading/decoding response data.
+                    Default is True.
+                _request_timeout (int/float/tuple): timeout setting for this request. If
+                    one number provided, it will be total request timeout. It can also
+                    be a pair (tuple) of (connection, read) timeouts.
+                    Default is None.
+                _check_input_type (bool): specifies if type checking
+                    should be done one the data sent to the server.
+                    Default is True.
+                _check_return_type (bool): specifies if type checking
+                    should be done one the data received from the server.
+                    Default is True.
+                _host_index (int/None): specifies the index of the server
+                    that we want to use.
+                    Default is read from the configuration.
+                async_req (bool): execute request asynchronously
+
+            Returns:
+                TxPage
+                    If the method is called asynchronously, returns the request
+                    thread.
+            """
+            kwargs['async_req'] = kwargs.get(
+                'async_req', False
+            )
+            kwargs['_return_http_data_only'] = kwargs.get(
+                '_return_http_data_only', True
+            )
+            kwargs['_preload_content'] = kwargs.get(
+                '_preload_content', True
+            )
+            kwargs['_request_timeout'] = kwargs.get(
+                '_request_timeout', None
+            )
+            kwargs['_check_input_type'] = kwargs.get(
+                '_check_input_type', True
+            )
+            kwargs['_check_return_type'] = kwargs.get(
+                '_check_return_type', True
+            )
+            kwargs['_host_index'] = kwargs.get('_host_index')
+            kwargs['platform'] = \
+                platform
+            kwargs['network'] = \
+                network
+            kwargs['address'] = \
+                address
+            return self.call_with_http_info(**kwargs)
+
+        self.v2_get_txs_by_address = _Endpoint(
+            settings={
+                'response_type': (TxPage,),
+                'auth': [
+                    'bearerAuth'
+                ],
+                'endpoint_path': '/v2/{platform}/{network}/account/{address}/txs',
+                'operation_id': 'v2_get_txs_by_address',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'platform',
+                    'network',
+                    'address',
+                    'order',
+                    'continuation',
+                    'limit',
+                    'assets',
+                ],
+                'required': [
+                    'platform',
+                    'network',
+                    'address',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                    'order',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('order',): {
+
+                        "DESC": "desc",
+                        "ASC": "asc"
+                    },
+                },
+                'openapi_types': {
+                    'platform':
+                        (str,),
+                    'network':
+                        (str,),
+                    'address':
+                        (str,),
+                    'order':
+                        (str,),
+                    'continuation':
+                        (str,),
+                    'limit':
+                        (int,),
+                    'assets':
+                        (str,),
+                },
+                'attribute_map': {
+                    'platform': 'platform',
+                    'network': 'network',
+                    'address': 'address',
+                    'order': 'order',
+                    'continuation': 'continuation',
+                    'limit': 'limit',
+                    'assets': 'assets',
+                },
+                'location_map': {
+                    'platform': 'path',
+                    'network': 'path',
+                    'address': 'path',
+                    'order': 'query',
+                    'continuation': 'query',
+                    'limit': 'query',
+                    'assets': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json',
+                    'application/problem+json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client,
+            callable=__v2_get_txs_by_address
         )

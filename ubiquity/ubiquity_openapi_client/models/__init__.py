@@ -23,6 +23,7 @@ from ubiquity.ubiquity_openapi_client.model.coin import Coin
 from ubiquity.ubiquity_openapi_client.model.currency import Currency
 from ubiquity.ubiquity_openapi_client.model.effect import Effect
 from ubiquity.ubiquity_openapi_client.model.error import Error
+from ubiquity.ubiquity_openapi_client.model.event import Event
 from ubiquity.ubiquity_openapi_client.model.fee import Fee
 from ubiquity.ubiquity_openapi_client.model.fee_estimate import FeeEstimate
 from ubiquity.ubiquity_openapi_client.model.fee_estimate_estimated_fees import FeeEstimateEstimatedFees
@@ -49,5 +50,7 @@ from ubiquity.ubiquity_openapi_client.model.tx import Tx
 from ubiquity.ubiquity_openapi_client.model.tx_confirmation import TxConfirmation
 from ubiquity.ubiquity_openapi_client.model.tx_destination import TxDestination
 from ubiquity.ubiquity_openapi_client.model.tx_page import TxPage
+from ubiquity.ubiquity_openapi_client.model.tx_page_v1 import TxPageV1
 from ubiquity.ubiquity_openapi_client.model.tx_receipt import TxReceipt
+from ubiquity.ubiquity_openapi_client.model.tx_v1 import TxV1
 from ubiquity.ubiquity_openapi_client.model.utxo import Utxo
