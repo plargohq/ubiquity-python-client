@@ -84,7 +84,7 @@ class TestAccountsApi(unittest.TestCase):
 
             test.mock.setup_mock_server(self.api_client.configuration.host, [{
                 "req_url":
-                f"/v2/{platform}/{network}/account/{account_id}/txs",
+                f"/v1/{platform}/{network}/account/{account_id}/txs",
                 "method":
                 httpretty.GET,
                 "status":
