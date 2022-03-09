@@ -12,10 +12,10 @@ To install in your global Python installation with [pip](https://pip.pypa.io/en/
 $ pip install -e .
 ```
 
-To install using virtual environments:
+To install using a virtual environment called `testenv`:
 
 ```bash
-$ python -m venv env
+$ python -m venv testenv
 $ source testenv/bin/activate
 $ pip install -r requirements.txt
 $ pip install -e .
