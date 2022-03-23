@@ -165,7 +165,7 @@ key = "<key>"
 
 # Note: Ethereum transactions don't contain an input address
 from_ = [{
-    "index: 3" # nonce
+    "index": 3 # nonce
 }]
 to = [{
     "address": "<destination address>",
