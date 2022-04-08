@@ -16,6 +16,7 @@
 # Import APIs into API package:
 from ubiquity.ubiquity_openapi_client.api.accounts_api import AccountsApi
 from ubiquity.ubiquity_openapi_client.api.blocks_api import BlocksApi
+from ubiquity.ubiquity_openapi_client.api.nft_api import NFTApi
 from ubiquity.ubiquity_openapi_client.api.platforms_api import PlatformsApi
 from ubiquity.ubiquity_openapi_client.api.sync_api import SyncApi
 from ubiquity.ubiquity_openapi_client.api.transactions_api import TransactionsApi

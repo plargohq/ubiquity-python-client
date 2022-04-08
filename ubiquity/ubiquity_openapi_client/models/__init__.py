@@ -13,6 +13,9 @@ from ubiquity.ubiquity_openapi_client.model.accounts_balances_map import Account
 from ubiquity.ubiquity_openapi_client.model.accounts_balances_map_v1 import AccountsBalancesMapV1
 from ubiquity.ubiquity_openapi_client.model.accounts_obj import AccountsObj
 from ubiquity.ubiquity_openapi_client.model.algorand_meta import AlgorandMeta
+from ubiquity.ubiquity_openapi_client.model.asset import Asset
+from ubiquity.ubiquity_openapi_client.model.asset_trait import AssetTrait
+from ubiquity.ubiquity_openapi_client.model.asset_wallet import AssetWallet
 from ubiquity.ubiquity_openapi_client.model.balance_change import BalanceChange
 from ubiquity.ubiquity_openapi_client.model.balance_v1 import BalanceV1
 from ubiquity.ubiquity_openapi_client.model.balances_map import BalancesMap
@@ -20,6 +23,8 @@ from ubiquity.ubiquity_openapi_client.model.balances_map_v1 import BalancesMapV1
 from ubiquity.ubiquity_openapi_client.model.block import Block
 from ubiquity.ubiquity_openapi_client.model.block_identifier import BlockIdentifier
 from ubiquity.ubiquity_openapi_client.model.coin import Coin
+from ubiquity.ubiquity_openapi_client.model.collection import Collection
+from ubiquity.ubiquity_openapi_client.model.contract import Contract
 from ubiquity.ubiquity_openapi_client.model.currency import Currency
 from ubiquity.ubiquity_openapi_client.model.effect import Effect
 from ubiquity.ubiquity_openapi_client.model.error import Error
@@ -27,10 +32,17 @@ from ubiquity.ubiquity_openapi_client.model.event import Event
 from ubiquity.ubiquity_openapi_client.model.fee import Fee
 from ubiquity.ubiquity_openapi_client.model.fee_estimate import FeeEstimate
 from ubiquity.ubiquity_openapi_client.model.fee_estimate_estimated_fees import FeeEstimateEstimatedFees
+from ubiquity.ubiquity_openapi_client.model.get_collection_response import GetCollectionResponse
+from ubiquity.ubiquity_openapi_client.model.list_assets_response import ListAssetsResponse
+from ubiquity.ubiquity_openapi_client.model.list_collection_response import ListCollectionResponse
+from ubiquity.ubiquity_openapi_client.model.list_event_response import ListEventResponse
+from ubiquity.ubiquity_openapi_client.model.meta import Meta
 from ubiquity.ubiquity_openapi_client.model.multi_transfer import MultiTransfer
 from ubiquity.ubiquity_openapi_client.model.multi_transfer_operation import MultiTransferOperation
+from ubiquity.ubiquity_openapi_client.model.nft_event import NFTEvent
 from ubiquity.ubiquity_openapi_client.model.native_currency import NativeCurrency
 from ubiquity.ubiquity_openapi_client.model.operation import Operation
+from ubiquity.ubiquity_openapi_client.model.paging import Paging
 from ubiquity.ubiquity_openapi_client.model.platform_detail import PlatformDetail
 from ubiquity.ubiquity_openapi_client.model.platform_endpoint import PlatformEndpoint
 from ubiquity.ubiquity_openapi_client.model.platforms_overview import PlatformsOverview
