@@ -56,8 +56,8 @@ class NFTApi(object):
             >>> result = thread.get()
 
             Args:
-                protocol (int): Mapped to URL path
-                network (int): Mapped to URL path
+                protocol (str): Coin platform handle
+                network (str): Which network to target
                 id (str): Mapped to URL query parameter 'uuid'
 
             Keyword Args:
@@ -149,9 +149,9 @@ class NFTApi(object):
                 },
                 'openapi_types': {
                     'protocol':
-                        (int,),
+                        (str,),
                     'network':
-                        (int,),
+                        (str,),
                     'id':
                         (str,),
                 },
@@ -178,110 +178,6 @@ class NFTApi(object):
             callable=__explorer_get_collection
         )
 
-        def __explorer_get_status(
-            self,
-            **kwargs
-        ):
-            """explorer_get_status  # noqa: E501
-
-            This method makes a synchronous HTTP request by default. To make an
-            asynchronous HTTP request, please pass async_req=True
-
-            >>> thread = api.explorer_get_status(async_req=True)
-            >>> result = thread.get()
-
-
-            Keyword Args:
-                _return_http_data_only (bool): response data without head status
-                    code and headers. Default is True.
-                _preload_content (bool): if False, the urllib3.HTTPResponse object
-                    will be returned without reading/decoding response data.
-                    Default is True.
-                _request_timeout (int/float/tuple): timeout setting for this request. If
-                    one number provided, it will be total request timeout. It can also
-                    be a pair (tuple) of (connection, read) timeouts.
-                    Default is None.
-                _check_input_type (bool): specifies if type checking
-                    should be done one the data sent to the server.
-                    Default is True.
-                _check_return_type (bool): specifies if type checking
-                    should be done one the data received from the server.
-                    Default is True.
-                _host_index (int/None): specifies the index of the server
-                    that we want to use.
-                    Default is read from the configuration.
-                async_req (bool): execute request asynchronously
-
-            Returns:
-                None
-                    If the method is called asynchronously, returns the request
-                    thread.
-            """
-            kwargs['async_req'] = kwargs.get(
-                'async_req', False
-            )
-            kwargs['_return_http_data_only'] = kwargs.get(
-                '_return_http_data_only', True
-            )
-            kwargs['_preload_content'] = kwargs.get(
-                '_preload_content', True
-            )
-            kwargs['_request_timeout'] = kwargs.get(
-                '_request_timeout', None
-            )
-            kwargs['_check_input_type'] = kwargs.get(
-                '_check_input_type', True
-            )
-            kwargs['_check_return_type'] = kwargs.get(
-                '_check_return_type', True
-            )
-            kwargs['_host_index'] = kwargs.get('_host_index')
-            return self.call_with_http_info(**kwargs)
-
-        self.explorer_get_status = _Endpoint(
-            settings={
-                'response_type': None,
-                'auth': [
-                    'bearerAuth'
-                ],
-                'endpoint_path': '/v1/status',
-                'operation_id': 'explorer_get_status',
-                'http_method': 'GET',
-                'servers': None,
-            },
-            params_map={
-                'all': [
-                ],
-                'required': [],
-                'nullable': [
-                ],
-                'enum': [
-                ],
-                'validation': [
-                ]
-            },
-            root_map={
-                'validations': {
-                },
-                'allowed_values': {
-                },
-                'openapi_types': {
-                },
-                'attribute_map': {
-                },
-                'location_map': {
-                },
-                'collection_format_map': {
-                }
-            },
-            headers_map={
-                'accept': [],
-                'content_type': [],
-            },
-            api_client=api_client,
-            callable=__explorer_get_status
-        )
-
         def __explorer_list_assets(
             self,
             protocol,
@@ -297,8 +193,8 @@ class NFTApi(object):
             >>> result = thread.get()
 
             Args:
-                protocol (int): Mapped to URL path
-                network (int): Mapped to URL path
+                protocol (str): Coin platform handle
+                network (str): Which network to target
 
             Keyword Args:
                 wallet_address (str): Mapped to URL query parameter `wallet_address`. [optional]
@@ -306,7 +202,7 @@ class NFTApi(object):
                 token_id_value (int): The int64 value.. [optional]
                 collection_name (str): Mapped to URL query parameter `collection_name`. [optional]
                 sort_by (str): One of: name, token_id, mint_date. [optional]
-                order (int): Mapped to URL query parameter `order` One of: asc, desc. [optional]
+                order (str): Mapped to URL query parameter `order` One of: asc, desc. [optional]
                 page_size (int): Mapped to URL query parameter `page_size`. [optional]
                 page_token (str): Mapped to URL query parameter `page_token` base64 encoded cursor. [optional]
                 attributes ([str]): Mapped to URL query parameter `attributes`. [optional]
@@ -403,9 +299,9 @@ class NFTApi(object):
                 },
                 'openapi_types': {
                     'protocol':
-                        (int,),
+                        (str,),
                     'network':
-                        (int,),
+                        (str,),
                     'wallet_address':
                         (str,),
                     'contract_address':
@@ -417,7 +313,7 @@ class NFTApi(object):
                     'sort_by':
                         (str,),
                     'order':
-                        (int,),
+                        (str,),
                     'page_size':
                         (int,),
                     'page_token':
@@ -480,14 +376,14 @@ class NFTApi(object):
             >>> result = thread.get()
 
             Args:
-                protocol (int): Mapped to URL path
-                network (int): Mapped to URL path
+                protocol (str): Coin platform handle
+                network (str): Which network to target
 
             Keyword Args:
                 contract_address ([str]): Mapped to URL query parameter 'contract_address'. [optional]
                 collection_name ([str]): Mapped to URL query parameter 'collection_name'. [optional]
                 sort_by (str): Sort by one of: name. [optional]
-                order (int): Mapped to URL query parameter `order` One of: asc, desc. [optional]
+                order (str): Mapped to URL query parameter `order` One of: asc, desc. [optional]
                 page_size (int): Mapped to URL query parameter `page_size`. [optional]
                 page_token (str): Mapped to URL query parameter `page_token` base64 encoded cursor. [optional]
                 _return_http_data_only (bool): response data without head status
@@ -580,9 +476,9 @@ class NFTApi(object):
                 },
                 'openapi_types': {
                     'protocol':
-                        (int,),
+                        (str,),
                     'network':
-                        (int,),
+                        (str,),
                     'contract_address':
                         ([str],),
                     'collection_name':
@@ -590,7 +486,7 @@ class NFTApi(object):
                     'sort_by':
                         (str,),
                     'order':
-                        (int,),
+                        (str,),
                     'page_size':
                         (int,),
                     'page_token':
@@ -646,8 +542,8 @@ class NFTApi(object):
             >>> result = thread.get()
 
             Args:
-                protocol (int): mapped to URL path
-                network (int): mapped to URL path
+                protocol (str): Coin platform handle
+                network (str): Which network to target
 
             Keyword Args:
                 contract_address (str): mapped to URL query parameter 'contract_address'. [optional]
@@ -655,7 +551,7 @@ class NFTApi(object):
                 token_id (int): mapped to URL query parameter 'token_id'. [optional]
                 event_type (str): mapped to URL query parameter 'event_type'. [optional]
                 sort_by (str): Sort by one of: timestamp. [optional]
-                order (int): Mapped to URL query parameter `order` One of: asc, desc. [optional]
+                order (str): Mapped to URL query parameter `order` One of: asc, desc. [optional]
                 page_size (int): Mapped to URL query parameter `page_size`. [optional]
                 page_token (str): Mapped to URL query parameter `page_token` base64 encoded cursor. [optional]
                 _return_http_data_only (bool): response data without head status
@@ -750,9 +646,9 @@ class NFTApi(object):
                 },
                 'openapi_types': {
                     'protocol':
-                        (int,),
+                        (str,),
                     'network':
-                        (int,),
+                        (str,),
                     'contract_address':
                         (str,),
                     'wallet_address':
@@ -764,7 +660,7 @@ class NFTApi(object):
                     'sort_by':
                         (str,),
                     'order':
-                        (int,),
+                        (str,),
                     'page_size':
                         (int,),
                     'page_token':
