@@ -1,5 +1,5 @@
-{
-  "algorand/native/algo": {
+[
+  {
     "currency": {
       "asset_path": "algorand/native/algo",
       "symbol": "ALGO",
@@ -7,6 +7,9 @@
       "decimals": 6,
       "type": "native"
     },
-    "balance": "457300830"
+    "confirmed_balance": "457300830",
+    "pending_balance": "457300830",
+    "confirmed_nonce": 2418,
+    "confirmed_block": 13860799
   }
-}
+]

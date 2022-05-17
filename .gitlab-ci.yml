@@ -48,16 +48,16 @@ build:
     - apk update
     - apk add git make
     - make > /dev/null
-    - git config --global user.name "Mr.Roboto 🤖"
-    - git config --global user.email "mrRoboto@blockdaemon.com"
-    - git add ./ubiquity ./docs
-    - git status | grep "nothing to commit, working tree clean\|nothing \(added \).*to commit" || git commit -a -m "UB-00 Updating generated code with changes from ${CI_JOB_ID}"
-    - git push http://gitlab-ci-token:${AUTH_TOKEN_UBIQUITY_PYTHON_CLIENT}@gitlab.com/Blockdaemon/ubiquity/ubiquity-python-client.git HEAD:master
-  only:
-      refs:
-        - master
-      changes:
-        - spec/openapi.yaml
+    # - git config --global user.name "Mr.Roboto 🤖"
+    # - git config --global user.email "mrRoboto@blockdaemon.com"
+    # - git add ./ubiquity ./docs
+    # - git status | grep "nothing to commit, working tree clean\|nothing \(added \).*to commit" || git commit -a -m "UB-00 Updating generated code with changes from ${CI_JOB_ID}"
+    # - git push http://gitlab-ci-token:${AUTH_TOKEN_UBIQUITY_PYTHON_CLIENT}@gitlab.com/Blockdaemon/ubiquity/ubiquity-python-client.git HEAD:master
+  #only:
+  #    refs:
+  #      - master
+  #    changes:
+  #      - spec/openapi.yaml
   dependencies:
     - build:setup
 

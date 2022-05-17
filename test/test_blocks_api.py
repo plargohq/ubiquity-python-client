@@ -66,7 +66,7 @@ class TestBlocksApi(unittest.TestCase):
             f'blocks_api/{platform}.json')
         endpoints = [{
             "req_url":
-            f"/v2/{platform}/{network}/{block_api_path}/{self.block_ids[platform] if path == 'id' else self.block_numbers[platform]}",
+            f"/{platform}/{network}/{block_api_path}/{self.block_ids[platform] if path == 'id' else self.block_numbers[platform]}",
             "method":
             httpretty.GET,
             "status":

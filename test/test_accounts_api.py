@@ -26,6 +26,7 @@ import urllib3
 
 class TestAccountsApi(unittest.TestCase):
     """AccountsApi unit test stubs"""
+
     def setUp(self):
         self.api_client = ApiClient(Configuration())
         self.api_instance = accounts_api.AccountsApi(
@@ -34,12 +35,12 @@ class TestAccountsApi(unittest.TestCase):
         self.platforms_v1 = test.utils.get_platforms_v1()
         self.accounts_by_platform = {
             "algorand":
-            "5K6J3Z54656IR7YY65WNJT54UW6RBZZYL5LWQUTG4RWOTRTRBE2MR2AODQ",
+                "5K6J3Z54656IR7YY65WNJT54UW6RBZZYL5LWQUTG4RWOTRTRBE2MR2AODQ",
             "bitcoin": "bc1q0e3vshzcp8kntj2ynqaxt32sqshqf36tl8xdmz",
             "ethereum": "0x30B2f83e291f952850DFB13380F6c71b24FDF97c",
             "polkadot": "1622aMEugx8d9FMEPJaknxCR5eUXSCJA5GANhdxYxwgA29vH",
             "stellar":
-            "GDJ5VRKEVCDDFQPI3UYAJPU35NHPCML3JCFYH7J456GAOAL3NKVSE7YM",
+                "GDJ5VRKEVCDDFQPI3UYAJPU35NHPCML3JCFYH7J456GAOAL3NKVSE7YM",
             "xrp": "rh3VLyj1GbQjX7eA15BwUagEhSrPHmLkSR"
         }
 
@@ -57,19 +58,19 @@ class TestAccountsApi(unittest.TestCase):
         assert len(supported_platforms) > 0
         for platform in supported_platforms:
             account_id = self.accounts_by_platform[platform]
-
+            print(f"/{platform}/{network}/account/{account_id}")
             test.mock.setup_mock_server(self.api_client.configuration.host, [{
                 "req_url":
-                f"/v2/{platform}/{network}/account/{account_id}",
+                    f"/{platform}/{network}/account/{account_id}",
                 "method":
-                httpretty.GET,
+                    httpretty.GET,
                 "status":
-                200,
+                    200,
                 "response_data":
-                test.mock.get_mock_file_content(
-                    f'accounts_api/{platform}_account_{account_id}.json')
+                    test.mock.get_mock_file_content(
+                        f'accounts_api/{platform}_account_{account_id}.json')
             }])
-            _ = self.api_instance.get_balances_by_address(platform, network, account_id)
+            _ = self.api_instance.get_list_of_balances_by_address(platform, network, account_id)
 
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_get_account_txs(self):
@@ -84,14 +85,14 @@ class TestAccountsApi(unittest.TestCase):
 
             test.mock.setup_mock_server(self.api_client.configuration.host, [{
                 "req_url":
-                f"/v1/{platform}/{network}/account/{account_id}/txs",
+                    f"/{platform}/{network}/account/{account_id}/txs",
                 "method":
-                httpretty.GET,
+                    httpretty.GET,
                 "status":
-                200,
+                    200,
                 "response_data":
-                test.mock.get_mock_file_content(
-                    f'accounts_api/{platform}_account_{account_id}_txs.json')
+                    test.mock.get_mock_file_content(
+                        f'accounts_api/{platform}_account_{account_id}_txs.json')
             }])
             _ = self.api_instance.get_txs_by_address(platform, network, account_id)
 
@@ -106,14 +107,14 @@ class TestAccountsApi(unittest.TestCase):
             account_id = self.accounts_by_platform[platform]
             test.mock.setup_mock_server(self.api_client.configuration.host, [{
                 "req_url":
-                f"/v1/{platform}/{network}/account/{account_id}",
+                    f"/{platform}/{network}/account/{account_id}",
                 "method":
-                httpretty.GET,
+                    httpretty.GET,
                 "status":
-                200,
+                    200,
                 "response_data":
-                test.mock.get_mock_file_content(
-                    f'accounts_api/{platform}_account_{account_id}.json')
+                    test.mock.get_mock_file_content(
+                        f'accounts_api/{platform}_account_{account_id}.json')
             }])
             _ = self.api_instance.get_list_of_balances_by_address(platform, network, account_id)
 

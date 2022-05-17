@@ -35,7 +35,7 @@ class TestPlatformsApi(unittest.TestCase):
 
         self.get_platform_endpoints = [{
             "req_url":
-            f"/v2/{platform}/{network}",
+            f"/{platform}/{network}/",
             "method":
             httpretty.GET,
             "status":
@@ -56,7 +56,7 @@ class TestPlatformsApi(unittest.TestCase):
 
         for platform in self.platforms:
             try:
-                _ = self.api_instance.get_platform(platform, network)
+                _ = self.api_instance.get_platform_endpoints(platform, network)
             except Exception as e:
                 raise e
 
@@ -64,7 +64,7 @@ class TestPlatformsApi(unittest.TestCase):
     def test_platforms_overview(self):
         test.mock.setup_mock_server(self.api_client.configuration.host, [{
             "req_url":
-            f"/v2/",
+            f"/",
             "method":
             httpretty.GET,
             "status":
@@ -75,7 +75,7 @@ class TestPlatformsApi(unittest.TestCase):
         }])
 
         try:
-            _ = self.api_instance.get_platforms()
+            _ = self.api_instance.get_platforms_list()
         except Exception as e:
             raise e
 

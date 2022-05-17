@@ -1,107 +1,16 @@
 # ubiquity.ubiquity_openapi_client.TransactionsApi
 
-All URIs are relative to *https://ubiquity.api.blockdaemon.com*
+All URIs are relative to *https://ubiquity.api.blockdaemon.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**estimate_fee**](TransactionsApi.md#estimate_fee) | **GET** /v2/{platform}/{network}/tx/estimate_fee | Get fee estimate
-[**fee_estimate**](TransactionsApi.md#fee_estimate) | **GET** /v1/{platform}/{network}/tx/estimate_fee | Get fee estimate
-[**get_tx**](TransactionsApi.md#get_tx) | **GET** /v2/{platform}/{network}/tx/{id} | Transaction By Hash
-[**get_tx_confirmations**](TransactionsApi.md#get_tx_confirmations) | **GET** /v1/{platform}/{network}/tx/{id}/confirmations | Transaction confirmations By Hash
-[**get_txs**](TransactionsApi.md#get_txs) | **GET** /v2/{platform}/{network}/txs | All Transactions
-[**tx_send**](TransactionsApi.md#tx_send) | **POST** /v2/{platform}/{network}/tx/send | Submit a signed transaction
+[**fee_estimate**](TransactionsApi.md#fee_estimate) | **GET** /{platform}/{network}/tx/estimate_fee | Get fee estimate
+[**get_tx**](TransactionsApi.md#get_tx) | **GET** /{platform}/{network}/tx/{id} | Transaction By Hash
+[**get_tx_by_hash_and_index**](TransactionsApi.md#get_tx_by_hash_and_index) | **GET** /{platform}/{network}/tx/{id}/{index} | Transaction output by hash and index
+[**get_tx_confirmations**](TransactionsApi.md#get_tx_confirmations) | **GET** /{platform}/{network}/tx/{id}/confirmations | Transaction confirmations By Hash
+[**get_txs**](TransactionsApi.md#get_txs) | **GET** /{platform}/{network}/txs | Latest transactions of a protocol
+[**tx_send**](TransactionsApi.md#tx_send) | **POST** /{platform}/{network}/tx/send | Submit a signed transaction
 
-
-# **estimate_fee**
-> str estimate_fee(platform, network)
-
-Get fee estimate
-
-Get a fee estimation in decimals from the network. If supported by the platform, the number of blocks used to make the estimation can be customized by the confirmed_within_blocks query parameter. 
-
-### Example
-
-* Bearer (Opaque) Authentication (bearerAuth):
-```python
-import time
-import ubiquity.ubiquity_openapi_client
-from ubiquity.ubiquity_openapi_client.api import transactions_api
-from ubiquity.ubiquity_openapi_client.model.error import Error
-from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization (Opaque): bearerAuth
-configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    access_token = 'YOUR_BEARER_TOKEN'
-)
-
-# Enter a context with an instance of the API client
-with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = transactions_api.TransactionsApi(api_client)
-    platform = "bitcoin" # str | Coin platform handle
-    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
-    confirmed_within_blocks = 10 # int | The number of blocks you would like the transaction to be processed within. Lower numbers produce higher fees.  (optional) if omitted the server will use the default value of 10
-
-    # example passing only required values which don't have defaults set
-    try:
-        # Get fee estimate
-        api_response = api_instance.estimate_fee(platform, network)
-        pprint(api_response)
-    except ubiquity.ubiquity_openapi_client.ApiException as e:
-        print("Exception when calling TransactionsApi->estimate_fee: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Get fee estimate
-        api_response = api_instance.estimate_fee(platform, network, confirmed_within_blocks=confirmed_within_blocks)
-        pprint(api_response)
-    except ubiquity.ubiquity_openapi_client.ApiException as e:
-        print("Exception when calling TransactionsApi->estimate_fee: %s\n" % e)
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **platform** | **str**| Coin platform handle |
- **network** | **str**| Which network to target. Available networks can be found with /{platform} |
- **confirmed_within_blocks** | **int**| The number of blocks you would like the transaction to be processed within. Lower numbers produce higher fees.  | [optional] if omitted the server will use the default value of 10
-
-### Return type
-
-**str**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, application/problem+json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | A fee estimation from bitcoin (satoshis) |  -  |
-**401** | Invalid or expired token |  -  |
-**429** | Rate limit exceeded |  -  |
-**400** | Bad Request |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fee_estimate**
 > FeeEstimate fee_estimate(platform, network)
@@ -120,10 +29,10 @@ from ubiquity.ubiquity_openapi_client.api import transactions_api
 from ubiquity.ubiquity_openapi_client.model.fee_estimate import FeeEstimate
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com"
+    host = "https://ubiquity.api.blockdaemon.com/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -198,10 +107,10 @@ from ubiquity.ubiquity_openapi_client.api import transactions_api
 from ubiquity.ubiquity_openapi_client.model.tx import Tx
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com"
+    host = "https://ubiquity.api.blockdaemon.com/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -265,6 +174,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_tx_by_hash_and_index**
+> TxOutput get_tx_by_hash_and_index(platform, network, id, index)
+
+Transaction output by hash and index
+
+### Example
+
+* Bearer (Opaque) Authentication (bearerAuth):
+```python
+import time
+import ubiquity.ubiquity_openapi_client
+from ubiquity.ubiquity_openapi_client.api import transactions_api
+from ubiquity.ubiquity_openapi_client.model.tx_output import TxOutput
+from ubiquity.ubiquity_openapi_client.model.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = ubiquity.ubiquity_openapi_client.Configuration(
+    host = "https://ubiquity.api.blockdaemon.com/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization (Opaque): bearerAuth
+configuration = ubiquity.ubiquity_openapi_client.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = transactions_api.TransactionsApi(api_client)
+    platform = "bitcoin" # str | Coin platform handle
+    network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
+    id = "0xF00Fa860473130C1df10707223E66Cb4B839B165" # str | Transaction ID/Hash
+    index = 0 # int | Transaction output index
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Transaction output by hash and index
+        api_response = api_instance.get_tx_by_hash_and_index(platform, network, id, index)
+        pprint(api_response)
+    except ubiquity.ubiquity_openapi_client.ApiException as e:
+        print("Exception when calling TransactionsApi->get_tx_by_hash_and_index: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **platform** | **str**| Coin platform handle |
+ **network** | **str**| Which network to target. Available networks can be found with /{platform} |
+ **id** | **str**| Transaction ID/Hash |
+ **index** | **int**| Transaction output index |
+
+### Return type
+
+[**TxOutput**](TxOutput.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Transaction output |  -  |
+**400** | Bad Request |  -  |
+**401** | Invalid or expired token |  -  |
+**404** | Not Found |  -  |
+**429** | Rate limit exceeded |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_tx_confirmations**
 > TxConfirmation get_tx_confirmations(platform, network, id)
 
@@ -280,10 +273,10 @@ from ubiquity.ubiquity_openapi_client.api import transactions_api
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from ubiquity.ubiquity_openapi_client.model.tx_confirmation import TxConfirmation
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com"
+    host = "https://ubiquity.api.blockdaemon.com/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -350,9 +343,9 @@ Name | Type | Description  | Notes
 # **get_txs**
 > TxPage get_txs(platform, network)
 
-All Transactions
+Latest transactions of a protocol
 
-Get all transactions on the platform, starting with the lastest one. Each call returns a slice of the entire list. Use the returned continuation token to get the next part.
+Gets transactions from oldest to newest. This call uses pagination. 
 
 ### Example
 
@@ -364,10 +357,10 @@ from ubiquity.ubiquity_openapi_client.api import transactions_api
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from ubiquity.ubiquity_openapi_client.model.tx_page import TxPage
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com"
+    host = "https://ubiquity.api.blockdaemon.com/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -389,11 +382,10 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     order = "desc" # str | Pagination order (optional)
     continuation = "8185.123" # str | Continuation token from earlier response (optional)
     limit = 25 # int | Max number of items to return in a response. Defaults to 25 and is capped at 100.  (optional)
-    assets = "ethereum/native/eth" # str | Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. (optional)
 
     # example passing only required values which don't have defaults set
     try:
-        # All Transactions
+        # Latest transactions of a protocol
         api_response = api_instance.get_txs(platform, network)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
@@ -402,8 +394,8 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # All Transactions
-        api_response = api_instance.get_txs(platform, network, order=order, continuation=continuation, limit=limit, assets=assets)
+        # Latest transactions of a protocol
+        api_response = api_instance.get_txs(platform, network, order=order, continuation=continuation, limit=limit)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling TransactionsApi->get_txs: %s\n" % e)
@@ -419,7 +411,6 @@ Name | Type | Description  | Notes
  **order** | **str**| Pagination order | [optional]
  **continuation** | **str**| Continuation token from earlier response | [optional]
  **limit** | **int**| Max number of items to return in a response. Defaults to 25 and is capped at 100.  | [optional]
- **assets** | **str**| Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. | [optional]
 
 ### Return type
 
@@ -439,6 +430,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Transactions |  -  |
+**400** | Invalid address |  -  |
 **401** | Invalid or expired token |  -  |
 **403** | Invalid continuation |  -  |
 **429** | Rate limit exceeded |  -  |
@@ -463,10 +455,10 @@ from ubiquity.ubiquity_openapi_client.model.signed_tx import SignedTx
 from ubiquity.ubiquity_openapi_client.model.tx_receipt import TxReceipt
 from ubiquity.ubiquity_openapi_client.model.error import Error
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com"
+    host = "https://ubiquity.api.blockdaemon.com/v1"
 )
 
 # The client must configure the authentication and authorization parameters

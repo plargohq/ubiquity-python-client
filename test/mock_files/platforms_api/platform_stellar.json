@@ -3,7 +3,6 @@
   "source": "Stellar Horizon API",
   "genesis_number": 1,
   "endpoints": [
-    "/account/:address",
     "/account/:address/report",
     "/account/:address/txs",
     "/block/:number",

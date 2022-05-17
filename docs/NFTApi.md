@@ -1,13 +1,13 @@
 # ubiquity.ubiquity_openapi_client.NFTApi
 
-All URIs are relative to *https://ubiquity.api.blockdaemon.com*
+All URIs are relative to *https://ubiquity.api.blockdaemon.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**explorer_get_collection**](NFTApi.md#explorer_get_collection) | **GET** /v1/nft/{protocol}/{network}/collection/{id} | 
-[**explorer_list_assets**](NFTApi.md#explorer_list_assets) | **GET** /v1/nft/{protocol}/{network}/assets | 
-[**explorer_list_collections**](NFTApi.md#explorer_list_collections) | **GET** /v1/nft/{protocol}/{network}/collections | 
-[**explorer_list_events**](NFTApi.md#explorer_list_events) | **GET** /v1/nft/{protocol}/{network}/events | 
+[**explorer_get_collection**](NFTApi.md#explorer_get_collection) | **GET** /nft/{protocol}/{network}/collection/{id} | 
+[**explorer_list_assets**](NFTApi.md#explorer_list_assets) | **GET** /nft/{protocol}/{network}/assets | 
+[**explorer_list_collections**](NFTApi.md#explorer_list_collections) | **GET** /nft/{protocol}/{network}/collections | 
+[**explorer_list_events**](NFTApi.md#explorer_list_events) | **GET** /nft/{protocol}/{network}/events | 
 
 
 # **explorer_get_collection**
@@ -24,10 +24,10 @@ import ubiquity.ubiquity_openapi_client
 from ubiquity.ubiquity_openapi_client.api import nft_api
 from ubiquity.ubiquity_openapi_client.model.get_collection_response import GetCollectionResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com"
+    host = "https://ubiquity.api.blockdaemon.com/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -100,10 +100,10 @@ import ubiquity.ubiquity_openapi_client
 from ubiquity.ubiquity_openapi_client.api import nft_api
 from ubiquity.ubiquity_openapi_client.model.list_assets_response import ListAssetsResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com"
+    host = "https://ubiquity.api.blockdaemon.com/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -202,10 +202,10 @@ import ubiquity.ubiquity_openapi_client
 from ubiquity.ubiquity_openapi_client.api import nft_api
 from ubiquity.ubiquity_openapi_client.model.list_collection_response import ListCollectionResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com"
+    host = "https://ubiquity.api.blockdaemon.com/v1"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -300,10 +300,10 @@ import ubiquity.ubiquity_openapi_client
 from ubiquity.ubiquity_openapi_client.api import nft_api
 from ubiquity.ubiquity_openapi_client.model.list_event_response import ListEventResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com
+# Defining the host is optional and defaults to https://ubiquity.api.blockdaemon.com/v1
 # See configuration.py for a list of all supported configuration parameters.
 configuration = ubiquity.ubiquity_openapi_client.Configuration(
-    host = "https://ubiquity.api.blockdaemon.com"
+    host = "https://ubiquity.api.blockdaemon.com/v1"
 )
 
 # The client must configure the authentication and authorization parameters

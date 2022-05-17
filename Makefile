@@ -8,6 +8,13 @@ else
 endif
 
 all: clean generate
+
+## generate-common: common function used by generate by docker and java jar
+generate-common:
+
+	/bin/cp -r generated/docs . # use /bin/cp to prevent aliasing from cp to cp -i
+	cp -r generated/ubiquity/ubiquity_openapi_client ubiquity/ # don't do this for the generated library to not overwrite code by mistake
+
 generate:
 	@echo "Generating code..."
 	docker run --rm -v "$$(pwd):/local" \
@@ -18,9 +25,18 @@ generate:
 		-o /local/generated \
 		-c /local/open-api-conf.yaml
 
-	/bin/cp -r generated/docs . # use /bin/cp to prevent aliasing from cp to cp -i
-	cp -r generated/ubiquity/ubiquity_openapi_client ubiquity/ # don't do this for the generated library to not overwrite code by mistake
+	$(MAKE) generate-common
 	
+generate-local-java:
+	@echo "Generating code..."
+	java -jar openapi-generator-cli-5.2.0.jar generate -v \
+		-i spec/openapi.yaml \
+		-g python \
+		-o generated \
+		-c open-api-conf.yaml
+
+	$(MAKE) generate-common
+
 clean_generated:
 	@echo "Cleaning up 'generated' folder..."
 	rm -rf generated

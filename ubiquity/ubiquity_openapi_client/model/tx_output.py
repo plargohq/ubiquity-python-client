@@ -1,9 +1,9 @@
 """
     Ubiquity REST API
 
-    Ubiquity provides a RESTful and uniform way to access blockchain resources, with a rich and reusable model across multiple cryptocurrencies.  [Documentation](https://app.blockdaemon.com/docs/ubiquity)  ### Protocols #### Mainnet The following protocols are currently supported: * bitcoin * ethereum * polkadot * xrp * algorand * stellar * dogecoin * oasis * near * terra * litecoin * bitcoincash * solana  #### Testnet * bitcoin/testnet * ethereum/ropsten * dogecoin/testnet * litecoin/testnet * bitcoincash/testnet  #### Native Ubiquity provides native access to all Blockchain nodes it supports. To access native functionality, use the protocol without the v2 prefix * bitcoin/(mainnet | testnet) - [RPC Documentation](https://developer.bitcoin.org/reference/rpc/) * ethereum/(mainnet | ropsten) - [RPC Documentation](https://ethereum.org/en/developers/docs/apis/json-rpc/) * polkadot/mainnet - [Sidecar API Documentation](https://paritytech.github.io/substrate-api-sidecar/dist/) * polkadot/mainnet/http-rpc - [Polkadot RPC Documentation](https://polkadot.js.org/docs/substrate/rpc/) * algorand/mainnet - [Algod API Documentation](https://developer.algorand.org/docs/reference/rest-apis/algod/v1/) * stellar/mainnet - [Stellar Horizon API Documentation](https://developers.stellar.org/api) * dogecoin/(mainnet | testnet) - [Dogecoin API Documentaion](https://developer.bitcoin.org/reference/rpc/) * oasis/mainnet - [Oasis Rosetta Gateway Documentation](https://www.rosetta-api.org/docs/api_identifiers.html#network-identifier) * near/mainnet - [NEAR RPC Documentation](https://docs.near.org/docs/api/rpc) * terra/mainnet - [Terra RPC Documentation](https://docs.terra.money/docs/develop/how-to/endpoints.html) * litecoin/mainnet - [Litecoin RPC Documentation](https://litecoin.info/index.php/Litecoin_API) * bitcoincash/mainnet - [Bitcoin Cash RPC Documentation](https://docs.bitcoincashnode.org/doc/json-rpc/) * solana/mainnet - [Solana RPC Documentation](https://docs.solana.com/developing/clients/jsonrpc-api)  A full URL example: https://ubiquity.api.blockdaemon.com/bitcoin/mainnet  ##### Pagination Certain resources contain a lot of data, more than what's practical to return for a single request. With the help of pagination, the data is split across multiple responses. Each response returns a subset of the items requested, and a continuation token.  To get the next batch of items, copy the returned continuation token to the continuation query parameter and repeat the request with the new URL. In case no continuation token is returned, there is no more data available.   # noqa: E501
+    Ubiquity provides a RESTful and uniform way to access blockchain resources, with a rich and reusable model across multiple cryptocurrencies.  [Documentation](https://app.blockdaemon.com/docs/ubiquity)  ### Protocols #### Mainnet The following protocols are currently supported: * bitcoin * ethereum * polkadot * xrp * algorand * stellar * dogecoin * oasis * near * terra * litecoin * bitcoincash * tezos  #### Testnet * bitcoin/testnet * ethereum/ropsten * dogecoin/testnet * litecoin/testnet * bitcoincash/testnet  #### Native Ubiquity provides native access to all Blockchain nodes it supports. * bitcoin/(mainnet | testnet) - [RPC Documentation](https://developer.bitcoin.org/reference/rpc/) * ethereum/(mainnet | ropsten) - [RPC Documentation](https://ethereum.org/en/developers/docs/apis/json-rpc/) * polkadot/mainnet - [Sidecar API Documentation](https://paritytech.github.io/substrate-api-sidecar/dist/) * polkadot/mainnet/http-rpc - [Polkadot RPC Documentation](https://polkadot.js.org/docs/substrate/rpc/) * algorand/mainnet - [Algod API Documentation](https://developer.algorand.org/docs/reference/rest-apis/algod/) * stellar/mainnet - [Stellar Horizon API Documentation](https://developers.stellar.org/api) * dogecoin/(mainnet | testnet) - [Dogecoin API Documentaion](https://developer.bitcoin.org/reference/rpc/) * oasis/mainnet - [Oasis Rosetta Gateway Documentation](https://www.rosetta-api.org/docs/api_identifiers.html#network-identifier) * near/mainnet - [NEAR RPC Documentation](https://docs.near.org/docs/api/rpc) * terra/mainnet - [Terra RPC Documentation](https://docs.terra.money/docs/develop/how-to/endpoints.html) * litecoin/mainnet - [Litecoin RPC Documentation](https://litecoin.info/index.php/Litecoin_API) * bitcoincash/mainnet - [Bitcoin Cash RPC Documentation](https://docs.bitcoincashnode.org/doc/json-rpc/) * tezos/mainnet - [Tezos RPC Documentation](https://tezos.gitlab.io/developer/rpc.html)   A full URL example: https://ubiquity.api.blockdaemon.com/v1/bitcoin/mainnet  ##### Pagination Certain resources contain a lot of data, more than what's practical to return for a single request. With the help of pagination, the data is split across multiple responses. Each response returns a subset of the items requested, and a continuation token.  To get the next batch of items, copy the returned continuation token to the continuation query parameter and repeat the request with the new URL. In case no continuation token is returned, there is no more data available.   # noqa: E501
 
-    The version of the OpenAPI document: 2.0.0
+    The version of the OpenAPI document: 3.0.0
     Contact: support@blockdaemon.com
     Generated by: https://openapi-generator.tech
 """
@@ -30,8 +30,12 @@ from ..model_utils import OpenApiModel
 from ubiquity.ubiquity_openapi_client.exceptions import ApiAttributeError
 
 
+def lazy_import():
+    from ubiquity.ubiquity_openapi_client.model.tx_minify import TxMinify
+    globals()['TxMinify'] = TxMinify
 
-class PlatformEndpoint(ModelNormal):
+
+class TxOutput(ModelNormal):
     """NOTE: This class is auto generated by OpenAPI Generator.
     Ref: https://openapi-generator.tech
 
@@ -56,6 +60,10 @@ class PlatformEndpoint(ModelNormal):
     """
 
     allowed_values = {
+        ('status',): {
+            'MINED': "mined",
+            'UNKNOWN': "unknown",
+        },
     }
 
     validations = {
@@ -67,6 +75,7 @@ class PlatformEndpoint(ModelNormal):
         This must be a method because a model may have properties that are
         of type self, this must run after the class is loaded
         """
+        lazy_import()
         return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
@@ -81,9 +90,13 @@ class PlatformEndpoint(ModelNormal):
             openapi_types (dict): The key is attribute name
                 and the value is attribute type.
         """
+        lazy_import()
         return {
-            'path': (str,),  # noqa: E501
-            'example': (str,),  # noqa: E501
+            'status': (str,),  # noqa: E501
+            'is_spent': (bool,),  # noqa: E501
+            'value': (int, none_type,),  # noqa: E501
+            'mined': (TxMinify,),  # noqa: E501
+            'spent': (TxMinify,),  # noqa: E501
         }
 
     @cached_property
@@ -92,8 +105,11 @@ class PlatformEndpoint(ModelNormal):
 
 
     attribute_map = {
-        'path': 'path',  # noqa: E501
-        'example': 'example',  # noqa: E501
+        'status': 'status',  # noqa: E501
+        'is_spent': 'is_spent',  # noqa: E501
+        'value': 'value',  # noqa: E501
+        'mined': 'mined',  # noqa: E501
+        'spent': 'spent',  # noqa: E501
     }
 
     read_only_vars = {
@@ -104,7 +120,7 @@ class PlatformEndpoint(ModelNormal):
     @classmethod
     @convert_js_args_to_python_args
     def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
-        """PlatformEndpoint - a model defined in OpenAPI
+        """TxOutput - a model defined in OpenAPI
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -137,8 +153,11 @@ class PlatformEndpoint(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            path (str): [optional]  # noqa: E501
-            example (str): [optional]  # noqa: E501
+            status (str): Result status of the transaction output.. [optional]  # noqa: E501
+            is_spent (bool): If the transaction output was spent or not, if the value is true the `spent` transaction object will be presented. [optional]  # noqa: E501
+            value (int, none_type): Amount of transaction output. [optional]  # noqa: E501
+            mined (TxMinify): [optional]  # noqa: E501
+            spent (TxMinify): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -187,7 +206,7 @@ class PlatformEndpoint(ModelNormal):
 
     @convert_js_args_to_python_args
     def __init__(self, *args, **kwargs):  # noqa: E501
-        """PlatformEndpoint - a model defined in OpenAPI
+        """TxOutput - a model defined in OpenAPI
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -220,8 +239,11 @@ class PlatformEndpoint(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            path (str): [optional]  # noqa: E501
-            example (str): [optional]  # noqa: E501
+            status (str): Result status of the transaction output.. [optional]  # noqa: E501
+            is_spent (bool): If the transaction output was spent or not, if the value is true the `spent` transaction object will be presented. [optional]  # noqa: E501
+            value (int, none_type): Amount of transaction output. [optional]  # noqa: E501
+            mined (TxMinify): [optional]  # noqa: E501
+            spent (TxMinify): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
