@@ -48,7 +48,7 @@ class TestTransactionsApi(unittest.TestCase):
             parsed_transactions_platforms.append(parsed_transactions)
             endpoints_data_platforms.append({
                 "req_url":
-                f"/v2/{platform}/{network}/{'tx/' + parsed_transactions['items'][0]['id'] if path == 'tx' else path}",
+                f"/{platform}/{network}/{'tx/' + parsed_transactions['items'][0]['id'] if path == 'tx' else path}",
                 "method":
                 httpretty.GET,
                 "status":
@@ -116,7 +116,7 @@ class TestTransactionsApi(unittest.TestCase):
 
         endpoint = {
             "req_url":
-            f"/v2/{platform}/{network}/tx/estimate_fee",
+            f"/{platform}/{network}/tx/estimate_fee",
             "method":
             httpretty.GET,
             "status":
@@ -127,9 +127,16 @@ class TestTransactionsApi(unittest.TestCase):
         }
         test.mock.setup_mock_server(self.api_client.configuration.host,
                                     [endpoint])
-        fee = self.api_instance.estimate_fee(platform, network)
+        fee = self.api_instance.fee_estimate(platform, network)
 
-        assert fee == "1000"
+        expected_response = {"estimated_fees": {"fast": 10.0, "medium": 7.0, "slow": 6.0},
+                             "most_recent_block": 714558}
+
+        assert fee["most_recent_block"] == expected_response["most_recent_block"]
+        assert fee["estimated_fees"]["fast"] == expected_response["estimated_fees"][
+            "fast"]  # to note using any type in python the numerical value defaults to float
+        assert fee["estimated_fees"]["medium"] == expected_response["estimated_fees"]["medium"]
+        assert fee["estimated_fees"]["slow"] == expected_response["estimated_fees"]["slow"]
 
     @httpretty.activate(verbose=True, allow_net_connect=False)
     def test_tx_send(self):
@@ -138,7 +145,7 @@ class TestTransactionsApi(unittest.TestCase):
 
         endpoint = {
             "req_url":
-            f"/v2/{platform}/{network}/tx/send",
+            f"/{platform}/{network}/tx/send",
             "method":
             httpretty.POST,
             "status":
@@ -164,7 +171,7 @@ class TestTransactionsApi(unittest.TestCase):
 
         endpoint = {
             "req_url":
-            f"/v1/{platform}/{network}/tx/estimate_fee",
+            f"/{platform}/{network}/tx/estimate_fee",
             "method":
             httpretty.GET,
             "status":
@@ -179,10 +186,10 @@ class TestTransactionsApi(unittest.TestCase):
         expected_response = {"estimated_fees": { "fast": 10.0, "medium": 7.0, "slow": 6.0 },
                                     "most_recent_block": 714558}
 
-        assert fee["most_recent_block"] == 714558
-        assert fee["estimated_fees"]["fast"] == 10.0  #to note using any type in python the numerical value defaults to float
-        assert fee["estimated_fees"]["medium"] == 7.0
-        assert fee["estimated_fees"]["slow"] == 6.0
+        assert fee["most_recent_block"] == expected_response["most_recent_block"]
+        assert fee["estimated_fees"]["fast"] == expected_response["estimated_fees"]["fast"]  #to note using any type in python the numerical value defaults to float
+        assert fee["estimated_fees"]["medium"] == expected_response["estimated_fees"]["medium"]
+        assert fee["estimated_fees"]["slow"] == expected_response["estimated_fees"]["slow"]
 
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 ---
 openapi: "3.0.0"
 info:
-  version: 2.0.0
+  version: 3.0.0
   title: Ubiquity REST API
   description: |
     Ubiquity provides a RESTful and uniform way to access blockchain resources,
@@ -24,6 +24,7 @@ info:
     * terra
     * litecoin
     * bitcoincash
+    * tezos
 
     #### Testnet
     * bitcoin/testnet
@@ -34,12 +35,11 @@ info:
 
     #### Native
     Ubiquity provides native access to all Blockchain nodes it supports.
-    To access native functionality, use the protocol without the v2 prefix
     * bitcoin/(mainnet | testnet) - [RPC Documentation](https://developer.bitcoin.org/reference/rpc/)
     * ethereum/(mainnet | ropsten) - [RPC Documentation](https://ethereum.org/en/developers/docs/apis/json-rpc/)
     * polkadot/mainnet - [Sidecar API Documentation](https://paritytech.github.io/substrate-api-sidecar/dist/)
     * polkadot/mainnet/http-rpc - [Polkadot RPC Documentation](https://polkadot.js.org/docs/substrate/rpc/)
-    * algorand/mainnet - [Algod API Documentation](https://developer.algorand.org/docs/reference/rest-apis/algod/v1/)
+    * algorand/mainnet - [Algod API Documentation](https://developer.algorand.org/docs/reference/rest-apis/algod/)
     * stellar/mainnet - [Stellar Horizon API Documentation](https://developers.stellar.org/api)
     * dogecoin/(mainnet | testnet) - [Dogecoin API Documentaion](https://developer.bitcoin.org/reference/rpc/)
     * oasis/mainnet - [Oasis Rosetta Gateway Documentation](https://www.rosetta-api.org/docs/api_identifiers.html#network-identifier)
@@ -47,8 +47,10 @@ info:
     * terra/mainnet - [Terra RPC Documentation](https://docs.terra.money/docs/develop/how-to/endpoints.html)
     * litecoin/mainnet - [Litecoin RPC Documentation](https://litecoin.info/index.php/Litecoin_API)
     * bitcoincash/mainnet - [Bitcoin Cash RPC Documentation](https://docs.bitcoincashnode.org/doc/json-rpc/)
+    * tezos/mainnet - [Tezos RPC Documentation](https://tezos.gitlab.io/developer/rpc.html)
 
-    A full URL example: https://ubiquity.api.blockdaemon.com/bitcoin/mainnet
+
+    A full URL example: https://ubiquity.api.blockdaemon.com/v1/bitcoin/mainnet
 
     ##### Pagination
     Certain resources contain a lot of data, more than what's practical
@@ -67,10 +69,20 @@ info:
     url: 'logo.png'
 
 servers:
-  - url: https://ubiquity.api.blockdaemon.com
+  - url: https://ubiquity.api.blockdaemon.com/{version}
     description: Production server
-  - url: https://stg.ubiquity.api.blockdaemon.com
+    variables:
+      version:
+        enum:
+          - v1
+        default: v1
+  - url: https://stg.ubiquity.api.blockdaemon.com/{version}
     description: Staging server
+    variables:
+      version:
+        enum:
+          - v1
+        default: v1
 
 tags:
   - name: Accounts
@@ -82,7 +94,7 @@ security:
   - bearerAuth: []
 
 paths:
-  /v1/:
+  /:
     get:
       summary: Platforms overview
       operationId: GetPlatformsList
@@ -118,7 +130,7 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
 
-  /v1/{platform}/{network}/:
+  /{platform}/{network}/:
     get:
       summary: Platform Info
       operationId: GetPlatformEndpoints
@@ -128,7 +140,7 @@ paths:
         Provides information about supported endpoints
         and generic platform information.
       parameters:
-        - $ref: '#/components/parameters/platform-v1'
+        - $ref: '#/components/parameters/platform'
         - $ref: '#/components/parameters/network'
       responses:
         200:
@@ -142,7 +154,7 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
 
-  /v1/{platform}/{network}/tx/estimate_fee:
+  /{platform}/{network}/tx/estimate_fee:
     get:
       summary: Get fee estimate
       description: |
@@ -153,7 +165,7 @@ paths:
       tags:
         - Transactions
       parameters:
-        - $ref: '#/components/parameters/platform-v1'
+        - $ref: '#/components/parameters/platform'
         - $ref: '#/components/parameters/network'
       responses:
         200:
@@ -175,8 +187,7 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
 
-
-  /v1/{platform}/{network}/account/{address}:
+  /{platform}/{network}/account/{address}:
     get:
       summary: Balances Of Address
       operationId: GetListOfBalancesByAddress
@@ -185,7 +196,7 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/platform-v1'
+        - $ref: '#/components/parameters/platform'
         - $ref: '#/components/parameters/network'
         - $ref: '#/components/parameters/address'
       responses:
@@ -194,7 +205,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/balances_map-v1"
+                $ref: "#/components/schemas/balances_map"
         400:
           description: Bad request
           content:
@@ -206,7 +217,156 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
 
-  /v1/{platform}/{network}/accounts:
+  /{platform}/{network}/block/{key}:
+    get:
+      summary: Block By Number/Hash
+      description: Get a block and all its transactions by the block number or hash
+      operationId: GetBlock
+      tags:
+        - Blocks
+      parameters:
+        - $ref: '#/components/parameters/platform'
+        - $ref: '#/components/parameters/network'
+        - $ref: '#/components/parameters/key'
+      responses:
+        200:
+          description: Block
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/block"
+        400:
+          description: Invalid Block Number
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "bad-request",
+                "code": 16386,
+                "title": "Invalid Block Number",
+                "status": 400,
+                "detail": "The requested block number is not a valid number"
+              }
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        404:
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "not-found",
+                "code": 16388,
+                "title": "Not Found",
+                "status": 404,
+                "detail": "The requested resource has not been found"
+              }
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+
+  /{platform}/{network}/block_identifiers:
+    get:
+      summary: Block Identifiers
+      description: >
+        Get minimal block identifiers from oldest to newest.
+        
+        This call uses pagination.
+      operationId: GetBlockIdentifiers
+      tags:
+        - Blocks
+      parameters:
+        - $ref: '#/components/parameters/platform'
+        - $ref: '#/components/parameters/network'
+      responses:
+        200:
+          description: Block
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/block_identifier_page"
+        400:
+          description: Invalid Block Number
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "bad-request",
+                "code": 16386,
+                "title": "Invalid Block Number",
+                "status": 400,
+                "detail": "The requested block number is not a valid number"
+              }
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        404:
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "not-found",
+                "code": 16388,
+                "title": "Not Found",
+                "status": 404,
+                "detail": "The requested resource has not been found"
+              }
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+
+  /{platform}/{network}/block_identifier/{key}:
+    get:
+      summary: Block Identifier By Number/Hash
+      description: Get minimal block identifier by block number or hash
+      operationId: GetBlockIdentifier
+      tags:
+        - Blocks
+      parameters:
+        - $ref: '#/components/parameters/platform'
+        - $ref: '#/components/parameters/network'
+        - $ref: '#/components/parameters/key'
+      responses:
+        200:
+          description: Block
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/block_identifier"
+        400:
+          description: Invalid Block Number
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "bad-request",
+                "code": 16386,
+                "title": "Invalid Block Number",
+                "status": 400,
+                "detail": "The requested block number is not a valid number"
+              }
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        404:
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "not-found",
+                "code": 16388,
+                "title": "Not Found",
+                "status": 404,
+                "detail": "The requested resource has not been found"
+              }
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+
+  /{platform}/{network}/accounts:
     post:
       summary: Balances Of Addresses
       operationId: GetListOfBalancesByAddresses
@@ -215,7 +375,7 @@ paths:
       tags:
         - Accounts
       parameters:
-        - $ref: '#/components/parameters/platform-v1'
+        - $ref: '#/components/parameters/platform'
         - $ref: '#/components/parameters/network'
       requestBody:
         required: true
@@ -229,7 +389,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/accounts_balances_map-v1"
+                $ref: "#/components/schemas/accounts_balances_map"
         400:
           description: Bad request
           content:
@@ -241,7 +401,7 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
 
-  /v1/{platform}/{network}/account/{address}/report:
+  /{platform}/{network}/account/{address}/report:
     get:
       summary: A financial report for an address between a time period. Default timescale is within the last 30 days
       operationId: GetReportByAddress
@@ -318,533 +478,7 @@ paths:
                 "detail": "current query size is too large for this account. try reducing query range (from, to)"
               }
 
-  /v1/{platform}/{network}/tx/{id}/confirmations:
-    get:
-      summary: Transaction confirmations By Hash
-      operationId: GetTxConfirmations
-      tags:
-        - Transactions
-      parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - name: id
-          in: path
-          required: true
-          description: Transaction ID/Hash
-          schema:
-            type: string
-          example: "0xF00Fa860473130C1df10707223E66Cb4B839B165"
-      responses:
-        200:
-          description: Transaction confirmations
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/tx_confirmation"
-        400:
-          description: Bad Request
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "bad-request",
-                "code": 16385,
-                "title": "Invalid Identifier",
-                "status": 400,
-                "detail": "The requested identifier is invalid."
-              }
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        404:
-          description: Not Found
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "not-found",
-                "code": 16388,
-                "title": "Not Found",
-                "status": 404,
-                "detail": "The requested resource has not been found"
-              }
-        429:
-          $ref: '#/components/responses/TooManyRequests'
-
-  /v2/:
-    get:
-      summary: Platforms overview
-      operationId: GetPlatforms
-      tags:
-        - Platforms
-      description: >
-        Provides a list of supported platforms and networks.
-      responses:
-        200:
-          description: Platforms overview
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/platforms_overview"
-              example: {
-                "platforms": [
-                  {
-                    "handle": "algorand",
-                    "network": "mainnet"
-                  },
-                  {
-                    "handle": "bitcoin",
-                    "network": "mainnet"
-                  },
-                  {
-                    "handle": "bitcoin",
-                    "network": "testnet"
-                  }
-                ]
-              }
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        429:
-          $ref: '#/components/responses/TooManyRequests'
-
-  /v2/{platform}/{network}:
-    get:
-      summary: Platform Info
-      operationId: GetPlatform
-      tags:
-        - Platforms
-      description: >
-        Provides information about supported endpoints
-        and generic platform information.
-      parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-      responses:
-        200:
-          description: Platform overview
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/platform_detail"
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        429:
-          $ref: '#/components/responses/TooManyRequests'
-
-  /v2/{platform}/{network}/account/{address}:
-    get:
-      summary: Balances Of Address
-      operationId: GetBalancesByAddress
-      description: |
-        Returns the account balances for all supported currencies.
-      tags:
-        - Accounts
-      parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/address'
-        - $ref: '#/components/parameters/assets'
-      responses:
-        200:
-          description: Balances
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/balances_map"
-        400:
-          description: Bad request
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        429:
-          $ref: '#/components/responses/TooManyRequests'
-
-  /v2/{platform}/{network}/account/{address}/txs:
-    get:
-      summary: Transactions Of Address
-      description: >
-        Gets transactions that an address was involved with,
-        from newest to oldest.
-
-        This call uses pagination.
-      operationId: v2GetTxsByAddress
-      tags:
-        - Accounts
-      parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/address'
-        - $ref: '#/components/parameters/order'
-        - $ref: '#/components/parameters/continuation'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/assets'
-      responses:
-        200:
-          description: Transactions
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/tx_page"
-          links:
-            Continuation:
-              operationId: GetTxsByAddress
-              parameters:
-                continuation: '$response.body#/continuation'
-        400:
-          description: Invalid address
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "bad-request",
-                "code": 16384,
-                "title": "Invalid Address",
-                "status": 400,
-                "detail": "The requested address is invalid on this platform"
-              }
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        403:
-          description: Invalid continuation
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "forbidden",
-                "code": 16389,
-                "title": "Invalid Continuation",
-                "status": 403,
-                "detail": "The used continuation token is invalid."
-              }
-        429:
-          $ref: '#/components/responses/TooManyRequests'
-
-  /v1/{platform}/{network}/account/{address}/txs:
-    get:
-      summary: Transactions Of Address
-      description: >
-        Gets transactions that an address was involved with,
-        from newest to oldest.
-
-        This call uses pagination.
-      operationId: GetTxsByAddress
-      tags:
-        - Accounts
-      parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/address'
-        - $ref: '#/components/parameters/order'
-        - $ref: '#/components/parameters/continuation'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/assets'
-      responses:
-        200:
-          description: Transactions
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/tx_page-v1"
-          links:
-            Continuation:
-              operationId: GetTxsByAddress
-              parameters:
-                continuation: '$response.body#/continuation'
-        400:
-          description: Invalid address
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "bad-request",
-                "code": 16384,
-                "title": "Invalid Address",
-                "status": 400,
-                "detail": "The requested address is invalid on this platform"
-              }
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        403:
-          description: Invalid continuation
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "forbidden",
-                "code": 16389,
-                "title": "Invalid Continuation",
-                "status": 403,
-                "detail": "The used continuation token is invalid."
-              }
-        429:
-          $ref: '#/components/responses/TooManyRequests'
-
-  /v2/{platform}/{network}/account/{address}/report:
-    get:
-      summary: A financial report for an address between a time period. Default timescale is within the last 30 days
-      operationId: v2GetReportByAddress
-      description: |
-        Returns account activity
-      tags:
-        - Accounts
-      parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/address'
-        - name: from
-          in: query
-          description: Unix Timestamp from where to start
-          schema:
-            type: integer
-          example: 961846434
-        - name: to
-          in: query
-          description: Unix Timestamp from where to end
-          schema:
-            type: integer
-          example: 1119612834
-        - name: limit
-          in: query
-          required: false
-          description: |
-            Max number of items to return in a response.
-            Defaults to 50k and is capped at 100k.
-          schema:
-            type: integer
-          example: 1000
-        - name: continuation
-          in: query
-          required: false
-          description: Continuation token from earlier response
-          schema:
-            type: string
-          example: "xyz"
-      responses:
-        200:
-          description: Account Activity
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/report"
-            text/csv:
-              schema:
-                type: string
-                example: |
-                  Protocol,PublicAddress,Currency,EventID,Block,BlockTimestamp,BlockTime,Hash,Action,Value,SenderAddress,TransactionFee,SenderReward,RecipientReward,Close,CloseAmount,CloseReward
-                  Algorand,GXL2EQ6JV54MTMP2IXOTF5CJLS7GAWMRDZMOY7JZAPO72AQRDDYGD6OX3E,ALGO,RNEYUT3MRYGT5ENSLIC7LGJCJMW6BXNS6SAW7A25DTYRW4TFJ5JA,8986217,1599745403,2020-09-10 13:43:23 +0000 UTC,RNEYUT3MRYGT5ENSLIC7LGJCJMW6BXNS6SAW7A25DTYRW4TFJ5JA,pay,1,T3BYUTYZCWV7UVK7IFYPC2UKH5VNBGVP4PUKSUBF5F6GQ244Y4I2XUWCQM,0.001,0.000003,0,,0,0
-        400:
-          description: Bad request
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        429:
-          $ref: '#/components/responses/TooManyRequests'
-        413:
-          description: Too Many Transactions
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "unsupported",
-                "code": 16390,
-                "title": "Unsupported functionality",
-                "status": 413,
-                "detail": "current query size is too large for this account. try reducing query range (from, to)"
-              }
-
-  /v2/{platform}/{network}/accounts:
-    post:
-      summary: Balances Of Addresses
-      operationId: GetBalancesByAddresses
-      description: |
-        Returns the balances of accounts for all supported currencies.
-      tags:
-        - Accounts
-      parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/assets'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/accounts_obj'
-      responses:
-        200:
-          description: Balances
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/accounts_balances_map"
-        400:
-          description: Bad request
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        429:
-          $ref: '#/components/responses/TooManyRequests'
-
-  /v2/{platform}/{network}/txs:
-    get:
-      summary: All Transactions
-      description: Get all transactions on the platform, starting with the lastest one.
-        Each call returns a slice of the entire list. Use the returned continuation token to get the next part.
-      operationId: GetTxs
-      tags:
-        - Transactions
-      parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/order'
-        - $ref: '#/components/parameters/continuation'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/assets'
-
-      responses:
-        200:
-          description: Transactions
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/tx_page"
-          links:
-            Continuation:
-              operationId: GetTxs
-              parameters:
-                continuation: '$response.body#/continuation'
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        403:
-          description: Invalid continuation
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "forbidden",
-                "code": 16389,
-                "title": "Invalid Continuation",
-                "status": 403,
-                "detail": "The used continuation token is invalid."
-              }
-        429:
-          $ref: '#/components/responses/TooManyRequests'
-
-  /v2/{platform}/{network}/block/{key}:
-    get:
-      summary: Block By Number/Hash
-      description: Get a block and all its transactions by the block number or hash
-      operationId: GetBlock
-      tags:
-        - Blocks
-      parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/key'
-      responses:
-        200:
-          description: Block
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/block"
-        400:
-          description: Invalid Block Number
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "bad-request",
-                "code": 16386,
-                "title": "Invalid Block Number",
-                "status": 400,
-                "detail": "The requested block number is not a valid number"
-              }
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        404:
-          description: Not Found
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "not-found",
-                "code": 16388,
-                "title": "Not Found",
-                "status": 404,
-                "detail": "The requested resource has not been found"
-              }
-        429:
-          $ref: '#/components/responses/TooManyRequests'
-
-  /v2/{platform}/{network}/block_identifier/{key}:
-    get:
-      summary: Block Identifier By Number/Hash
-      description: Get minimal block identifier by block number or hash
-      operationId: GetBlockIdentifier
-      tags:
-        - Blocks
-      parameters:
-        - $ref: '#/components/parameters/platform'
-        - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/key'
-      responses:
-        200:
-          description: Block
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/block_identifier"
-        400:
-          description: Invalid Block Number
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "bad-request",
-                "code": 16386,
-                "title": "Invalid Block Number",
-                "status": 400,
-                "detail": "The requested block number is not a valid number"
-              }
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        404:
-          description: Not Found
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/error"
-              example: {
-                "type": "not-found",
-                "code": 16388,
-                "title": "Not Found",
-                "status": 404,
-                "detail": "The requested resource has not been found"
-              }
-        429:
-          $ref: '#/components/responses/TooManyRequests'
-
-  /v2/{platform}/{network}/tx/{id}:
+  /{platform}/{network}/tx/{id}:
     get:
       summary: Transaction By Hash
       operationId: GetTx
@@ -898,52 +532,120 @@ paths:
         429:
           $ref: '#/components/responses/TooManyRequests'
 
-  /v2/{platform}/{network}/sync/block_number:
+  /{platform}/{network}/txs:
     get:
-      summary: Get current block number
-      operationId: CurrentBlockNumber
+      summary: Latest transactions of a protocol
+      description: >
+        Gets transactions from oldest to newest.
+
+        This call uses pagination.
+      operationId: GetTxs
       tags:
-        - Sync
+        - Transactions
       parameters:
         - $ref: '#/components/parameters/platform'
         - $ref: '#/components/parameters/network'
+        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/continuation'
+        - $ref: '#/components/parameters/limit'
       responses:
         200:
-          description: Current block number
+          description: Transactions
           content:
             application/json:
               schema:
-                format: int64
-                type: integer
-              example: 32656659
+                $ref: "#/components/schemas/tx_page"
+          links:
+            Continuation:
+              operationId: GetTxs
+              parameters:
+                continuation: '$response.body#/continuation'
+        400:
+          description: Invalid address
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "bad-request",
+                "code": 16384,
+                "title": "Invalid Address",
+                "status": 400,
+                "detail": "The requested address is invalid on this platform"
+              }
         401:
           $ref: '#/components/responses/UnauthorizedError'
+        403:
+          description: Invalid continuation
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "forbidden",
+                "code": 16389,
+                "title": "Invalid Continuation",
+                "status": 403,
+                "detail": "The used continuation token is invalid."
+              }
         429:
           $ref: '#/components/responses/TooManyRequests'
 
-  /v2/{platform}/{network}/sync/block_id:
+  /{platform}/{network}/tx/{id}/confirmations:
     get:
-      summary: Get current block ID
-      operationId: CurrentBlockID
+      summary: Transaction confirmations By Hash
+      operationId: GetTxConfirmations
       tags:
-        - Sync
+        - Transactions
       parameters:
         - $ref: '#/components/parameters/platform'
         - $ref: '#/components/parameters/network'
+        - name: id
+          in: path
+          required: true
+          description: Transaction ID/Hash
+          schema:
+            type: string
+          example: "0xF00Fa860473130C1df10707223E66Cb4B839B165"
       responses:
         200:
-          description: Current block ID
+          description: Transaction confirmations
           content:
             application/json:
               schema:
-                type: string
-              example: "3ea7cfb439e0baa4d91525b66b1f7b4e79ac0302a054a83d12f4e2ee7c933c8f"
+                $ref: "#/components/schemas/tx_confirmation"
+        400:
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "bad-request",
+                "code": 16385,
+                "title": "Invalid Identifier",
+                "status": 400,
+                "detail": "The requested identifier is invalid."
+              }
         401:
           $ref: '#/components/responses/UnauthorizedError'
+        404:
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "not-found",
+                "code": 16388,
+                "title": "Not Found",
+                "status": 404,
+                "detail": "The requested resource has not been found"
+              }
         429:
           $ref: '#/components/responses/TooManyRequests'
 
-  /v2/{platform}/{network}/tx/send:
+  /{platform}/{network}/tx/send:
     post:
       summary: Submit a signed transaction
       description: |
@@ -988,44 +690,113 @@ paths:
                 "detail": "failed to send transaction: json-rpc error #-27: Transaction already in block chain"
               }
 
-  /v2/{platform}/{network}/tx/estimate_fee:
+  /{platform}/{network}/account/{address}/txs:
     get:
-      summary: Get fee estimate
-      description: |
-        Get a fee estimation in decimals from the network.
-        If supported by the platform, the number of blocks used to make
-        the estimation can be customized by the confirmed_within_blocks query parameter.
-      operationId: EstimateFee
+      summary: Transactions Of Address
+      description: >
+        Gets transactions that an address was involved with,
+        from newest to oldest.
+
+        This call uses pagination.
+      operationId: GetTxsByAddress
       tags:
-        - Transactions
+        - Accounts
       parameters:
         - $ref: '#/components/parameters/platform'
         - $ref: '#/components/parameters/network'
-        - $ref: '#/components/parameters/confirmed_within_blocks'
+        - $ref: '#/components/parameters/address'
+        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/continuation'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/assets'
       responses:
         200:
-          description: A fee estimation from bitcoin (satoshis)
+          description: Transactions
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        429:
-          $ref: '#/components/responses/TooManyRequests'
+                $ref: "#/components/schemas/tx_page"
+          links:
+            Continuation:
+              operationId: GetTxsByAddress
+              parameters:
+                continuation: '$response.body#/continuation'
         400:
-          description: Bad Request
+          description: Invalid address
           content:
             application/problem+json:
               schema:
                 $ref: "#/components/schemas/error"
               example: {
                 "type": "bad-request",
-                "code": 16396,
-                "title": "Bad Request",
+                "code": 16384,
+                "title": "Invalid Address",
                 "status": 400,
-                "detail": "failed to get estimated fee: json-rpc error #-8:  : Invalid conf_target, must be between 1 and 1008"
+                "detail": "The requested address is invalid on this platform"
               }
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          description: Invalid continuation
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/error"
+              example: {
+                "type": "forbidden",
+                "code": 16389,
+                "title": "Invalid Continuation",
+                "status": 403,
+                "detail": "The used continuation token is invalid."
+              }
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+
+  /{platform}/{network}/sync/block_number:
+    get:
+      summary: Get current block number
+      operationId: CurrentBlockNumber
+      tags:
+        - Sync
+      parameters:
+        - $ref: '#/components/parameters/platform'
+        - $ref: '#/components/parameters/network'
+      responses:
+        200:
+          description: Current block number
+          content:
+            application/json:
+              schema:
+                format: int64
+                type: integer
+              example: 32656659
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+
+  /{platform}/{network}/sync/block_id:
+    get:
+      summary: Get current block ID
+      operationId: CurrentBlockID
+      tags:
+        - Sync
+      parameters:
+        - $ref: '#/components/parameters/platform'
+        - $ref: '#/components/parameters/network'
+      responses:
+        200:
+          description: Current block ID
+          content:
+            application/json:
+              schema:
+                type: string
+              example: "3ea7cfb439e0baa4d91525b66b1f7b4e79ac0302a054a83d12f4e2ee7c933c8f"
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        429:
+          $ref: '#/components/responses/TooManyRequests'
+
 components:
   securitySchemes:
     bearerAuth:
@@ -1065,10 +836,6 @@ components:
             title: "Invalid Token"
             status: 401
   schemas:
-    amount:
-      type: string
-      description: Integer string in smallest unit (Satoshis)
-      example: "133337"
     block:
       type: object
       properties:
@@ -1090,22 +857,15 @@ components:
           format: int64
           description: Unix timestamp
           example: 1571222657
-        tx_ids:
-          type: array
-          description: Complete list of transaction IDs
-          items:
-            type: string
-            example: "0xF00Fa860473130C1df10707223E66Cb4B839B165"
+        num_txs:
+          type: integer
+          description: Amount of transaction in the block
+          example: 10
         txs:
           type: array
           description: Partial list of normalized transactions (not filtered or unknown model)
           items:
             $ref: "#/components/schemas/tx"
-        supply:
-          type: object
-          description: Coin supplies with asset paths as keys
-          additionalProperties:
-            $ref: "#/components/schemas/supply"
     block_identifier:
       type: object
       properties:
@@ -1122,6 +882,27 @@ components:
           type: string
           description: Parent block hash
           example: "0xfcf029ffd36a6714aae09dcc7acbdd8f2b96327f"
+        date:
+          type: integer
+          format: int64
+          description: Unix timestamp
+          example: 1571222657
+    block_identifier_page:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Number of items in block identifiers
+          example: 1
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/block_identifier"
+        continuation:
+          type: integer
+          description: Token to get the next page
+          example: 25
+          nullable: true
     tx_confirmation:
       type: object
       properties:
@@ -1137,7 +918,7 @@ components:
         confirmations:
           type: integer
           format: int64
-          description: Total transaction confirmations 
+          description: Total transaction confirmations
           example: 10
     tx_page:
       type: object
@@ -1155,65 +936,16 @@ components:
           description: Token to get the next page
           example: "8185.123"
           nullable: true
-    tx_page-v1:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Number of items in txs
-          example: 1
-        items:
-          type: array
-          items:
-            $ref: "#/components/schemas/tx-v1"
-        continuation:
-          type: string
-          description: Token to get the next page
-          example: "8185.123"
-          nullable: true
     accounts_balances_map:
       type: object
       description: Accounts balances with account addressses as keys
       additionalProperties:
-        additionalProperties:
-          type: object
-          properties:
-            currency:
-              $ref: "#/components/schemas/currency"
-            balance:
-              $ref: "#/components/schemas/amount"
-    accounts_balances_map-v1:
-      type: object
-      description: Accounts balances with account addressses as keys
-      additionalProperties:
-        $ref: "#/components/schemas/balances_map-v1"
+        $ref: "#/components/schemas/balances_map"
     balances_map:
-      type: object
-      description: Currency balances with asset paths as keys
-      additionalProperties:
-        type: object
-        properties:
-          currency:
-            $ref: "#/components/schemas/currency"
-          balance:
-            $ref: "#/components/schemas/amount"
-      example: {
-        "bitcoin/native/btc": {
-          "currency": {
-            "asset_path": "bitcoin/native/btc",
-            "symbol": "BTC",
-            "name": "Bitcoin",
-            "decimals": 18,
-            "type": "native"
-          },
-          "balance": "99999"
-        }
-      }
-    balances_map-v1:
       description: Currency balances with asset paths as keys
       type: array
       items:
-        $ref: "#/components/schemas/balance-v1"
+        $ref: "#/components/schemas/balance"
       example: [
         {
           "currency": {
@@ -1229,7 +961,7 @@ components:
           "confirmed_block": 99999999
         }
       ]
-    balance-v1:
+    balance:
       description: Currency balances with asset paths as keys
       type: object
       properties:
@@ -1256,94 +988,21 @@ components:
           "confirmed_nonce": 9999,
           "confirmed_block": 99999999
         }
-    tx:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique transaction identifier
-          example: "0xF00Fa860473130C1df10707223E66Cb4B839B165"
-        slip44:
-          type: integer
-          description: SLIP-44 coin ID
-          example: 60
-        addresses:
-          type: array
-          description: List of involved addresses (excluding contracts)
-          uniqueItems: true
-          items:
-            type: string
-            example: "0x123456070D674D44a7F9cb4Ab272bd88fAd004b5"
-          nullable: true
-        assets:
-          type: array
-          description: List of moved assets by asset path
-          uniqueItems: true
-          items:
-            type: string
-            example: "ethereum/native/eth"
-          nullable: true
-        date:
-          type: integer
-          format: int64
-          description: Unix timestamp
-          example: 1571222657
-        height:
-          type: integer
-          format: int64
-          description: Number of block if mined, otherwise omitted.
-          example: 198258
-          nullable: true
-        block_id:
-          type: string
-          description: ID of block if mined, otherwise omitted.
-          example: "0xaf2948aba2ed8cc7d5b7d4e4f4164a7c8819efc94d30aab3fce6904df68dbc07"
-          nullable: true
-        status:
-          type: string
-          description: Result status of the transaction.
-          enum: [ completed, failed ]
-        tags:
-          type: array
-          description: List of tags for this transaction
-          uniqueItems: true
-          items:
-            type: string
-            example: "coinbase"
-          nullable: true
-        operations:
-          type: object
-          description: Operations in this transaction (opaque keys).
-          additionalProperties:
-            $ref: "#/components/schemas/operation"
-        effects:
-          type: object
-          description: Effects by address, if supported
-          additionalProperties:
-            $ref: "#/components/schemas/effect"
-          example: {
-            "3AQCdZ9MxkMoRG4SMRtkbK6fEtgRPGzSDy": {
-              "balance_changes": {
-                "bitcoin/native/btc": {
-                  "old": "500",
-                  "delta": "-300",
-                  "new": "200"
-                }
-              }
-            }
-          }
     Event:
       type: object
       properties:
         amount:
           type: integer
           nullable: true
+          format: int64
+          example: 5000000000
         block_id:
           type: string
         block_number:
           type: integer
         date:
           type: integer
+          format: int64
         decimals:
           type: integer
           nullable: true
@@ -1353,6 +1012,7 @@ components:
         destination:
           type: string
           nullable: true
+          example: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
         id:
           type: string
         meta: {}
@@ -1363,7 +1023,7 @@ components:
           type: string
         type:
           type: string
-    tx-v1:
+    tx:
       type: object
       properties:
         id:
@@ -1394,78 +1054,6 @@ components:
           items:
             $ref: '#/components/schemas/Event'
           nullable: true
-    operation:
-      type: object
-      oneOf:
-        - $ref: "#/components/schemas/transfer_operation"
-        - $ref: "#/components/schemas/multi_transfer_operation"
-      discriminator:
-        propertyName: type
-        mapping:
-          transfer: "#/components/schemas/transfer_operation"
-          multi_transfer: "#/components/schemas/multi_transfer_operation"
-    transfer_operation:
-      type: object
-      properties:
-        type:
-          type: string
-          default: transfer
-        event:
-          type: string
-        detail:
-          $ref: "#/components/schemas/transfer"
-      required:
-        - type
-        - detail
-    multi_transfer_operation:
-      type: object
-      properties:
-        type:
-          type: string
-          default: multi_transfer
-        event:
-          type: string
-        detail:
-          $ref: "#/components/schemas/multi_transfer"
-      required:
-        - type
-        - detail
-    effect:
-      type: object
-      description: Effects are the state changes on an account
-      properties:
-        balance_changes:
-          type: object
-          description: Balance changes by asset
-          additionalProperties:
-            $ref: "#/components/schemas/balance_change"
-      example: {
-        "balance_changes": {
-          "bitcoin/native/btc": {
-            "old": "500",
-            "delta": "-300",
-            "new": "200"
-          }
-        }
-      }
-    balance_change:
-      type: object
-      description: Change of balance of a currency
-      properties:
-        old:
-          type: string
-          description: Balance before transaction
-          example: "500"
-        delta:
-          type: string
-          description: Balance difference
-          example: "-300"
-        new:
-          type: string
-          description: Balance after transaction
-          example: "200"
-        currency:
-          $ref: "#/components/schemas/currency"
     accounts_obj:
       type: object
       properties:
@@ -1474,54 +1062,6 @@ components:
           items:
             type: string
 
-    transfer:
-      type: object
-      description: Transfer of currency from one account to another
-      properties:
-        from:
-          type: string
-          description: Sender address
-        to:
-          type: string
-          description: Receiver address
-        currency:
-          $ref: "#/components/schemas/currency"
-        value:
-          $ref: "#/components/schemas/amount"
-        fee:
-          $ref: "#/components/schemas/fee"
-      required:
-        - from
-        - to
-        - currency
-        - value
-    multi_transfer:
-      type: object
-      description: Transfer of currency in the UTXO model
-      properties:
-        inputs:
-          type: array
-          items:
-            $ref: "#/components/schemas/utxo"
-        outputs:
-          type: array
-          items:
-            $ref: "#/components/schemas/utxo"
-        currency:
-          $ref: "#/components/schemas/currency"
-        total_in:
-          $ref: "#/components/schemas/amount"
-        total_out:
-          $ref: "#/components/schemas/amount"
-        unspent:
-          $ref: "#/components/schemas/amount"
-      required:
-        - inputs
-        - outputs
-        - currency
-        - total_in
-        - total_out
-        - unspent
     currency:
       type: object
       oneOf:
@@ -1534,32 +1074,7 @@ components:
           native: "#/components/schemas/native_currency"
           token: "#/components/schemas/token_currency"
           smart_token: "#/components/schemas/smart_token_currency"
-    coin:
-      type: object
-      properties:
-        handle:
-          type: string
-          description: Platform handle (platform var in path)
-          example: ethereum
-        slip44:
-          type: integer
-          description: "SatoshiLabs 0044, registered coin types: https://github.com/satoshilabs/slips/blob/master/slip-0044.md"
-          example: 60
-        symbol:
-          type: string
-          description: Symbol of native currency
-          example: ETH
-        name:
-          type: string
-          description: Name of platform
-          example: Ethereum
-        block_time:
-          type: integer
-          description: Average time between blocks (milliseconds)
-          example: 60000
-        sample_address:
-          type: string
-          description: Random address seen on chain (optional)
+
     native_currency: # in that case currency detail is null
       type: object
       properties:
@@ -1671,31 +1186,6 @@ components:
       required:
         - type
         - contract
-    fee:
-      type: object
-      properties:
-        amount:
-          $ref: "#/components/schemas/amount"
-        destination:
-          type: string
-          description: Destination
-          example: E.g. address
-      required:
-        - amount
-        - destination
-    utxo:
-      type: object
-      description: An unspent transaction output
-      properties:
-        asset_path:
-          type: string
-          description: Asset path of transferred currency
-          example: "bitcoin/native/btc"
-        address:
-          type: string
-          example: "bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq"
-        value:
-          $ref: "#/components/schemas/amount"
     platform_detail:
       type: object
       properties:
@@ -1714,15 +1204,6 @@ components:
           items:
             type: string
 
-    platform_endpoint:
-      type: object
-      properties:
-        path:
-          type: string
-          example: /ethereum/tx/:id
-        example:
-          type: string
-          example: /ethereum/tx/0x12389528398
     platforms_overview:
       type: object
       properties:
@@ -1751,43 +1232,6 @@ components:
             fast: {}
             medium: {}
             slow: {}
-    supply:
-      type: object
-      properties:
-        maximum:
-          type: string
-          description: Maximum supply
-          example: "100000000000000000"
-        total:
-          type: string
-          description: Total supply at block height, excluding burnt coins
-          example: "99993100633247616"
-        total_created:
-          type: string
-          description: Total coins created historically up until this block
-          example: "100000000000000000"
-        total_burnt:
-          type: string
-          description: Total coins burnt historically up until this block
-          example: "6899366752384"
-        created:
-          type: string
-          description: Coins created at this block
-          example: "0"
-    tx_destination:
-      type: object
-      description: A list of recipients
-      properties:
-        destination:
-          type: string
-          example: "mkHS9ne12qx9pS9VojpwU5xtRd4T7X7ZUt"
-        amount:
-          description: The amount you wish to transfer
-          type: string
-          example: "0.0001"
-      required:
-        - destination
-        - amount
     signed_tx:
       type: object
       properties:
@@ -1969,18 +1413,6 @@ components:
           value: stellar
         Ripple:
           value: xrp
-    platform-v1:
-      in: path
-      name: platform
-      required: true
-      description: Coin platform handle
-      schema:
-        type: string
-      examples:
-        Bitcoin:
-          value: bitcoin
-        Ethereum:
-          value: ethereum
     network:
       name: network
       in: path
@@ -2059,13 +1491,3 @@ components:
           value: "ethereum/contract/0x0f5d2fb29fb7d3cfee444a200298f468908cc942/erc-20"
         More than one asset:
           value: "ethereum/native/eth,ethereum/contract/0x0f5d2fb29fb7d3cfee444a200298f468908cc942/erc-20"
-    confirmed_within_blocks:
-      name: confirmed_within_blocks
-      in: query
-      required: false
-      description: |
-        The number of blocks you would like the transaction to be processed within.
-        Lower numbers produce higher fees.
-      schema:
-        type: integer
-        default: 10

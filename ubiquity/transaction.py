@@ -95,7 +95,9 @@ def create_and_sign_ethereum(from_, to, key, options):
 
     # Create api_instance to make call for getting gas_price
     api_instance = transactions_api.TransactionsApi(api_client)
-    gas_price = int(api_instance.estimate_fee("ethereum", network))
+    fee_estimate_result = api_instance.fee_estimate("ethereum", network)
+    print(fee_estimate_result)
+    gas_price = fee_estimate_result["estimated_fees"]["medium"]["max_total_fee"]
 
     tx_dict = {
         "chainId": chain_ids[network],

@@ -8,6 +8,7 @@ from ubiquity.ubiquity_openapi_client.api import (
     transactions_api,
 )
 
+
 class ApiClient(ApiClient_):
     def __init__(self, configuration):
         super(ApiClient, self).__init__(configuration)

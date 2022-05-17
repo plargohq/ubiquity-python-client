@@ -1,19 +1,14 @@
 import asyncio
-import json
-import time
 import unittest
 
-import test.mock
-import test.utils
-import test.serve_websockets
-
-import httpretty
 import pytest
 import websockets
 
+import test.mock
+import test.serve_websockets
+import test.utils
 import ubiquity.websockets as ws
 from ubiquity import Configuration
-from ubiquity.api import ApiClient
 from ubiquity.ubiquity_openapi_client.model import (block, block_identifier,
                                                     tx)
 
