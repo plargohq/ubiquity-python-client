@@ -61,11 +61,6 @@ async def test_websocket_subscription_block_ids():
                                               block_identifier.BlockIdentifier)
 
 
-@pytest.mark.asyncio
-async def test_websocket_subscription_blocks():
-    return await _test_websocket_subscription(ws.BlocksWebsocketConnection,
-                                              "subscribe_blocks", block.Block)
-
 
 @pytest.mark.asyncio
 async def test_websocket_subscription_txs():
