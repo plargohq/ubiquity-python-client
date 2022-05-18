@@ -3,8 +3,7 @@ import urllib3
 import websockets
 
 import ubiquity
-from ubiquity.ubiquity_openapi_client.model import (block, block_identifier,
-                                                    tx)
+from ubiquity.ubiquity_openapi_client.model import (block_identifier,tx)
 
 
 def transform_content_from_type(_type):
@@ -185,28 +184,6 @@ class WebsocketConnection:
             msg_buf = await ws.recv()
             msg = json.loads(msg_buf)
             return msg
-
-
-class BlocksWebsocketConnection(WebsocketConnection):
-    """
-    Derives WebsocketConnection to handle the 'ubiquity.blocks' channel
-    """
-    def __init__(self):
-        self.channel = "ubiquity.blocks"
-        super().__init__(block.Block)
-
-    async def subscribe_blocks(self,
-                               connection,
-                               _id,
-                               callback,
-                               detail=None,
-                               on_connected=None,
-                               on_subscribed=None):
-        return await self.subscribe(connection, _id, self.channel, callback,
-                                    detail, on_connected, on_subscribed)
-
-    async def unsubscribe_blocks(self, connection, _id, subID):
-        return await self._unsubscribe(connection, _id, self.channel, subID)
 
 
 class BlockIdsWebsocketConnection(WebsocketConnection):

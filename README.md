@@ -239,7 +239,7 @@ Ubiquity also supports websockets connections (see [docs](https://app.blockdaemo
 
 A client can communicate with this service to get notifications about new data from the network.
 
-See the following example to subscribe to events for new blocks added to the network:
+See the following example to subscribe to events for new transactions added to the network:
 
 ```python
 import asyncio
@@ -253,17 +253,17 @@ async def run_client():
         access_token="<token>"
     )
 
-    # The class BlocksWebsocketConnection has the 'subscribe_blocks' method
-    #   to interface the connection to the "ubiquity.blocks" channel:
-    blocks_ws_connection = ws.BlocksWebsocketConnection()
-    conn = blocks_ws_connection.connect(conf)
+    # The class TxsWebsocketConnection has the 'subscribe_txs' method
+    #   to interface the connection to the "ubiquity.txs" channel:
+    txs_ws_connection = ws.TxsWebsocketConnection()
+    conn = txs_ws_connection.connect(conf)
 
     # The function passed as callback is called when a new event is sent by the server
-    #   in this example this function just prints the new block's id and height
-    await blocks_ws_connection.subscribe_blocks(
+    #   in this example this function just prints the new tx's id
+    await txs_ws_connection.subscribe_txs(
         conn,
         1,
-        lambda blk: print(blk['content']['id'], blk['content']['number'])
+        lambda blk: print(blk['content']['id'])
     )
 
 
@@ -274,7 +274,6 @@ The following table lists the classes and methods used to handle each websocket 
 
 | Channel                     | Class                      | Method               |
 | --------------------------- | -------------------------- | -------------------- |
-| `ubiquity.blocks`            | BlocksWebsocketConnection   | `subscribe_blocks`    |
 | `ubiquity.block_identifiers` | BlockIdsWebsocketConnection | `subscribe_block_ids` |
 | `ubiquity.txs`               | TxsWebsocketConnection      | `subscribe_txs`       |
 
