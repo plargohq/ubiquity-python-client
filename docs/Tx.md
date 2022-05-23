@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **date** | **int** | Unix timestamp | [optional] 
 **block_id** | **str, none_type** | ID of block if mined, otherwise omitted. | [optional] 
 **status** | **str** | Result status of the transaction. | [optional] 
+**assets** | **[str], none_type** | List of moved assets by asset path | [optional] 
 **nonce** | **int** |  | [optional] 
 **num_events** | **int** |  | [optional] 
 **meta** | **bool, date, datetime, dict, float, int, list, str, none_type** |  | [optional] 

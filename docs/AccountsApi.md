@@ -50,11 +50,21 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     platform = "bitcoin" # str | Coin platform handle
     network = "mainnet" # str | Which network to target. Available networks can be found with /{platform}
     address = "0x2E31B312290A01538514806Fbb857736ea4d5555" # str | Account address
+    assets = "ethereum/native/eth" # str | Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Balances Of Address
         api_response = api_instance.get_list_of_balances_by_address(platform, network, address)
+        pprint(api_response)
+    except ubiquity.ubiquity_openapi_client.ApiException as e:
+        print("Exception when calling AccountsApi->get_list_of_balances_by_address: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Balances Of Address
+        api_response = api_instance.get_list_of_balances_by_address(platform, network, address, assets=assets)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling AccountsApi->get_list_of_balances_by_address: %s\n" % e)
@@ -68,6 +78,7 @@ Name | Type | Description  | Notes
  **platform** | **str**| Coin platform handle |
  **network** | **str**| Which network to target. Available networks can be found with /{platform} |
  **address** | **str**| Account address |
+ **assets** | **str**| Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. | [optional]
 
 ### Return type
 
@@ -138,11 +149,21 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
             "addresses_example",
         ],
     ) # AccountsObj | 
+    assets = "ethereum/native/eth" # str | Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. (optional)
 
     # example passing only required values which don't have defaults set
     try:
         # Balances Of Addresses
         api_response = api_instance.get_list_of_balances_by_addresses(platform, network, accounts_obj)
+        pprint(api_response)
+    except ubiquity.ubiquity_openapi_client.ApiException as e:
+        print("Exception when calling AccountsApi->get_list_of_balances_by_addresses: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Balances Of Addresses
+        api_response = api_instance.get_list_of_balances_by_addresses(platform, network, accounts_obj, assets=assets)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling AccountsApi->get_list_of_balances_by_addresses: %s\n" % e)
@@ -156,6 +177,7 @@ Name | Type | Description  | Notes
  **platform** | **str**| Coin platform handle |
  **network** | **str**| Which network to target. Available networks can be found with /{platform} |
  **accounts_obj** | [**AccountsObj**](AccountsObj.md)|  |
+ **assets** | **str**| Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. | [optional]
 
 ### Return type
 

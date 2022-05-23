@@ -1,5 +1,12 @@
 .PHONY: all generate clean
 
+default_openapi_jar_path = openapi-generator-cli-5.2.0.jar
+ifeq "$(OPENAPI_GENERATOR_JAR_PATH)" ""
+	openapi_jar_path := $(default_openapi_jar_path)
+else
+	openapi_jar_path := $(OPENAPI_GENERATOR_JAR_PATH)
+endif
+
 default_python_interpreter = python
 ifeq "$(PYTHON_INTERPRETER)" ""
 	pythoni := $(default_python_interpreter)
@@ -29,7 +36,7 @@ generate:
 	
 generate-local-java:
 	@echo "Generating code..."
-	java -jar openapi-generator-cli-5.2.0.jar generate -v \
+	java -jar $(openapi_jar_path) generate -v \
 		-i spec/openapi.yaml \
 		-g python \
 		-o generated \
