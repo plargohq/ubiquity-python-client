@@ -67,6 +67,8 @@ class Tx(ModelNormal):
     }
 
     validations = {
+        ('assets',): {
+        },
     }
 
     @cached_property
@@ -96,6 +98,7 @@ class Tx(ModelNormal):
             'date': (int,),  # noqa: E501
             'block_id': (str, none_type,),  # noqa: E501
             'status': (str,),  # noqa: E501
+            'assets': ([str], none_type,),  # noqa: E501
             'nonce': (int,),  # noqa: E501
             'num_events': (int,),  # noqa: E501
             'meta': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
@@ -112,6 +115,7 @@ class Tx(ModelNormal):
         'date': 'date',  # noqa: E501
         'block_id': 'block_id',  # noqa: E501
         'status': 'status',  # noqa: E501
+        'assets': 'assets',  # noqa: E501
         'nonce': 'nonce',  # noqa: E501
         'num_events': 'num_events',  # noqa: E501
         'meta': 'meta',  # noqa: E501
@@ -163,6 +167,7 @@ class Tx(ModelNormal):
             date (int): Unix timestamp. [optional]  # noqa: E501
             block_id (str, none_type): ID of block if mined, otherwise omitted.. [optional]  # noqa: E501
             status (str): Result status of the transaction.. [optional]  # noqa: E501
+            assets ([str], none_type): List of moved assets by asset path. [optional]  # noqa: E501
             nonce (int): [optional]  # noqa: E501
             num_events (int): [optional]  # noqa: E501
             meta (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
@@ -252,6 +257,7 @@ class Tx(ModelNormal):
             date (int): Unix timestamp. [optional]  # noqa: E501
             block_id (str, none_type): ID of block if mined, otherwise omitted.. [optional]  # noqa: E501
             status (str): Result status of the transaction.. [optional]  # noqa: E501
+            assets ([str], none_type): List of moved assets by asset path. [optional]  # noqa: E501
             nonce (int): [optional]  # noqa: E501
             num_events (int): [optional]  # noqa: E501
             meta (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501

@@ -64,6 +64,7 @@ class AccountsApi(object):
                 address (str): Account address
 
             Keyword Args:
+                assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -132,6 +133,7 @@ class AccountsApi(object):
                     'platform',
                     'network',
                     'address',
+                    'assets',
                 ],
                 'required': [
                     'platform',
@@ -157,16 +159,20 @@ class AccountsApi(object):
                         (str,),
                     'address':
                         (str,),
+                    'assets':
+                        (str,),
                 },
                 'attribute_map': {
                     'platform': 'platform',
                     'network': 'network',
                     'address': 'address',
+                    'assets': 'assets',
                 },
                 'location_map': {
                     'platform': 'path',
                     'network': 'path',
                     'address': 'path',
+                    'assets': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -204,6 +210,7 @@ class AccountsApi(object):
                 accounts_obj (AccountsObj):
 
             Keyword Args:
+                assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -272,6 +279,7 @@ class AccountsApi(object):
                     'platform',
                     'network',
                     'accounts_obj',
+                    'assets',
                 ],
                 'required': [
                     'platform',
@@ -297,15 +305,19 @@ class AccountsApi(object):
                         (str,),
                     'accounts_obj':
                         (AccountsObj,),
+                    'assets':
+                        (str,),
                 },
                 'attribute_map': {
                     'platform': 'platform',
                     'network': 'network',
+                    'assets': 'assets',
                 },
                 'location_map': {
                     'platform': 'path',
                     'network': 'path',
                     'accounts_obj': 'body',
+                    'assets': 'query',
                 },
                 'collection_format_map': {
                 }

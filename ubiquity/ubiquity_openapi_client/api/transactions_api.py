@@ -623,6 +623,7 @@ class TransactionsApi(object):
                 order (str): Pagination order. [optional]
                 continuation (str): Continuation token from earlier response. [optional]
                 limit (int): Max number of items to return in a response. Defaults to 25 and is capped at 100. . [optional]
+                assets (str): Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect.. [optional]
                 _return_http_data_only (bool): response data without head status
                     code and headers. Default is True.
                 _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -691,6 +692,7 @@ class TransactionsApi(object):
                     'order',
                     'continuation',
                     'limit',
+                    'assets',
                 ],
                 'required': [
                     'platform',
@@ -725,6 +727,8 @@ class TransactionsApi(object):
                         (str,),
                     'limit':
                         (int,),
+                    'assets':
+                        (str,),
                 },
                 'attribute_map': {
                     'platform': 'platform',
@@ -732,6 +736,7 @@ class TransactionsApi(object):
                     'order': 'order',
                     'continuation': 'continuation',
                     'limit': 'limit',
+                    'assets': 'assets',
                 },
                 'location_map': {
                     'platform': 'path',
@@ -739,6 +744,7 @@ class TransactionsApi(object):
                     'order': 'query',
                     'continuation': 'query',
                     'limit': 'query',
+                    'assets': 'query',
                 },
                 'collection_format_map': {
                 }

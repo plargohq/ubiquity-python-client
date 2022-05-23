@@ -382,6 +382,7 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     order = "desc" # str | Pagination order (optional)
     continuation = "8185.123" # str | Continuation token from earlier response (optional)
     limit = 25 # int | Max number of items to return in a response. Defaults to 25 and is capped at 100.  (optional)
+    assets = "ethereum/native/eth" # str | Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -395,7 +396,7 @@ with ubiquity.ubiquity_openapi_client.ApiClient(configuration) as api_client:
     # and optional values
     try:
         # Latest transactions of a protocol
-        api_response = api_instance.get_txs(platform, network, order=order, continuation=continuation, limit=limit)
+        api_response = api_instance.get_txs(platform, network, order=order, continuation=continuation, limit=limit, assets=assets)
         pprint(api_response)
     except ubiquity.ubiquity_openapi_client.ApiException as e:
         print("Exception when calling TransactionsApi->get_txs: %s\n" % e)
@@ -411,6 +412,7 @@ Name | Type | Description  | Notes
  **order** | **str**| Pagination order | [optional]
  **continuation** | **str**| Continuation token from earlier response | [optional]
  **limit** | **int**| Max number of items to return in a response. Defaults to 25 and is capped at 100.  | [optional]
+ **assets** | **str**| Comma-separated list of asset paths to filter. If the list is empty, or all elements are empty, this filter has no effect. | [optional]
 
 ### Return type
 
